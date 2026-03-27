@@ -1,0 +1,104 @@
+[
+  {
+    "id": "equip-1",
+    "name": "共聚焦拉曼光谱仪",
+    "model": "Horiba LabRAM HR Evolution",
+    "description": "高分辨率共聚焦拉曼光谱系统，配备多种激光器，适用于材料科学、生物医学等领域的微区分析。",
+    "image": "/images/equipment/placeholder.svg",
+    "specifications": [
+      "光谱分辨率：≤ 0.65 cm⁻¹",
+      "空间分辨率：横向≤1μm，纵向≤2μm",
+      "激光器：532nm, 633nm, 785nm",
+      "探测器：背照深耗尽 CCD"
+    ],
+    "location": "物理楼 301 室",
+    "status": "可用",
+    "manufacturer": "HORIBA Scientific",
+    "purchaseDate": "2023-06"
+  },
+  {
+    "id": "equip-2",
+    "name": "时间分辨拉曼光谱系统",
+    "model": "PicoQuant TimeHarp 260",
+    "description": "皮秒级时间分辨拉曼光谱系统，用于研究超快动力学过程和瞬态物种。",
+    "image": "/images/equipment/placeholder.svg",
+    "specifications": [
+      "时间分辨率：≤ 50 ps",
+      "重复频率：1Hz - 80MHz",
+      "激光器：皮秒脉冲激光器",
+      "探测器：单光子计数 PMT"
+    ],
+    "location": "物理楼 302 室",
+    "status": "可用",
+    "manufacturer": "PicoQuant",
+    "purchaseDate": "2022-09"
+  },
+  {
+    "id": "equip-3",
+    "name": "超快激光器",
+    "model": "Coherent Libra-F",
+    "description": "飞秒超快激光系统，为时间分辨光谱实验提供激发光源。",
+    "image": "/images/equipment/placeholder.svg",
+    "specifications": [
+      "脉冲宽度：< 100 fs",
+      "中心波长：800 nm",
+      "重复频率：1 kHz",
+      "平均功率：> 1 W"
+    ],
+    "location": "物理楼 303 室",
+    "status": "使用中",
+    "manufacturer": "Coherent",
+    "purchaseDate": "2021-12"
+  },
+  {
+    "id": "equip-4",
+    "name": "扫描电子显微镜",
+    "model": "Zeiss Sigma 300",
+    "description": "场发射扫描电镜，用于纳米材料形貌表征和元素分析。",
+    "image": "/images/equipment/placeholder.svg",
+    "specifications": [
+      "分辨率：1.0 nm @ 15 kV",
+      "放大倍数：8x - 1,000,000x",
+      "能谱分析：Oxford X-Max 80",
+      "样品台：五轴自动样品台"
+    ],
+    "location": "分析测试中心",
+    "status": "可用",
+    "manufacturer": "ZEISS",
+    "purchaseDate": "2020-05"
+  },
+  {
+    "id": "equip-5",
+    "name": "原子力显微镜",
+    "model": "Bruker Dimension Icon",
+    "description": "高性能原子力显微镜，支持多种成像模式和力学测量。",
+    "image": "/images/equipment/placeholder.svg",
+    "specifications": [
+      "Z 轴分辨率：< 0.01 nm",
+      "XY 轴分辨率：< 0.2 nm",
+      "扫描范围：90 μm × 90 μm",
+      "模式：接触/非接触/轻敲模式"
+    ],
+    "location": "物理楼 201 室",
+    "status": "维修中",
+    "manufacturer": "Bruker",
+    "purchaseDate": "2019-08"
+  },
+  {
+    "id": "equip-6",
+    "name": "紫外可见分光光度计",
+    "model": "Shimadzu UV-2600",
+    "description": "双光束紫外可见分光光度计，用于样品吸收光谱测量。",
+    "image": "/images/equipment/placeholder.svg",
+    "specifications": [
+      "波长范围：175 - 3300 nm",
+      "光谱带宽：0.1/0.2/0.5/1.0/2.0/5.0 nm",
+      "波长精度：±0.1 nm",
+      "检测器：PMT 检测器 + InGaAs 检测器"
+    ],
+    "location": "物理楼 202 室",
+    "status": "可用",
+    "manufacturer": "Shimadzu",
+    "purchaseDate": "2018-03"
+  }
+]

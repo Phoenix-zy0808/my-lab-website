@@ -1,0 +1,23 @@
+{
+  "labName": "智能光谱分析实验室",
+  "labNameEn": "Laboratory for Intelligent Spectral Analysis",
+  "description": "致力于拉曼与红外光谱技术的智能化创新及其在多领域的精准应用",
+  "university": "中国计量大学",
+  "department": "量新学院",
+  "address": "浙江省杭州市钱塘区学源街 258 号",
+  "email": "contact@raman-lab.edu.cn",
+  "phone": "+86-XXX-XXXXXXXX",
+  "heroImage": "/images/hero-bg.svg",
+  "socialLinks": [
+    {
+      "platform": "GitHub",
+      "url": "https://github.com/",
+      "icon": "i-carbon-logo-github"
+    },
+    {
+      "platform": "Twitter",
+      "url": "https://twitter.com/",
+      "icon": "i-carbon-logo-twitter"
+    }
+  ]
+}

@@ -25,6 +25,7 @@ export default defineConfig({
     VueMacros({
       defineOptions: false,
       defineModels: false,
+      namedTemplate: false,
       plugins: {
         vue: Vue({
           script: {

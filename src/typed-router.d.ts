@@ -40,11 +40,75 @@ declare module 'vue-router/auto-routes' {
       { all: ParamValue<false> },
       | never
     >,
+    '/achievements': RouteRecordInfo<
+      '/achievements',
+      '/achievements',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/contact': RouteRecordInfo<
+      '/contact',
+      '/contact',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/equipment': RouteRecordInfo<
+      '/equipment',
+      '/equipment',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/hi/[name]': RouteRecordInfo<
       '/hi/[name]',
       '/hi/:name',
       { name: ParamValue<true> },
       { name: ParamValue<false> },
+      | never
+    >,
+    '/life': RouteRecordInfo<
+      '/life',
+      '/life',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/progress': RouteRecordInfo<
+      '/progress',
+      '/progress',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/research': RouteRecordInfo<
+      '/research',
+      '/research',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/team': RouteRecordInfo<
+      '/team',
+      '/team',
+      Record<never, never>,
+      Record<never, never>,
+      | '/team/[id]'
+      | '/team/undergraduate-[id]'
+    >,
+    '/team/[id]': RouteRecordInfo<
+      '/team/[id]',
+      '/team/:id',
+      { id: ParamValue<true> },
+      { id: ParamValue<false> },
+      | never
+    >,
+    '/team/undergraduate-[id]': RouteRecordInfo<
+      '/team/undergraduate-[id]',
+      '/team/undergraduate-:id',
+      { id: ParamValue<true> },
+      { id: ParamValue<false> },
       | never
     >,
   }
@@ -72,9 +136,65 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
+    'src/pages/achievements.vue': {
+      routes:
+        | '/achievements'
+      views:
+        | never
+    }
+    'src/pages/contact.vue': {
+      routes:
+        | '/contact'
+      views:
+        | never
+    }
+    'src/pages/equipment.vue': {
+      routes:
+        | '/equipment'
+      views:
+        | never
+    }
     'src/pages/hi/[name].vue': {
       routes:
         | '/hi/[name]'
+      views:
+        | never
+    }
+    'src/pages/life.vue': {
+      routes:
+        | '/life'
+      views:
+        | never
+    }
+    'src/pages/progress.vue': {
+      routes:
+        | '/progress'
+      views:
+        | never
+    }
+    'src/pages/research.vue': {
+      routes:
+        | '/research'
+      views:
+        | never
+    }
+    'src/pages/team.vue': {
+      routes:
+        | '/team'
+        | '/team/[id]'
+        | '/team/undergraduate-[id]'
+      views:
+        | 'default'
+    }
+    'src/pages/team/[id].vue': {
+      routes:
+        | '/team/[id]'
+      views:
+        | never
+    }
+    'src/pages/team/undergraduate-[id].vue': {
+      routes:
+        | '/team/undergraduate-[id]'
       views:
         | never
     }

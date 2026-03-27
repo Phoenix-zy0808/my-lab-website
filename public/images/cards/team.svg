@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#e0f0f5"/>
+  <text x="50%" y="45%" text-anchor="middle" dy=".3em" fill="#0a3a52" font-size="28" font-family="Arial, sans-serif" font-weight="bold">
+    课题组成员
+  </text>
+  <text x="50%" y="55%" text-anchor="middle" dy=".3em" fill="#578b9e" font-size="18" font-family="Arial, sans-serif">
+    Our Team
+  </text>
+</svg>

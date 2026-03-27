@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#f0f0f0"/>
+  <circle cx="200" cy="150" r="80" fill="#578b9e"/>
+  <ellipse cx="200" cy="320" rx="100" ry="60" fill="#578b9e"/>
+  <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="#0a3a52" font-size="16" font-family="Arial, sans-serif">
+    团队成员头像
+  </text>
+</svg>

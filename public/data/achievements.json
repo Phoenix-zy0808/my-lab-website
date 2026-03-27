@@ -1,0 +1,506 @@
+[
+  {
+    "id": "paper-1",
+    "type": "paper",
+    "title": "Credit Scoring Card Combination Optimization Model Based on QUBO",
+    "authors": ["Zhang Bole", "Cheng Fang", "Lin Xiang"],
+    "journal": "EI Conference",
+    "year": 2024,
+    "description": "基于 QUBO 的信用卡评分组合优化模型研究",
+    "date": "2024-12",
+    "pdf": "/pdfs/paper/林翔 2024-EI 论文-Credit Scoring Card Combination Optimization Model Based on QUBO--章博乐、程芳、林翔.pdf"
+  },
+  {
+    "id": "paper-2",
+    "type": "paper",
+    "title": "细化算法在干涉圆环参数提取中的作用",
+    "authors": ["Tang Jiali", "Ouyang Yefeng"],
+    "journal": "待发表",
+    "year": 2024,
+    "description": "干涉圆环参数提取算法研究",
+    "date": "2024-12",
+    "pdf": "/pdfs/paper/汤佳丽 2 论文细化算法在干涉圆环参数提取中的作用_欧阳烨锋.pdf"
+  },
+  {
+    "id": "paper-3",
+    "type": "paper",
+    "title": "Cu2I2TPP2TU2 杂化半导体材料的合成与荧光传感应用",
+    "authors": ["Wei Xinyu"],
+    "journal": "Acta Crystallographica Section C",
+    "year": 2024,
+    "description": "铜基杂化半导体材料的结构表征与荧光传感性能研究",
+    "date": "2024-12",
+    "pdf": "/pdfs/paper/尉昕宇 2024 Acta C-Cu2I2TPP2TU2 sendreprint.pdf"
+  },
+  {
+    "id": "paper-4",
+    "type": "paper",
+    "title": "铜卤素杂化半导体的设计与荧光传感应用",
+    "authors": ["Wei Xinyu"],
+    "journal": "Journal of Cluster Science",
+    "year": 2025,
+    "description": "铜卤素杂化半导体材料的荧光传感机制研究",
+    "date": "2025-01",
+    "pdf": "/pdfs/paper/尉昕宇 2025 J Cluster Sci Published.pdf"
+  },
+  {
+    "id": "paper-5",
+    "type": "paper",
+    "title": "铜基杂化材料的光物理性质研究",
+    "authors": ["Wei Xinyu"],
+    "journal": "待发表",
+    "year": 2024,
+    "description": "铜基杂化材料的光物理性质与发光机制",
+    "date": "2024-12",
+    "pdf": "/pdfs/paper/尉昕宇 main.pdf"
+  },
+  {
+    "id": "paper-6",
+    "type": "paper",
+    "title": "铜基配位聚合物的合成与表征",
+    "authors": ["Wei Xinyu"],
+    "journal": "Polyhedron",
+    "year": 2024,
+    "description": "铜基配位聚合物的结构设计与性能研究",
+    "date": "2024-12",
+    "pdf": "/pdfs/paper/尉昕宇 polyhedron.pdf"
+  },
+  {
+    "id": "paper-7",
+    "type": "paper",
+    "title": "拉曼光谱分析相关研究",
+    "authors": ["Weng Danni"],
+    "journal": "已录用",
+    "year": 2025,
+    "description": "拉曼光谱技术在分析化学中的应用研究",
+    "date": "2025-01",
+    "pdf": "/pdfs/paper/翁丹妮论文录用.pdf"
+  },
+  {
+    "id": "comp-1",
+    "type": "competition",
+    "title": "挑战杯省金奖",
+    "authors": ["Lin Ken"],
+    "description": "量材智能项目获得挑战杯省级金奖",
+    "date": "2024-12",
+    "pdf": "/pdfs/competition/林肯 2024 挑战杯省金奖 - 量材智能.pdf"
+  },
+  {
+    "id": "comp-2",
+    "type": "competition",
+    "title": "挑战杯校特等奖",
+    "authors": ["Weng Danni"],
+    "description": "挑战杯校级特等奖",
+    "date": "2025-01",
+    "pdf": "/pdfs/competition/翁丹妮 2025-挑战杯 - 校特等奖证书.pdf"
+  },
+  {
+    "id": "comp-3",
+    "type": "competition",
+    "title": "挑战杯省赛金奖",
+    "authors": ["Weng Danni"],
+    "description": "大挑省赛金奖 - 量子纠缠项目",
+    "date": "2025-01",
+    "pdf": "/pdfs/competition/翁丹妮大挑省赛 - 金奖 - 量子纠缠.pdf"
+  },
+  {
+    "id": "comp-4",
+    "type": "competition",
+    "title": "统计建模大赛省赛",
+    "authors": ["Weng Danni"],
+    "description": "第十一届统计建模大赛省赛证书",
+    "date": "2025-01",
+    "pdf": "/pdfs/competition/翁丹妮第十一届统计建模大赛省赛证书.pdf"
+  },
+  {
+    "id": "comp-5",
+    "type": "competition",
+    "title": "全国三维数字化创新设计大赛省二等奖",
+    "authors": ["Weng Danni"],
+    "description": "全国三维数字化创新设计大赛省级二等奖",
+    "date": "2024-12",
+    "pdf": "/pdfs/competition/翁丹妮全国三维数字化创新设计大赛省二.jpg"
+  },
+  {
+    "id": "comp-6",
+    "type": "competition",
+    "title": "长三角数模竞赛省二等奖",
+    "authors": ["Weng Danni"],
+    "description": "长三角数学建模竞赛省级二等奖",
+    "date": "2024-12",
+    "pdf": "/pdfs/competition/翁丹妮长三角省二.jpg"
+  },
+  {
+    "id": "comp-7",
+    "type": "competition",
+    "title": "挑战杯校三等奖",
+    "authors": ["Weng Danni"],
+    "description": "用英语讲中国故事杭州赛区二等奖",
+    "date": "2025-01",
+    "pdf": "/pdfs/competition/翁丹妮 2025-挑战杯 - 校三等奖 - 荣誉证书.pdf"
+  },
+  {
+    "id": "comp-8",
+    "type": "competition",
+    "title": "睿抗竞赛",
+    "authors": ["Huang Juan"],
+    "description": "睿抗机器人开发者大赛",
+    "date": "2024-12",
+    "pdf": "/pdfs/competition/黄娟睿抗.jpg"
+  },
+  {
+    "id": "comp-9",
+    "type": "competition",
+    "title": "虚拟仿真大赛",
+    "authors": ["Huang Juan"],
+    "description": "虚拟仿真教学软件应用大赛",
+    "date": "2024-12",
+    "pdf": "/pdfs/competition/黄娟虚拟仿真.png"
+  },
+  {
+    "id": "comp-10",
+    "type": "competition",
+    "title": "金玺奖",
+    "authors": ["Lin Ken"],
+    "description": "金玺创意设计奖",
+    "date": "2024-12",
+    "pdf": "/pdfs/competition/金玺.JPG"
+  },
+  {
+    "id": "comp-11",
+    "type": "competition",
+    "title": "全国大学生物理实验竞赛三等奖",
+    "authors": ["Tang Jiali"],
+    "description": "全国大学生物理实验竞赛国家级三等奖",
+    "date": "2024-12",
+    "pdf": "/pdfs/competition/汤佳丽全国大学生物理竞赛三等奖.jpg"
+  },
+  {
+    "id": "comp-12",
+    "type": "competition",
+    "title": "浙江省物理竞赛三等奖",
+    "authors": ["Tang Jiali"],
+    "description": "浙江省大学生物理竞赛三等奖",
+    "date": "2024-12",
+    "pdf": "/pdfs/competition/汤佳丽浙江省物理竞赛三等奖.jpg"
+  },
+  {
+    "id": "comp-13",
+    "type": "competition",
+    "title": "全国大学生数学建模竞赛",
+    "authors": ["Wang Heli"],
+    "description": "全国大学生数学建模竞赛",
+    "date": "2024-12",
+    "pdf": "/pdfs/competition/王鹤立数模.pdf"
+  },
+  {
+    "id": "comp-14",
+    "type": "competition",
+    "title": "全国大学生工程制图竞赛",
+    "authors": ["Wang Heli"],
+    "description": "全国大学生工程制图与产品信息建模竞赛",
+    "date": "2024-12",
+    "pdf": "/pdfs/competition/王鹤立工图.png"
+  },
+  {
+    "id": "comp-15",
+    "type": "competition",
+    "title": "化学竞赛",
+    "authors": ["Wei Xinyu"],
+    "description": "全国大学生化学竞赛",
+    "date": "2024-12",
+    "pdf": "/pdfs/competition/尉昕宇化学竞赛.jpg"
+  },
+  {
+    "id": "comp-16",
+    "type": "competition",
+    "title": "数学竞赛",
+    "authors": ["Wei Xinyu"],
+    "description": "全国大学生数学竞赛",
+    "date": "2024-12",
+    "pdf": "/pdfs/competition/尉昕宇数学竞赛.jpg"
+  },
+  {
+    "id": "comp-17",
+    "type": "competition",
+    "title": "新材料竞赛",
+    "authors": ["Wei Xinyu"],
+    "description": "全国大学生新材料创新设计大赛",
+    "date": "2024-12",
+    "pdf": "/pdfs/competition/尉昕宇新材料.jpg"
+  },
+  {
+    "id": "comp-18",
+    "type": "competition",
+    "title": "耐蚀科技大创赛国银",
+    "authors": ["Lin Xiang"],
+    "description": "耐蚀科技 24 年大创赛国银、省银、金钥匙奖",
+    "date": "2024-09",
+    "pdf": "/pdfs/competition/林翔耐蚀科技 24 年大创赛国银 省银 金钥匙奖状 2025-09-09 14.18.pdf"
+  },
+  {
+    "id": "comp-19",
+    "type": "competition",
+    "title": "长三角数模竞赛",
+    "authors": ["Lin Xiang"],
+    "description": "长三角数学建模竞赛",
+    "date": "2024-12",
+    "pdf": "/pdfs/competition/林翔长三角数模竞赛奖状.jpg"
+  },
+  {
+    "id": "comp-20",
+    "type": "competition",
+    "title": "国赛",
+    "authors": ["Lin Xiang"],
+    "description": "国家级竞赛",
+    "date": "2024-12",
+    "pdf": "/pdfs/competition/林翔国赛证书.jpg"
+  },
+  {
+    "id": "copyright-1",
+    "type": "copyright",
+    "title": "基于矩阵计算的化学方程式配平系统 V1.0",
+    "authors": ["Jiang Chaozheng"],
+    "description": "基于矩阵计算的化学方程式智能配平软件系统",
+    "date": "2024-12",
+    "pdf": "/pdfs/copyright/蒋朝政 - 基于矩阵计算的化学方程式配平系统-v1.0.pdf"
+  },
+  {
+    "id": "copyright-2",
+    "type": "copyright",
+    "title": "第一性原理计算模型优化软件 V1.1",
+    "authors": ["Lin Ken"],
+    "description": "基于第一性原理的材料计算模型优化软件",
+    "date": "2024-12",
+    "pdf": "/pdfs/copyright/林肯--材智云 - 第一性原理计算模型优化软件 v1.1.pdf"
+  },
+  {
+    "id": "copyright-3",
+    "type": "copyright",
+    "title": "材料有限元计算仿真软件 V1.0",
+    "authors": ["Lin Ken"],
+    "description": "材料有限元分析与仿真计算软件",
+    "date": "2024-12",
+    "pdf": "/pdfs/copyright/林肯 - 材智云 - 材料有限元计算仿真软件 v1.0.pdf"
+  },
+  {
+    "id": "copyright-4",
+    "type": "copyright",
+    "title": "人工智能合金材料设计软件 V1.0",
+    "authors": ["Lin Ken"],
+    "description": "基于人工智能的合金材料设计与优化软件",
+    "date": "2024-12",
+    "pdf": "/pdfs/copyright/林肯 - 材智云 - 人工智能合金材料设计软件 v1.0.pdf"
+  },
+  {
+    "id": "copyright-5",
+    "type": "copyright",
+    "title": "形核析出动力学计算软件 V1.0",
+    "authors": ["Lin Ken"],
+    "description": "材料形核与析出动力学过程计算软件",
+    "date": "2024-12",
+    "pdf": "/pdfs/copyright/林肯 - 材智云 - 形核析出动力学计算软件 V1.0.pdf"
+  },
+  {
+    "id": "copyright-6",
+    "type": "copyright",
+    "title": "基于计量算法的第一性原理计算软件 V1.0",
+    "authors": ["Lin Ken"],
+    "description": "基于计量学算法的第一性原理计算软件",
+    "date": "2024-12",
+    "pdf": "/pdfs/copyright/林肯软著 - 基于计量算法的第一性原理计算软件 (1).pdf"
+  },
+  {
+    "id": "copyright-7",
+    "type": "copyright",
+    "title": "复杂体系近红外图谱弱差异信号解析系统 V1.0",
+    "authors": ["Wei Xinyu"],
+    "description": "复杂体系近红外光谱弱差异信号智能解析系统",
+    "date": "2024-12",
+    "pdf": "/pdfs/copyright/尉昕宇 - 复杂体系近红外图谱弱差异信号解析系统-V1.0.pdf"
+  },
+  {
+    "id": "copyright-8",
+    "type": "copyright",
+    "title": "ICP-MS 检测数据智能化处理技术研究平台 V1.0",
+    "authors": ["Wei Xinyu"],
+    "description": "电感耦合等离子体质谱检测数据智能处理平台",
+    "date": "2024-12",
+    "pdf": "/pdfs/copyright/尉昕宇-ICP-MS 检测数据智能化处理技术研究平台-V1.0.pdf"
+  },
+  {
+    "id": "copyright-9",
+    "type": "copyright",
+    "title": "基于 PYQT 的人工智能驱动合金框架设计软件 V1.0",
+    "authors": ["Zhang Yuedan"],
+    "description": "基于 PyQt 框架的合金材料智能设计软件",
+    "date": "2024-12",
+    "pdf": "/pdfs/copyright/张悦丹 - 基于 PYQT 的人工智能驱动合金框架设计软件-V1.0.pdf"
+  },
+  {
+    "id": "patent-1",
+    "type": "patent",
+    "title": "结合特征交互与扩散优化的多视角三维手部模型重建方法",
+    "authors": ["Huang Juan"],
+    "description": "基于特征交互与扩散优化的多视角三维手部重建发明专利",
+    "date": "2024-12",
+    "patentNumber": "ZL202410XXXXXX.X",
+    "pdf": "/pdfs/patent/黄娟 - 发明专利 - 结合特征交互与扩散优化的多视角三维手部模型重建方法.pdf"
+  },
+  {
+    "id": "patent-2",
+    "type": "patent",
+    "title": "拉曼光谱模型的评估及自主优化系统",
+    "authors": ["Huang Juan"],
+    "description": "拉曼光谱分析模型的自动评估与优化系统",
+    "date": "2024-12",
+    "pdf": "/pdfs/patent/黄娟对分析拉曼光谱的模型的评估及自主优化系统 - 黄娟.pdf"
+  },
+  {
+    "id": "patent-3",
+    "type": "patent",
+    "title": "基于优化拉曼光谱分析系统的自动化物质识别方法",
+    "authors": ["Huang Juan"],
+    "description": "基于拉曼光谱的自动化物质识别方法",
+    "date": "2024-12",
+    "pdf": "/pdfs/patent/黄娟基于优化拉曼光谱分析系统的自动化物质识别方法.pdf"
+  },
+  {
+    "id": "patent-4",
+    "type": "patent",
+    "title": "基于 VAE-GAN 与 R3GAN 结合的光谱重构降噪算法",
+    "authors": ["Jiang Chaozheng", "Cheng Fang", "Lin Xiang"],
+    "description": "基于生成对抗网络的光谱数据重构与降噪算法",
+    "date": "2024-12",
+    "pdf": "/pdfs/patent/蒋朝政发明专利受理：一种基于基于 VAE-GAN 与 R3GAN 结合的光谱重构降噪算法.pdf"
+  },
+  {
+    "id": "patent-5",
+    "type": "patent",
+    "title": "基于 U-Net 架构的循环生成对抗网络的拉曼光谱降噪算法",
+    "authors": ["Jiang Chaozheng", "Cheng Fang", "Lin Xiang"],
+    "description": "基于深度学习 U-Net 架构的拉曼光谱降噪方法",
+    "date": "2024-12",
+    "pdf": "/pdfs/patent/蒋朝政一种基于 U-Net 架构的循环生成对抗网络的拉曼光谱降噪算法 - 蒋朝政、程芳、林翔等.pdf"
+  },
+  {
+    "id": "patent-6",
+    "type": "patent",
+    "title": "一种用于双电源控制的电磁机械联锁装置",
+    "authors": ["Lin Ken"],
+    "description": "双电源供电系统的电磁机械联锁装置",
+    "date": "2024-12",
+    "patentNumber": "ZL202410824460.X",
+    "pdf": "/pdfs/patent/林肯发明专利 202410824460X_一种用于双电源控制的电磁机械联锁装置 - 发明专利证书 - 亨斯迈（杭州）电力技术有限公司 (1).pdf"
+  },
+  {
+    "id": "patent-7",
+    "type": "patent",
+    "title": "一种具有新型接地开关传动装置的紧凑型开关柜",
+    "authors": ["Lin Ken"],
+    "description": "紧凑型开关柜接地开关传动装置",
+    "date": "2024-12",
+    "patentNumber": "ZL202410880250.X",
+    "pdf": "/pdfs/patent/林肯发明专利 2024108802502_一种具有新型接地开关传动装置的紧凑型开关柜.pdf"
+  },
+  {
+    "id": "patent-8",
+    "type": "patent",
+    "title": "一种基于多摄像机视线追踪与大模型集成的多模态交互智能机器人系统",
+    "authors": ["Lin Xiang"],
+    "description": "基于多目视线追踪与大语言模型的多模态交互机器人系统",
+    "date": "2024-12",
+    "pdf": "/pdfs/patent/林翔一种基于多摄像机视线追踪与大模型集成的多模态交互智能机器人系统.pdf"
+  },
+  {
+    "id": "patent-9",
+    "type": "patent",
+    "title": "一种基于多通道一维卷积神经网络与空间金字塔池化技术的拉曼光谱算法",
+    "authors": ["Lin Xiang"],
+    "description": "基于深度学习多通道 CNN 与空间金字塔池化的拉曼光谱分析算法",
+    "date": "2024-12",
+    "pdf": "/pdfs/patent/林翔一种基于多通道一维卷积神经网络与空间金字塔池化技术的拉曼光谱算法.pdf"
+  },
+  {
+    "id": "patent-10",
+    "type": "patent",
+    "title": "基于量子纠缠光子增强的超快相干拉曼光谱仪及其光路装置",
+    "authors": ["Tang Jiali"],
+    "description": "基于量子纠缠光子增强技术的超快相干拉曼光谱仪",
+    "date": "2024-12",
+    "pdf": "/pdfs/patent/汤佳丽基于量子纠缠光子增强的超快相干拉曼光谱仪及其光路装置.pdf"
+  },
+  {
+    "id": "patent-11",
+    "type": "patent",
+    "title": "一种基于激光辅助等离子增强 CVD 的 WC 硬质涂层及其制备方法",
+    "authors": ["Wang Heli"],
+    "description": "激光辅助等离子体化学气相沉积制备 WC 硬质涂层的方法",
+    "date": "2024-12",
+    "pdf": "/pdfs/patent/王鹤立发明专利 - 一种基于激光辅助等离子增强_CVD_的_WC_硬质涂层及其制备方法.pdf"
+  },
+  {
+    "id": "patent-12",
+    "type": "patent",
+    "title": "一种双核 Cu2I2P2S2 型杂化半导体发光材料及其荧光传感应用",
+    "authors": ["Wei Xinyu"],
+    "description": "双核铜碘杂化半导体材料的合成及其在荧光传感中的应用",
+    "date": "2024-12",
+    "pdf": "/pdfs/patent/尉昕宇一种双核 Cu2I2P2S2 型杂化半导体发光材料及其荧光传感应用.pdf"
+  },
+  {
+    "id": "patent-13",
+    "type": "patent",
+    "title": "英国外观专利 - 带荧光防伪标识的钠电池组",
+    "authors": ["Wei Xinyu"],
+    "description": "带有荧光防伪标识的钠离子电池组外观设计",
+    "date": "2024-12",
+    "patentNumber": "6462895",
+    "pdf": "/pdfs/patent/尉昕宇英国外观证书——带荧光防伪标识的钠电池组——6462895(2).pdf"
+  },
+  {
+    "id": "patent-14",
+    "type": "patent",
+    "title": "一种基于波前 - 功率协同调控方法的梯度极化 BBO 晶体量子纠缠源装置",
+    "authors": ["Weng Danni"],
+    "description": "基于波前 - 功率协同调控的 BBO 晶体量子纠缠源产生装置",
+    "date": "2025-01",
+    "pdf": "/pdfs/patent/翁丹妮 (一作) 发明专利受理 - 一种基于波前 - 功率协同调控方法的梯度极化 BBO 晶体量子纠缠源装置.pdf"
+  },
+  {
+    "id": "patent-15",
+    "type": "patent",
+    "title": "一种基于量子鲸群优化的 DBSCAN 聚类高光谱岩矿检测算法",
+    "authors": ["Weng Danni"],
+    "description": "基于量子鲸群优化算法的 DBSCAN 聚类高光谱岩矿检测方法",
+    "date": "2025-01",
+    "pdf": "/pdfs/patent/翁丹妮 (一作) 发明专利受理 - 一种基于量子鲸群优化的 DBSCAN 聚类高光谱岩矿检测算法.pdf"
+  },
+  {
+    "id": "patent-16",
+    "type": "patent",
+    "title": "一种基于物理约束数据增强和自适应优化的光谱多任务深度学习方法",
+    "authors": ["Weng Danni"],
+    "description": "基于物理约束数据增强的光谱多任务深度学习算法",
+    "date": "2024-12",
+    "pdf": "/pdfs/patent/邬丹妮一种基于物理约束数据增强和自适应优化的光谱多任务深度学习方法.pdf"
+  },
+  {
+    "id": "patent-17",
+    "type": "patent",
+    "title": "拉曼光谱数据的量值溯源系统",
+    "authors": ["Zhang Yuedan"],
+    "description": "拉曼光谱检测数据的量值溯源与校准系统",
+    "date": "2024-12",
+    "pdf": "/pdfs/patent/张悦丹发明专利 - 拉曼光谱数据的量值溯源系统.pdf"
+  },
+  {
+    "id": "project-1",
+    "type": "project",
+    "title": "浙江省大学生科技创新活动计划暨新苗人才计划项目",
+    "authors": ["Weng Danni"],
+    "description": "2025 年浙江省大学生科技创新活动计划暨新苗人才计划项目",
+    "date": "2025-01",
+    "pdf": "/pdfs/project/翁丹妮 2025 年浙江省大学生科技创新活动计划暨新苗人才计划项目立项证明_扫描版.pdf"
+  }
+]
