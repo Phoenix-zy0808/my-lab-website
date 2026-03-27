@@ -35,7 +35,7 @@ function go() {
 
     <div>
       <button
-        class="text-sm m-3 btn"
+        class="text-sm btn m-3"
         :disabled="!name"
         @click="go"
       >

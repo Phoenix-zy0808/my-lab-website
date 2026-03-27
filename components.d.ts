@@ -11,10 +11,20 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    Card: typeof import('./src/components/Card.vue')['default']
+    ErrorBoundary: typeof import('./src/components/ErrorBoundary.vue')['default']
+    Header: typeof import('./src/components/Header.vue')['default']
+    Hero: typeof import('./src/components/Hero.vue')['default']
+    PdfModal: typeof import('./src/components/PdfModal.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Skeleton: typeof import('./src/components/Skeleton.vue')['default']
+    Tabs: typeof import('./src/components/Tabs.vue')['default']
+    TeamCard: typeof import('./src/components/TeamCard.vue')['default']
+    TeamMember: typeof import('./src/components/TeamMember.vue')['default']
     TheCounter: typeof import('./src/components/TheCounter.vue')['default']
     TheFooter: typeof import('./src/components/TheFooter.vue')['default']
     TheInput: typeof import('./src/components/TheInput.vue')['default']
+    Timeline: typeof import('./src/components/Timeline.vue')['default']
   }
 }
