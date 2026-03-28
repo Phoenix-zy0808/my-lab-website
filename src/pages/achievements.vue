@@ -52,21 +52,7 @@ const typeFilterOptions = [
 async function loadAchievements() {
   try {
     const res = await fetch('/data/achievements.json')
-    const data = await res.json()
-    console.log('=== 成果数据加载 ===')
-    console.log('原始数据前 3 条:', data.slice(0, 3))
-    console.log('加载的成果数量:', data.length)
-
-    // 检查 PDF 路径
-    const itemsWithPdf = data.filter(item => item.pdf)
-    console.log('包含 PDF 的数量:', itemsWithPdf.length)
-    console.log('前 3 个 PDF 路径:', itemsWithPdf.slice(0, 3).map(item => ({
-      title: item.title,
-      pdf: item.pdf
-    })))
-
-    achievements.value = data
-    console.log('achievements.value 长度:', achievements.value.length)
+    achievements.value = await res.json()
   } catch (error) {
     console.error('Failed to load achievements:', error)
   }
@@ -91,12 +77,8 @@ const yearOptions = computed(() => {
 const filteredAchievements = computed(() => {
   let result = achievements.value
 
-  console.log('筛选前数量:', result.length)
-  console.log('当前类型:', selectedType.value)
-
   if (selectedType.value !== 'all') {
     result = result.filter(ach => ach.type === selectedType.value)
-    console.log('类型筛选后数量:', result.length)
   }
 
   if (selectedYear.value !== 'all') {
@@ -104,13 +86,10 @@ const filteredAchievements = computed(() => {
       const date = new Date(ach.date)
       return date.getFullYear().toString() === selectedYear.value
     })
-    console.log('年份筛选后数量:', result.length)
   }
 
   // 按日期降序排序
-  const sorted = result.sort((a, b) => b.date.localeCompare(a.date))
-  console.log('最终筛选数量:', sorted.length)
-  return sorted
+  return result.sort((a, b) => b.date.localeCompare(a.date))
 })
 
 // 分页相关
@@ -121,9 +100,7 @@ const pageSize = 10 // 每页显示 10 条
 const totalPages = computed(() => {
   const total = filteredAchievements.value?.length || 0
   const size = pageSize || 10
-  const pages = Math.ceil(total / size)
-  console.log('总页数计算:', { total, size, pages })
-  return pages
+  return Math.ceil(total / size)
 })
 
 // 当前页的数据
@@ -134,8 +111,6 @@ const currentPageData = computed(() => {
 
   const start = (page - 1) * size
   const end = start + size
-
-  console.log('分页计算:', { total, size, page, start, end })
 
   return filteredAchievements.value?.slice(start, end) || []
 })
@@ -184,7 +159,6 @@ function openPdf(pdfUrl: string, title: string) {
   currentPdfUrl.value = encodedUrl
   currentPdfTitle.value = title
   showPdfModal.value = true
-  console.log('打开 PDF:', { title, originalUrl: pdfUrl, encodedUrl })
 }
 </script>
 
@@ -237,17 +211,6 @@ function openPdf(pdfUrl: string, title: string) {
             {{ year.label }}
           </button>
         </div>
-      </div>
-
-      <!-- 调试信息 -->
-      <div class="bg-yellow-100 p-4 mb-4 text-sm">
-        <p>总成果数：{{ achievements.length }}</p>
-        <p>筛选后数量：{{ filteredAchievements.length }}</p>
-        <p>当前页数据：{{ currentPageData.length }}</p>
-        <p>当前页码：{{ currentPage }} / {{ totalPages }}</p>
-        <p>pageSize: {{ pageSize }} (typeof: {{ typeof pageSize }})</p>
-        <p>当前类型：{{ selectedType }}</p>
-        <p>当前年份：{{ selectedYear }}</p>
       </div>
 
       <!-- 成果列表 -->

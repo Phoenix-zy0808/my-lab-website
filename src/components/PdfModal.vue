@@ -98,8 +98,6 @@ onUnmounted(() => {
               h-full
               border-0
               title="PDF Preview"
-              @load="console.log('PDF loaded:', pdfUrl)"
-              @error="console.error('PDF load error:', pdfUrl)"
             />
             <div v-else flex items-center justify-center h-full>
               <div text-center text-gray-500>

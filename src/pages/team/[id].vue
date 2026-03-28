@@ -39,7 +39,8 @@ async function loadMember() {
       ...(data.research_assistant || []),
       ...(data.master_student || []),
       ...(data.undergraduate || []),
-      ...(data.graduated || []),
+      ...(data.graduated_master || []),
+      ...(data.graduated_undergraduate || []),
     ]
 
     member.value = allMembers.find((m: TeamMember) => m.id === route.params.id) || null
@@ -70,7 +71,8 @@ const roleMap: Record<TeamMember['role'], { label: string; color: string }> = {
   research_assistant: { label: '科研助理', color: 'bg-accent text-white' },
   master_student: { label: '硕士生', color: 'bg-purple-100 text-purple-700' },
   undergraduate: { label: '本科生', color: 'bg-indigo-100 text-indigo-700' },
-  graduated: { label: '已毕业', color: 'bg-gray-100 text-gray-700' },
+  graduated_master: { label: '已毕业硕士', color: 'bg-gray-100 text-gray-700' },
+  graduated_undergraduate: { label: '已毕业本科', color: 'bg-gray-50 text-gray-600' },
 }
 </script>
 
@@ -123,6 +125,8 @@ const roleMap: Record<TeamMember['role'], { label: string; color: string }> = {
                 v-if="member.photo"
                 :src="member.photo"
                 :alt="member.name"
+                loading="lazy"
+                decoding="async"
                 w-full
                 h-full
                 object-cover
@@ -189,16 +193,20 @@ const roleMap: Record<TeamMember['role'], { label: string; color: string }> = {
             <h3 class="text-2xl font-semibold text-primary mb-4">
               教育经历
             </h3>
-            <div space-y-4>
+            <div class="space-y-4">
               <div
                 v-for="(edu, index) in member.education"
                 :key="index"
-                class="flex gap-4"
+                class="flex flex-col sm:flex-row gap-2 sm:gap-3"
               >
-                <div class="text-sm text-secondary w-32 flex-shrink-0">
-                  {{ edu.time }}
+                <!-- 时间标签（加宽区域） -->
+                <div class="sm:w-48 flex-shrink-0">
+                  <span class="inline-block px-3 py-1 bg-primary/10 text-primary rounded-md text-sm font-medium whitespace-nowrap">
+                    {{ edu.time }}
+                  </span>
                 </div>
-                <div>
+                <!-- 学校和专业 -->
+                <div class="flex-1 min-w-0">
                   <p class="font-medium text-gray-800">
                     {{ edu.school }} - {{ edu.major }}
                   </p>
@@ -215,16 +223,20 @@ const roleMap: Record<TeamMember['role'], { label: string; color: string }> = {
             <h3 class="text-2xl font-semibold text-primary mb-4">
               工作经历
             </h3>
-            <div space-y-4>
+            <div class="space-y-4">
               <div
                 v-for="(work, index) in member.workExperience"
                 :key="index"
-                class="flex gap-4"
+                class="flex flex-col sm:flex-row gap-2 sm:gap-3"
               >
-                <div class="text-sm text-secondary w-32 flex-shrink-0">
-                  {{ work.time }}
+                <!-- 时间标签（加宽区域） -->
+                <div class="sm:w-48 flex-shrink-0">
+                  <span class="inline-block px-3 py-1 bg-secondary/10 text-secondary rounded-md text-sm font-medium whitespace-nowrap">
+                    {{ work.time }}
+                  </span>
                 </div>
-                <div>
+                <!-- 组织和职位 -->
+                <div class="flex-1 min-w-0">
                   <p class="font-medium text-gray-800">
                     {{ work.organization }}
                   </p>
@@ -266,6 +278,30 @@ const roleMap: Record<TeamMember['role'], { label: string; color: string }> = {
                 <span class="text-sm text-gray-500 mr-2">[{{ index + 1 }}]</span>
                 {{ pub }}
               </p>
+            </div>
+          </div>
+
+          <!-- 科研项目 -->
+          <div v-if="member.researchProjects?.length" class="mb-8">
+            <h3 class="text-2xl font-semibold text-primary mb-4">
+              科研项目
+            </h3>
+            <div class="space-y-3">
+              <div
+                v-for="(project, index) in member.researchProjects"
+                :key="index"
+                class="text-gray-700 leading-relaxed"
+              >
+                <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary text-white text-xs font-bold mr-2">
+                  {{ index + 1 }}
+                </span>
+                <span class="font-medium">{{ project.name }}</span>，
+                <span class="text-gray-600">{{ project.type }}</span>，
+                <span class="text-sm text-gray-500">{{ project.role }}</span>
+                <span v-if="project.grantNumber">，批号：{{ project.grantNumber }}</span>
+                <span v-if="project.funding">，经费：{{ project.funding }}</span>
+                <span class="text-gray-500">（{{ project.period }}）</span>
+              </div>
             </div>
           </div>
         </div>

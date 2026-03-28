@@ -16,38 +16,22 @@ const config = ref<SiteConfig | null>(null)
 
 // 图片数据
 const galleryImages = [
-  // 实验环境（4 张）
+  // 实验环境（2 张）
   {
     id: 'lab-1',
-    src: '/images/life/lab-environment/raman-spectrometer.jpg',
-    title: '拉曼光谱仪',
-    description: '共聚焦拉曼光谱仪',
+    src: '/images/life/lab-environment/1.png',
+    title: '实验环境 1',
+    description: '实验室环境照片',
     category: '实验环境',
-    date: '2024-01',
+    date: '2026-03',
   },
   {
     id: 'lab-2',
-    src: '/images/life/lab-environment/lab-bench.jpg',
-    title: '实验台',
-    description: '光学实验平台',
+    src: '/images/life/lab-environment/2.png',
+    title: '实验环境 2',
+    description: '实验室环境照片',
     category: '实验环境',
-    date: '2024-01',
-  },
-  {
-    id: 'lab-3',
-    src: '/images/life/lab-environment/microscope.jpg',
-    title: '显微镜',
-    description: '高分辨率显微镜',
-    category: '实验环境',
-    date: '2024-02',
-  },
-  {
-    id: 'lab-4',
-    src: '/images/life/lab-environment/optical-table.jpg',
-    title: '光学平台',
-    description: '隔振光学平台',
-    category: '实验环境',
-    date: '2024-02',
+    date: '2026-03',
   },
 
   // 学术活动（4 张）
@@ -156,6 +140,56 @@ const galleryImages = [
 const categories = ['全部', '实验环境', '学术活动', '团队活动', '荣誉时刻']
 const selectedCategory = ref<string>('全部')
 
+// 懒加载状态管理
+interface LazyImageState {
+  isLoaded: boolean
+  isVisible: boolean
+}
+
+const imageStates = reactive<Record<string, LazyImageState>>({})
+
+// 初始化图片状态
+galleryImages.forEach(img => {
+  imageStates[img.id] = {
+    isLoaded: false,
+    isVisible: false,
+  }
+})
+
+// Intersection Observer
+let observer: IntersectionObserver | null = null
+
+const initObserver = () => {
+  if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+    // 降级处理：全部标记为可见
+    Object.keys(imageStates).forEach(id => {
+      imageStates[id].isVisible = true
+    })
+    return
+  }
+
+  observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const id = entry.target.getAttribute('data-image-id')
+        if (id && entry.isIntersecting) {
+          imageStates[id].isVisible = true
+          observer?.unobserve(entry.target)
+        }
+      })
+    },
+    {
+      rootMargin: '100px',
+      threshold: 0,
+    },
+  )
+}
+
+const registerImage = (el: HTMLImageElement | null, id: string) => {
+  if (!el || !observer) return
+  observer.observe(el)
+}
+
 // 加载站点配置
 async function loadConfig() {
   try {
@@ -168,6 +202,11 @@ async function loadConfig() {
 
 onMounted(() => {
   loadConfig()
+  initObserver()
+})
+
+onUnmounted(() => {
+  observer?.disconnect()
 })
 
 const filteredImages = computed(() => {
@@ -176,6 +215,22 @@ const filteredImages = computed(() => {
   }
   return galleryImages.filter(img => img.category === selectedCategory.value)
 })
+
+// 监听分类变化，重新观察新显示的图片
+watch(
+  () => filteredImages.value.length,
+  () => {
+    // 分类变化后，重新初始化观察
+    setTimeout(() => {
+      filteredImages.value.forEach(img => {
+        const el = document.querySelector(`[data-image-id="${img.id}"]`) as HTMLImageElement
+        if (el && observer && !imageStates[img.id].isVisible) {
+          observer.observe(el)
+        }
+      })
+    }, 0)
+  },
+)
 </script>
 
 <template>
@@ -206,20 +261,35 @@ const filteredImages = computed(() => {
           :key="image.id"
           class="group relative overflow-hidden rounded-lg shadow-lg aspect-square"
         >
+          <!-- 使用原生 loading="lazy" + Intersection Observer -->
           <img
-            :src="image.src"
+            :ref="(el) => registerImage(el as HTMLImageElement, image.id)"
+            :data-image-id="image.id"
+            :src="imageStates[image.id].isVisible ? image.src : ''"
             :alt="image.title"
             w-full
             h-full
             object-cover
+            loading="lazy"
+            decoding="async"
             transition
             duration-300
             group-hover:scale-110
+            :class="{ 'opacity-0': !imageStates[image.id].isLoaded }"
+            @load="imageStates[image.id].isLoaded = true"
             @error="(e) => {
               const target = e.target as HTMLImageElement
               target.src = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23ddd%22 width=%22200%22 height=%22200%22/%3E%3Ctext fill=%22%23999%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22%3E暂无图片%3C/text%3E%3C/svg%3E'
+              imageStates[image.id].isLoaded = true
             }"
           />
+          <!-- 加载占位 -->
+          <div
+            v-if="!imageStates[image.id].isLoaded"
+            class="absolute inset-0 bg-gray-100 flex items-center justify-center"
+          >
+            <div class="i-carbon-image text-3xl text-gray-300" />
+          </div>
 
           <!-- 遮罩层 -->
           <div

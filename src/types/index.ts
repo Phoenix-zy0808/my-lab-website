@@ -41,6 +41,7 @@ export interface TeamMember {
   bio?: string
   education?: EducationItem[]
   workExperience?: WorkExperienceItem[]
+  researchProjects?: ResearchProject[]
   researchInterests?: string[]
   publications?: string[]
   joinDate?: string
@@ -57,6 +58,15 @@ export interface WorkExperienceItem {
   time: string
   organization: string
   position: string
+}
+
+export interface ResearchProject {
+  name: string
+  type: string
+  role: string
+  grantNumber?: string
+  funding?: string
+  period: string
 }
 
 // 论文发表相关

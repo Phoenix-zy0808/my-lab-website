@@ -3,25 +3,138 @@
     {
       "id": "pi-1",
       "name": "程芳",
-      "title": "讲师，硕士生导师",
+      "title": "硕士生导师",
       "role": "pi",
       "photo": "/images/team/chengfan.jpg",
       "email": "zhangsan@university.edu.cn",
       "phone": "13041080376",
       "office": "物理楼 301",
-      "bio": "中国计量大学量新学院（校荣誉学院）教师，人社部人工智能国家智库专家，浙江省智能制造专家委员，浙江省人工智能学会理事，美国宾夕法尼亚州立大学博士",
+      "bio": "美国宾夕法尼亚州立大学与北京科技大学联合培养博士，现任中国计量大学材料与化学学院硕士生导师，兼任中华人民共和国人社部国家专业技术人才知识更新工程智库人工智能高级技术专家、教育部\"互联网+\"国赛评委、浙江省智能制造专家委员。主持及参与国家重点研发计划、国家自然科学基金等国家级科研项目 12 项，累计经费超 2500 万元。发表 SCI 论文 11 篇，合著专著 1 部。获 MS&T 2014 杰出报告奖、Acta Materialia 优秀审稿奖。主讲课程获评省一流课程",
       "education": [
-        { "time": "2005—2010", "school": "XX 大学", "degree": "博士", "major": "物理学" },
-        { "time": "2001—2005", "school": "XX 大学", "degree": "学士", "major": "物理学" }
+        { "time": "2001—2005", "school": "XX 大学", "degree": "学士", "major": "物理学" },
+        { "time": "2005—2010", "school": "XX 大学", "degree": "博士", "major": "物理学" }
       ],
       "workExperience": [
-        { "time": "2015—至今", "organization": "XX 大学物理学院", "position": "教授" },
-        { "time": "2010—2015", "organization": "XX 大学物理学院", "position": "副教授" }
+        { "time": "2003.09—2011.06", "organization": "华东交通大学理工学院，江西师范大学科技学院", "position": "讲师" },
+        { "time": "2012.10—2014.11", "organization": "美国宾夕法尼亚州立大学，讲授课程：《Fundamentals of Materials Science and Engineering》", "position": "助教" },
+        { "time": "2019.06—至今", "organization": "中国计量大学，研究生导师。讲授课程：《材料科学基础 2》、《金属工艺学》、双语英文课程《Artificial Intelligence and Materials Calculation（人工智能与材料计算）》", "position": "研究生导师" },
+        { "time": "2020.03—至今", "organization": "阿里巴巴人工智能实验室（AI labs）", "position": "技术顾问、高级技术专家、专家组成员" },
+        { "time": "2021.03—2022.02", "organization": "中国计量科学研究院（北京）", "position": "挂职" }
       ],
-      "researchInterests": ["人工智能", "新材料设计", "智能检测"],
+      "researchInterests": [
+        "1、人工智能与多尺度计算（机器学习、第一性原理计算、相图计算、图像识别、自动驾驶、AI 辅助科研等）",
+        "2、金属材料（航空发动机轻质高温合金、高熵合金、钎焊材料等）"
+      ],
       "publications": [
-        "San Zhang†, Rui Li†, et al. Plasmon-Enhanced Raman Scattering for Single-Molecule Detection. Nature Nanotechnology, 2025, 20(3): 123-135.",
-        "San Zhang#, Wu Wang. Time-Resolved Raman Spectroscopy of Ultrafast Molecular Dynamics. Science Advances, 2025, 11(2): eabcd1234."
+        "Fang Cheng, Wanyuan Gui and Junpin Lin, Slow-growing titanium dioxide on Ti-48Al porous alloy mediated by Nb and Cr addition: Perspective via local metal-oxygen bonding strength [J]. Journal of Materials Engineering and Performance, (2020) 29:1558–1566.",
+        "Fang Cheng, Huairong Shen, An Improved Recurrent Neural Network for Radio Propagation Loss prediction, 2010 International Conference on Intelligent Computation Technology and Automation, 11-12 May, 2010.",
+        "Fang Cheng, Yong-Feng Liang, Jun-Pin Lin, Friction and wear properties of a high Nb containing TiAl alloy against WC, Si3N4 and GCr15 in unlubricated contact [J]. Intermetallics, 2019, 106:7-12.",
+        "Fang Cheng, Wanyuan Gui and Junpin Lin, Surface Modification of Q195 Structure Carbon Steel by Electrolytic Plasma Processing [J]. Metals, 2018, 8(10), 831-842.",
+        "Fang Cheng, Shasha Li, Wanyuan Gui, Yongfeng Liang, Junpin Lin, Surface modification of Ti-45Al-8.5Nb alloys by microarc oxidation for improving high temperature oxidation resistance, [J]. Progress in Natural Science: Materials International. Volume 28, Issue 3, 2018, Pages 386-390.",
+        "Fang Cheng, Shun-Li Shang, Jun-Pin Lin, Zi-Kui Liu, Using machine learning to design the microalloy composition of TiAl alloy, Materials Science & Technology 2014.Pittsburgh, PA, USA.",
+        "Fang Cheng, Tingyu Liu, Qiren Zhang, Hailin Qiao, First principle studies on the electronic structures and absorption spectra in the KMgF3 crystal with fluorine vacancy, Nuclear Instruments and Methods in Physics Research Section B, Volume 268, Issue 15, 2010, Pages 2403-2407.",
+        "Fang Cheng, LIU Ting-Yu, ZHANG Qi-Ren, QIAO Hai-Ling, ZHOU Xiu-Wen, Computer Simulation of Electronic Structures and Absorption Spectra for KMgF3 Crystal with Potassium Vacancy, Chinese Physics Letters,Vol.28,No.3,2011, Pages 036106 1-4.",
+        "Wanyuan Gui, Junpin Lin, Fang Cheng, Guojian Hao, Liang Yongfeng, Zhang Hui, Effect of Electrolytic Plasma Processing on the Removal of Surface Scale for Fe6.5Si Alloy [J]. ChemistrySelect, 2(3), 2017, Pages 1158-1162.",
+        "K Zheng, YR Wang, RY Wang, YL Wang, Fang Cheng, Microstructure, oxidation behavior and adhesion of a CoNiCrAlTaY coating deposited on a high Nb–TiAl alloy by plasma surface metallizing technique [J]. Vacuum, 179 (2020), 109494-109504.",
+        "出版专著《材料相变及形变基础》（合著，第二），化工出版社，2022."
+      ],
+      "researchProjects": [
+        {
+          "name": "人工智能与材料计算",
+          "type": "浙江省\"十三五\"高校虚拟仿真实验研究项目",
+          "role": "主持",
+          "grantNumber": "01434000006",
+          "funding": "20 万",
+          "period": "2020-2021"
+        },
+        {
+          "name": "电子制造关键技术研究",
+          "type": "横向项目",
+          "role": "主持",
+          "grantNumber": "201163",
+          "funding": "100 万",
+          "period": "2020-2022"
+        },
+        {
+          "name": "材料设计中的人工智能算法研究",
+          "type": "学院项目",
+          "role": "主持",
+          "grantNumber": "02301200006",
+          "funding": "",
+          "period": "2019-2021"
+        },
+        {
+          "name": "无人驾驶中的深度学习和计算机视觉技术研究",
+          "type": "横向项目",
+          "role": "参研",
+          "grantNumber": "012040502",
+          "funding": "300 万",
+          "period": "2021-2023"
+        },
+        {
+          "name": "国家新材料数据库平台建设关键技术研究",
+          "type": "国家重点研发计划重点专项（材料基因工程关键技术与支撑平台）",
+          "role": "参研",
+          "grantNumber": "2020YFB0704500",
+          "funding": "2000 万",
+          "period": "2020-2022"
+        },
+        {
+          "name": "机器学习研究项目",
+          "type": "企业横向项目",
+          "role": "子项目负责人",
+          "grantNumber": "",
+          "funding": "100 万",
+          "period": "2018-2019"
+        },
+        {
+          "name": "合金的第一性原理计算和相图计算",
+          "type": "新金属材料国家重点实验室国际合作项目",
+          "role": "主要完成人",
+          "grantNumber": "",
+          "funding": "20 万",
+          "period": "2012-2015"
+        },
+        {
+          "name": "美国空军****研究项目",
+          "type": "海外项目",
+          "role": "项目骨干",
+          "grantNumber": "",
+          "funding": "",
+          "period": "2012-2015"
+        },
+        {
+          "name": "国家**平台项目",
+          "type": "军工项目",
+          "role": "参研",
+          "grantNumber": "",
+          "funding": "1000 万",
+          "period": "2017-2019"
+        },
+        {
+          "name": "高性能电工钢材料动态磁性能计量技术研究",
+          "type": "国家重点研发计划项目",
+          "role": "参研",
+          "grantNumber": "ZLJC1702-1-1",
+          "funding": "70 万",
+          "period": "2019-2021"
+        },
+        {
+          "name": "电子束选区熔化高温 TiAl 合金相变及强韧化机理研究",
+          "type": "国家自然科学基金重点项目",
+          "role": "参研",
+          "grantNumber": "E010101",
+          "funding": "300 万",
+          "period": "2015-2017"
+        },
+        {
+          "name": "轻质高温 TiAl 金属间化合物合金及制备加工的科学技术基础",
+          "type": "国家\"973\"重点基础研究发展计划",
+          "role": "参研",
+          "grantNumber": "2011CB60550",
+          "funding": "3100 万",
+          "period": "2016-2019"
+        }
       ],
       "joinDate": "2015-09"
     }

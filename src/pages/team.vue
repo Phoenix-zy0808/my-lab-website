@@ -142,6 +142,16 @@ const currentPageData = computed(() => {
   return filteredByGrade.value?.slice(start, end) || []
 })
 
+// 硕士生和已毕业硕士生的分页数据
+const currentMasterPageData = computed(() => {
+  if (selectedRole.value !== 'master_student' && selectedRole.value !== 'graduated_master') {
+    return currentMembers.value
+  }
+  const start = (currentPage.value - 1) * pageSize
+  const end = start + pageSize
+  return currentMembers.value?.slice(start, end) || []
+})
+
 // 切换页码
 function changePage(page: number) {
   if (page < 1 || page > totalPages.value) return
@@ -236,6 +246,8 @@ watch([selectedRole, selectedGrade], () => {
                     v-if="selectedMember.photo"
                     :src="selectedMember.photo"
                     :alt="selectedMember.name"
+                    loading="lazy"
+                    decoding="async"
                     w-full
                     h-full
                     object-cover
@@ -286,17 +298,21 @@ watch([selectedRole, selectedGrade], () => {
                 <h3 class="text-xl font-semibold text-primary mb-4">
                   教育经历
                 </h3>
-                <div space-y-4>
+                <div class="space-y-4">
                   <div
                     v-for="(edu, index) in selectedMember.education"
                     :key="index"
-                    class="flex gap-4"
+                    class="flex flex-col sm:flex-row gap-2 sm:gap-3"
                   >
-                    <div class="text-sm text-secondary w-32 flex-shrink-0">
-                      {{ edu.time }}
+                    <!-- 时间标签（加宽区域） -->
+                    <div class="sm:w-48 flex-shrink-0">
+                      <span class="inline-block px-3 py-1 bg-primary/10 text-primary rounded-md text-sm font-medium whitespace-nowrap">
+                        {{ edu.time }}
+                      </span>
                     </div>
-                    <div>
-                      <p class="font-medium text-gray-800">
+                    <!-- 学校和专业 -->
+                    <div class="flex-1 min-w-0">
+                      <p class="font-medium text-gray-800 truncate">
                         {{ edu.school }} - {{ edu.major }}
                       </p>
                       <p class="text-sm text-gray-600">
@@ -312,17 +328,21 @@ watch([selectedRole, selectedGrade], () => {
                 <h3 class="text-xl font-semibold text-primary mb-4">
                   工作经历
                 </h3>
-                <div space-y-4>
+                <div class="space-y-4">
                   <div
                     v-for="(work, index) in selectedMember.workExperience"
                     :key="index"
-                    class="flex gap-4"
+                    class="flex flex-col sm:flex-row gap-2 sm:gap-3"
                   >
-                    <div class="text-sm text-secondary w-32 flex-shrink-0">
-                      {{ work.time }}
+                    <!-- 时间标签（加宽区域） -->
+                    <div class="sm:w-48 flex-shrink-0">
+                      <span class="inline-block px-3 py-1 bg-secondary/10 text-secondary rounded-md text-sm font-medium whitespace-nowrap">
+                        {{ work.time }}
+                      </span>
                     </div>
-                    <div>
-                      <p class="font-medium text-gray-800">
+                    <!-- 组织和职位 -->
+                    <div class="flex-1 min-w-0">
+                      <p class="font-medium text-gray-800 truncate">
                         {{ work.organization }}
                       </p>
                       <p class="text-sm text-gray-600">
@@ -363,6 +383,30 @@ watch([selectedRole, selectedGrade], () => {
                     {{ pub }}
                   </li>
                 </ol>
+              </div>
+
+              <!-- 科研项目 -->
+              <div v-if="selectedMember.researchProjects?.length" class="mt-8">
+                <h3 class="text-xl font-semibold text-primary mb-4">
+                  科研项目
+                </h3>
+                <div class="space-y-3">
+                  <div
+                    v-for="(project, index) in selectedMember.researchProjects"
+                    :key="index"
+                    class="leading-relaxed"
+                  >
+                    <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary text-white text-xs font-bold mr-2">
+                      {{ index + 1 }}
+                    </span>
+                    <span class="font-medium text-gray-800">{{ project.name }}</span>，
+                    <span class="text-gray-600">{{ project.type }}</span>，
+                    <span class="text-gray-500">{{ project.role }}</span>
+                    <span v-if="project.grantNumber">，批号：{{ project.grantNumber }}</span>
+                    <span v-if="project.funding">，经费：{{ project.funding }}</span>
+                    <span class="text-gray-500">（{{ project.period }}）</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -407,7 +451,7 @@ watch([selectedRole, selectedGrade], () => {
                   </div>
 
                   <!-- 简介 + 邮箱 -->
-                  <div class="text-gray-700 leading-relaxed mb-4">
+                  <div class="text-gray-700 leading-relaxed">
                     <p v-if="member.bio" class="mb-3">{{ member.bio }}</p>
                     <p v-if="member.email" class="text-sm">
                       邮箱：
@@ -416,12 +460,6 @@ watch([selectedRole, selectedGrade], () => {
                       </a>
                     </p>
                   </div>
-
-                  <!-- 查看简历按钮 -->
-                  <button class="btn-resume" @click="goToMemberDetail(member.id, member.role)">
-                    查看简历
-                    <div i-carbon-arrow-right />
-                  </button>
                 </div>
               </div>
             </div>
@@ -467,7 +505,7 @@ watch([selectedRole, selectedGrade], () => {
           <div class="bg-white rounded-xl shadow-lg p-8">
             <div class="space-y-8">
               <div
-                v-for="member in currentMembers"
+                v-for="member in currentMasterPageData"
                 :key="member.id"
                 class="flex flex-col sm:flex-row gap-6 pb-8 border-b border-gray-200 last:border-0 last:pb-0"
               >
@@ -478,6 +516,8 @@ watch([selectedRole, selectedGrade], () => {
                       v-if="member.photo"
                       :src="member.photo"
                       :alt="member.name"
+                      loading="lazy"
+                      decoding="async"
                       class="w-full h-full object-cover"
                     />
                     <div
@@ -499,7 +539,7 @@ watch([selectedRole, selectedGrade], () => {
                   </div>
 
                   <!-- 简介 + 邮箱 -->
-                  <div class="text-gray-700 leading-relaxed mb-4">
+                  <div class="text-gray-700 leading-relaxed">
                     <p v-if="member.bio" class="mb-3">{{ member.bio }}</p>
                     <p v-if="member.email" class="text-sm">
                       邮箱：
@@ -508,15 +548,42 @@ watch([selectedRole, selectedGrade], () => {
                       </a>
                     </p>
                   </div>
-
-                  <!-- 查看简历按钮 -->
-                  <button class="btn-resume" @click="goToMemberDetail(member.id, member.role)">
-                    查看简历
-                    <div i-carbon-arrow-right />
-                  </button>
                 </div>
               </div>
             </div>
+          </div>
+
+          <!-- 分页控件 -->
+          <div v-if="totalPages > 1" class="flex justify-center gap-2 mt-8">
+            <button
+              class="px-3 py-1.5 rounded-lg transition-all duration-200 bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              :disabled="currentPage === 1"
+              @click="changePage(currentPage - 1)"
+            >
+              上一页
+            </button>
+
+            <button
+              v-for="page in totalPages"
+              :key="page"
+              :class="[
+                'px-3 py-1.5 rounded-lg transition-all duration-200',
+                currentPage === page
+                  ? 'bg-primary text-white'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
+              ]"
+              @click="changePage(page)"
+            >
+              {{ page }}
+            </button>
+
+            <button
+              class="px-3 py-1.5 rounded-lg transition-all duration-200 bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              :disabled="currentPage === totalPages"
+              @click="changePage(currentPage + 1)"
+            >
+              下一页
+            </button>
           </div>
         </template>
 
