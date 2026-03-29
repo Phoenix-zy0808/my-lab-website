@@ -2,7 +2,6 @@ import {
   defineConfig,
   presetAttributify,
   presetIcons,
-  presetWebFonts,
   presetWind4,
 } from 'unocss'
 
@@ -41,18 +40,34 @@ export default defineConfig({
     'nav-link-active': 'text-white font-semibold bg-white/15 rounded-lg',
 
     // Hero 区域
-    'hero-section': 'relative h-[60vh] min-h-[500px] bg-cover bg-center bg-no-repeat',
-    'hero-section-md': 'relative h-[45vh] min-h-[350px] bg-cover bg-center bg-no-repeat',
+    'hero-section': 'relative h-[50vh] min-h-[350px] bg-cover bg-center bg-no-repeat',
+    'hero-section-md': 'relative h-[40vh] min-h-[280px] bg-cover bg-center bg-no-repeat',
     'hero-section-sm': 'relative h-[30vh] min-h-[200px] bg-cover bg-center bg-no-repeat',
     'hero-overlay': 'absolute inset-0 bg-black/40',
     'hero-content': 'relative z-10 h-full flex flex-col items-center justify-center text-white text-center px-4',
-    'hero-title': 'text-4xl sm:text-5xl md:text-6xl font-bold mb-4',
-    'hero-subtitle': 'text-xl sm:text-2xl op-90 mb-2',
-    'hero-description': 'text-base sm:text-lg op-75 max-w-2xl',
+    'hero-title': 'text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4',
+    'hero-subtitle': 'text-lg sm:text-xl md:text-2xl op-90 mb-2',
+    'hero-description': 'text-sm sm:text-base md:text-lg op-75 max-w-2xl px-4',
 
     // 悬浮卡片
     'floating-cards': 'grid grid-cols-1 md:grid-cols-3 gap-6 floating-card',
     'floating-card': 'card bg-white/95 backdrop-blur-sm -mt-20 z-10 shadow-2xl',
+
+    // 响应式工具类
+    'safe-area': 'pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]',
+    'safe-top': 'pt-[env(safe-area-inset-top)]',
+    'safe-bottom': 'pb-[env(safe-area-inset-bottom)]',
+    'safe-left': 'pl-[env(safe-area-inset-left)]',
+    'safe-right': 'pr-[env(safe-area-inset-right)]',
+
+    // 响应式隐藏
+    'hide-mobile': 'hidden sm:block',
+    'hide-tablet': 'hidden lg:block',
+    'hide-desktop': 'block lg:hidden',
+
+    // 响应式间距
+    'section-padding': 'py-8 px-4 sm:py-12 sm:px-6 lg:py-16 lg:px-8',
+    'card-padding': 'p-4 sm:p-6 lg:p-8',
 
     // 页面容器
     'page-container': 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8',
@@ -105,12 +120,6 @@ export default defineConfig({
         'vertical-align': 'middle',
       },
     }),
-    presetWebFonts({
-      fonts: {
-        sans: 'DM Sans',
-        serif: 'DM Serif Display',
-        mono: 'DM Mono',
-      },
-    }),
+    // 移除 DM Sans 字体，使用系统默认字体显示数字
   ],
 })

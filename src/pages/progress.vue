@@ -105,7 +105,5 @@ onMounted(() => {
         <p text-gray-500>暂无新闻</p>
       </div>
     </div>
-
-    <TheFooter />
   </div>
 </template>

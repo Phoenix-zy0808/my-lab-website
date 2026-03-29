@@ -68,4 +68,9 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
   },
+
+  // 构建配置 - 确保 PDF 资源正确处理
+  build: {
+    assetsInclude: ['**/*.pdf'],
+  },
 })

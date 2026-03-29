@@ -30,9 +30,10 @@ const friendLinks = [
 <template>
   <footer bg-primary text-white mt-16>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div grid grid-cols-1 md:grid-cols-12 gap-8>
-        <!-- 实验室信息 -->
-        <div class="md:col-span-5">
+      <!-- 修改：改为 4 列布局，第一列更宽 -->
+      <div grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8>
+        <!-- 实验室信息 - 占用 2 列 (更宽) -->
+        <div class="lg:col-span-2">
           <div flex items-center space-x-3 mb-4>
             <div i-carbon-microscope text-2xl />
             <div>
@@ -40,35 +41,36 @@ const friendLinks = [
               <p text-sm op="75">{{ config?.labNameEn || 'Laboratory for Intelligent Spectral Analysis' }}</p>
             </div>
           </div>
-          <p text-sm op="75 mb-4">
+          <!-- 修改：只加宽模块，字体保持 text-sm 不变 -->
+          <p text-sm op="80" mb-6 max-w-3xl leading-relaxed>
             {{ config?.description || '致力于拉曼与红外光谱技术的智能化创新及其在多领域的精准应用' }}
           </p>
         </div>
 
-        <!-- 联系方式 -->
-        <div class="md:col-span-3 md:ml-8">
-          <h4 text-sm font-semibold mb-4>联系方式</h4>
+        <!-- 联系方式 - 左移四个文字长度 (约 4rem = 64px) -->
+        <div class="lg:col-span-1 lg:-ml-16">
+          <h4 text-base font-semibold mb-4>联系方式</h4>
           <ul space-y-2 text-sm op="75">
-            <li flex items-center gap-2>
-              <div i-carbon-location />
+            <li flex items-start gap-2>
+              <div i-carbon-location class="flex-shrink-0 mt-0.5" />
               <span>{{ config?.address || '浙江省杭州市钱塘区学源街 258 号' }}</span>
             </li>
             <li flex items-center gap-2>
-              <div i-carbon-email />
-              <a :href="`mailto:${config?.email}`" class="hover:text-white">
+              <div i-carbon-email class="flex-shrink-0" />
+              <a :href="`mailto:${config?.email}`" class="hover:text-white transition-colors">
                 {{ config?.email || 'contact@raman-lab.edu.cn' }}
               </a>
             </li>
             <li flex items-center gap-2>
-              <div i-carbon-phone />
+              <div i-carbon-phone class="flex-shrink-0" />
               <span>{{ config?.phone || '+86-XXX-XXXXXXXX' }}</span>
             </li>
           </ul>
         </div>
 
-        <!-- 友情链接 -->
-        <div class="md:col-span-4" :style="{ marginLeft: '8rem' }">
-          <h4 text-sm font-semibold mb-4>友情链接</h4>
+        <!-- 友情链接 - 右移一个文字长度 (修改：从 -ml-8 改为 ml-4) -->
+        <div class="lg:col-span-1 lg:ml-4">
+          <h4 text-base font-semibold mb-4>友情链接</h4>
           <ul space-y-2 text-sm>
             <li v-for="link in friendLinks" :key="link.name">
               <a
@@ -77,7 +79,7 @@ const friendLinks = [
                 rel="noopener noreferrer"
                 class="op-75 hover:text-white transition-colors flex items-center gap-2"
               >
-                <div i-carbon-launch text-xs />
+                <div i-carbon-launch text-xs class="flex-shrink-0" />
                 {{ link.name }}
               </a>
             </li>

@@ -78,9 +78,9 @@ const navCards = [
     />
 
     <!-- 悬浮导航卡片 -->
-    <div relative -mt-20 z-10>
+    <div relative -mt-16 sm:-mt-20 lg:-mt-24 z-10>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div grid grid-cols-1 md:grid-cols-3 gap-6>
+        <div grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6>
           <Card
             v-for="card in navCards"
             :key="card.title"

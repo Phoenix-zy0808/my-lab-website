@@ -167,7 +167,5 @@ function goBack() {
         </button>
       </div>
     </div>
-
-    <TheFooter />
   </div>
 </template>

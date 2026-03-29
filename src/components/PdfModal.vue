@@ -25,6 +25,16 @@ function handleKeydown(e: KeyboardEvent) {
   }
 }
 
+// 在新窗口打开 PDF
+function openInNewWindow() {
+  if (props.pdfUrl) {
+    const normalizedUrl = props.pdfUrl.startsWith('/') ? props.pdfUrl : `/${props.pdfUrl}`
+    // 使用 encodeURI 编码中文路径
+    const encodedUrl = encodeURI(normalizedUrl)
+    window.open(encodedUrl, '_blank', 'noopener,noreferrer')
+  }
+}
+
 onMounted(() => {
   document.addEventListener('keydown', handleKeydown)
 })
@@ -58,10 +68,8 @@ onUnmounted(() => {
           rounded-lg
           shadow-2xl
           w-full
-          h-full
-          sm:w-[90vw]
-          sm:h-[90vh]
-          sm:max-w-5xl
+          sm:w-[500px]
+          sm:max-w-[90vw]
           m-4
           flex
           flex-col
@@ -73,8 +81,8 @@ onUnmounted(() => {
             flex
             items-center
             justify-between
-            px-4
-            py-3
+            px-6
+            py-4
             border-b
             border-gray-200
           >
@@ -89,21 +97,16 @@ onUnmounted(() => {
             />
           </div>
 
-          <!-- PDF 内容区域 -->
-          <div flex-1 overflow-hidden bg-gray-100>
-            <iframe
-              v-if="pdfUrl"
-              :src="pdfUrl + '#toolbar=0'"
-              w-full
-              h-full
-              border-0
-              title="PDF Preview"
-            />
-            <div v-else flex items-center justify-center h-full>
-              <div text-center text-gray-500>
-                <div i-carbon-document text-4xl mb-4 op="50" />
-                <p>未指定 PDF 文件</p>
-              </div>
+          <!-- PDF 内容区域 - 改为提示信息 -->
+          <div px-6 py-8>
+            <div text-center>
+              <div i-carbon-document text-6xl mb-4 op="50" />
+              <p text-gray-600 mb-2>
+                {{ title || 'PDF 文件' }}
+              </p>
+              <p text-sm text-gray-500>
+                由于浏览器安全限制，请点击下方按钮在新窗口打开 PDF
+              </p>
             </div>
           </div>
 
@@ -113,25 +116,22 @@ onUnmounted(() => {
             items-center
             justify-end
             gap-3
-            px-4
-            py-3
+            px-6
+            py-4
             border-t
             border-gray-200
             bg-gray-50
           >
-            <a
-              v-if="pdfUrl"
-              :href="pdfUrl"
-              target="_blank"
-              download
+            <button
               btn-secondary
               flex
               items-center
               gap-2
+              @click="openInNewWindow"
             >
-              <div i-carbon-download />
-              下载 PDF
-            </a>
+              <div i-carbon-launch />
+              在新窗口打开
+            </button>
             <button btn @click="close">
               关闭
             </button>

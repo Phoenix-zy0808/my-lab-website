@@ -180,39 +180,43 @@ watch([selectedRole, selectedGrade], () => {
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <!-- Tabs 切换 -->
       <div class="mb-8">
-        <div class="flex flex-wrap justify-center gap-2">
-          <button
-            v-for="role in roleCategories"
-            :key="role.key"
-            :class="[
-              'px-4 py-2 rounded-lg transition-all duration-200',
-              selectedRole === role.key
-                ? 'bg-primary text-white shadow-lg'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
-            ]"
-            @click="selectedRole = role.key as TeamRole"
-          >
-            {{ role.label }}
-          </button>
+        <div class="overflow-x-auto overflow-y-hidden">
+          <div class="flex flex-nowrap gap-2 min-w-max justify-center">
+            <button
+              v-for="role in roleCategories"
+              :key="role.key"
+              :class="[
+                'px-4 py-2 rounded-lg transition-all duration-200 whitespace-nowrap',
+                selectedRole === role.key
+                  ? 'bg-primary text-white shadow-lg'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
+              ]"
+              @click="selectedRole = role.key as TeamRole"
+            >
+              {{ role.label }}
+            </button>
+          </div>
         </div>
       </div>
 
       <!-- 年级筛选（仅本科生和已毕业本科生显示） -->
       <div v-if="selectedRole === 'undergraduate' || selectedRole === 'graduated_undergraduate'"
-           class="flex flex-wrap justify-center gap-2 mt-4">
-        <button
-          v-for="grade in gradeOptions"
-          :key="grade.key"
-          :class="[
-            'px-3 py-1.5 text-sm rounded-lg transition-all duration-200',
-            selectedGrade === grade.key
-              ? 'bg-secondary text-white'
-              : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
-          ]"
-          @click="selectedGrade = grade.key"
-        >
-          {{ grade.label }}
-        </button>
+           class="overflow-x-auto overflow-y-hidden mb-4">
+        <div class="flex flex-nowrap gap-2 min-w-max justify-center">
+          <button
+            v-for="grade in gradeOptions"
+            :key="grade.key"
+            :class="[
+              'px-3 py-1.5 text-sm rounded-lg transition-all duration-200 whitespace-nowrap',
+              selectedGrade === grade.key
+                ? 'bg-secondary text-white'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
+            ]"
+            @click="selectedGrade = grade.key"
+          >
+            {{ grade.label }}
+          </button>
+        </div>
       </div>
 
       <!-- 主要内容 -->
@@ -293,60 +297,60 @@ watch([selectedRole, selectedGrade], () => {
                 </p>
               </div>
 
-              <!-- 教育经历 -->
+              <!-- 教育经历 - 修改后：年份左对齐，纯文本，冒号结尾 -->
               <div v-if="selectedMember.education?.length" class="mt-8">
                 <h3 class="text-xl font-semibold text-primary mb-4">
                   教育经历
                 </h3>
-                <div class="space-y-4">
+                <div class="space-y-3">
                   <div
                     v-for="(edu, index) in selectedMember.education"
                     :key="index"
-                    class="flex flex-col sm:flex-row gap-2 sm:gap-3"
+                    class="flex flex-col sm:flex-row gap-2 sm:gap-4"
                   >
-                    <!-- 时间标签（加宽区域） -->
-                    <div class="sm:w-48 flex-shrink-0">
-                      <span class="inline-block px-3 py-1 bg-primary/10 text-primary rounded-md text-sm font-medium whitespace-nowrap">
-                        {{ edu.time }}
+                    <!-- 时间 - 左对齐，固定宽度，冒号结尾，字体增大 -->
+                    <div class="sm:w-56 flex-shrink-0">
+                      <span class="text-base text-gray-700 font-medium whitespace-nowrap">
+                        {{ edu.time }}：
                       </span>
                     </div>
                     <!-- 学校和专业 -->
                     <div class="flex-1 min-w-0">
-                      <p class="font-medium text-gray-800 truncate">
+                      <p class="text-gray-800">
                         {{ edu.school }} - {{ edu.major }}
-                      </p>
-                      <p class="text-sm text-gray-600">
-                        {{ edu.degree }}
+                        <span class="text-sm text-gray-600 ml-2">
+                          {{ edu.degree }}
+                        </span>
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <!-- 工作经历 -->
+              <!-- 工作经历 - 修改后：年份左对齐，纯文本，冒号结尾 -->
               <div v-if="selectedMember.workExperience?.length" class="mt-8">
                 <h3 class="text-xl font-semibold text-primary mb-4">
                   工作经历
                 </h3>
-                <div class="space-y-4">
+                <div class="space-y-3">
                   <div
                     v-for="(work, index) in selectedMember.workExperience"
                     :key="index"
-                    class="flex flex-col sm:flex-row gap-2 sm:gap-3"
+                    class="flex flex-col sm:flex-row gap-2 sm:gap-4"
                   >
-                    <!-- 时间标签（加宽区域） -->
-                    <div class="sm:w-48 flex-shrink-0">
-                      <span class="inline-block px-3 py-1 bg-secondary/10 text-secondary rounded-md text-sm font-medium whitespace-nowrap">
-                        {{ work.time }}
+                    <!-- 时间 - 左对齐，固定宽度，冒号结尾，字体增大 -->
+                    <div class="sm:w-56 flex-shrink-0">
+                      <span class="text-base text-gray-700 font-medium whitespace-nowrap">
+                        {{ work.time }}：
                       </span>
                     </div>
                     <!-- 组织和职位 -->
                     <div class="flex-1 min-w-0">
-                      <p class="font-medium text-gray-800 truncate">
+                      <p class="text-gray-800">
                         {{ work.organization }}
-                      </p>
-                      <p class="text-sm text-gray-600">
-                        {{ work.position }}
+                        <span v-if="work.position" class="text-sm text-gray-600 ml-2">
+                          {{ work.position }}
+                        </span>
                       </p>
                     </div>
                   </div>
@@ -425,7 +429,7 @@ watch([selectedRole, selectedGrade], () => {
               >
                 <!-- 左侧头像（竖长方形） -->
                 <div class="sm:w-40 flex-shrink-0">
-                  <div class="w-40 h-52 rounded-lg overflow-hidden shadow-md bg-white">
+                  <div class="w-32 sm:w-40 h-44 sm:h-52 rounded-lg overflow-hidden shadow-md bg-white mx-auto sm:mx-0">
                     <img
                       v-if="member.photo"
                       :src="member.photo"
@@ -434,7 +438,7 @@ watch([selectedRole, selectedGrade], () => {
                     />
                     <div
                       v-else
-                      class="w-full h-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white text-4xl font-bold"
+                      class="w-full h-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white text-3xl sm:text-4xl font-bold"
                     >
                       {{ member.name.charAt(0) }}
                     </div>
@@ -444,7 +448,7 @@ watch([selectedRole, selectedGrade], () => {
                 <!-- 右侧信息 -->
                 <div class="flex-1">
                   <!-- 姓名 + 下划线 -->
-                  <div class="mb-4">
+                  <div class="mb-4 text-center sm:text-left">
                     <h3 class="text-xl font-bold text-gray-800 border-b-2 border-primary pb-2 inline-block">
                       {{ member.name }}
                     </h3>
@@ -511,7 +515,7 @@ watch([selectedRole, selectedGrade], () => {
               >
                 <!-- 左侧头像（竖长方形） -->
                 <div class="sm:w-40 flex-shrink-0">
-                  <div class="w-40 h-52 rounded-lg overflow-hidden shadow-md bg-white">
+                  <div class="w-32 sm:w-40 h-44 sm:h-52 rounded-lg overflow-hidden shadow-md bg-white mx-auto sm:mx-0">
                     <img
                       v-if="member.photo"
                       :src="member.photo"
@@ -522,7 +526,7 @@ watch([selectedRole, selectedGrade], () => {
                     />
                     <div
                       v-else
-                      class="w-full h-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white text-4xl font-bold"
+                      class="w-full h-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white text-3xl sm:text-4xl font-bold"
                     >
                       {{ member.name.charAt(0) }}
                     </div>
@@ -532,7 +536,7 @@ watch([selectedRole, selectedGrade], () => {
                 <!-- 右侧信息 -->
                 <div class="flex-1">
                   <!-- 姓名 + 下划线 -->
-                  <div class="mb-4">
+                  <div class="mb-4 text-center sm:text-left">
                     <h3 class="text-xl font-bold text-gray-800 border-b-2 border-primary pb-2 inline-block">
                       {{ member.name }}
                     </h3>

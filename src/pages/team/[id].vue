@@ -315,7 +315,5 @@ const roleMap: Record<TeamMember['role'], { label: string; color: string }> = {
         </button>
       </div>
     </div>
-
-    <TheFooter />
   </div>
 </template>

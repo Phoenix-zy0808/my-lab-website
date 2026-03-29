@@ -55,6 +55,40 @@ function isActive(path: string) {
 // 移动端菜单状态
 const isMobileMenuOpen = ref(false)
 
+// 监听菜单开关，控制 body 滚动
+watch(isMobileMenuOpen, (val) => {
+  if (val) {
+    // 保存当前滚动位置
+    const scrollY = window.scrollY
+    document.body.style.position = 'fixed'
+    document.body.style.top = `-${scrollY}px`
+    document.body.style.width = '100%'
+    document.body.style.overflow = 'hidden'
+    document.body.classList.add('menu-open')
+  } else {
+    // 恢复滚动位置
+    document.body.style.position = ''
+    document.body.style.top = ''
+    document.body.style.width = ''
+    document.body.style.overflow = ''
+    document.body.classList.remove('menu-open')
+    // 恢复到之前的滚动位置
+    const scrollY = parseInt(document.body.style.top || '0')
+    if (scrollY) {
+      window.scrollTo(0, Math.abs(scrollY))
+    }
+  }
+}, { immediate: true })
+
+// 组件卸载时清理
+onUnmounted(() => {
+  document.body.style.position = ''
+  document.body.style.top = ''
+  document.body.style.width = ''
+  document.body.style.overflow = ''
+  document.body.classList.remove('menu-open')
+})
+
 /**
  * 切换移动端菜单
  */
@@ -222,11 +256,12 @@ function handleEscape() {
         id="mobile-menu"
         fixed
         inset-0
-        z-40
+        z-60
         bg="rgb(10 58 82 / 0.98)"
         backdrop-blur-sm
         lg:hidden
         role="menu"
+        @touchmove.prevent
       >
         <!-- 关闭按钮 -->
         <button
@@ -258,6 +293,8 @@ function handleEscape() {
           justify-center
           h-full
           gap-4
+          px-4
+          py-8
           v-keyboard-navigation="{
             selector: 'a[role=menuitem]',
             onEscape: handleEscape,

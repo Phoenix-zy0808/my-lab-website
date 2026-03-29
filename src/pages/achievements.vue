@@ -17,9 +17,6 @@ async function loadConfig() {
 const achievements = ref<Achievement[]>([])
 const selectedType = ref<string>('all')
 const selectedYear = ref<string | number>('all')
-const showPdfModal = ref(false)
-const currentPdfUrl = ref<string>('')
-const currentPdfTitle = ref<string>('')
 
 // SEO Meta
 useSeoMeta({
@@ -152,13 +149,14 @@ function formatPaperCitation(ach: Achievement) {
   return { authors, journalInfo }
 }
 
-// 打开 PDF
+// 打开 PDF - 修复路径编码
 function openPdf(pdfUrl: string, title: string) {
-  // 对路径进行中文字符编码
-  const encodedUrl = encodeURI(pdfUrl)
-  currentPdfUrl.value = encodedUrl
-  currentPdfTitle.value = title
-  showPdfModal.value = true
+  // 确保路径以/开头
+  const normalizedUrl = pdfUrl.startsWith('/') ? pdfUrl : `/${pdfUrl}`
+  // 使用 encodeURI 编码中文路径
+  const encodedUrl = encodeURI(normalizedUrl)
+  // 直接在新窗口打开
+  window.open(encodedUrl, '_blank', 'noopener,noreferrer')
 }
 </script>
 
@@ -178,38 +176,42 @@ function openPdf(pdfUrl: string, title: string) {
       <!-- 筛选器 -->
       <div class="mb-8">
         <!-- 类型筛选 -->
-        <div flex flex-wrap justify-center gap-2 mb-4>
-          <button
-            v-for="filter in typeFilterOptions"
-            :key="filter.key"
-            :class="[
-              'px-4 py-2 rounded-lg transition-all duration-200 flex items-center gap-2',
-              selectedType === filter.key
-                ? 'bg-primary text-white shadow-lg'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
-            ]"
-            @click="selectedType = filter.key"
-          >
-            <div :class="filter.icon" />
-            <span>{{ filter.label }}</span>
-          </button>
+        <div class="overflow-x-auto overflow-y-hidden mb-4">
+          <div class="flex flex-nowrap gap-2 min-w-max justify-center">
+            <button
+              v-for="filter in typeFilterOptions"
+              :key="filter.key"
+              :class="[
+                'px-4 py-2 rounded-lg transition-all duration-200 flex items-center gap-2 whitespace-nowrap',
+                selectedType === filter.key
+                  ? 'bg-primary text-white shadow-lg'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
+              ]"
+              @click="selectedType = filter.key"
+            >
+              <div :class="filter.icon" />
+              <span>{{ filter.label }}</span>
+            </button>
+          </div>
         </div>
 
         <!-- 年份筛选 -->
-        <div flex flex-wrap justify-center gap-2>
-          <button
-            v-for="year in yearOptions"
-            :key="year.key"
-            :class="[
-              'px-3 py-1.5 text-sm rounded-lg transition-all duration-200',
-              selectedYear === year.key
-                ? 'bg-secondary text-white'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
-            ]"
-            @click="selectedYear = year.key"
-          >
-            {{ year.label }}
-          </button>
+        <div class="overflow-x-auto overflow-y-hidden">
+          <div class="flex flex-nowrap gap-2 min-w-max justify-center">
+            <button
+              v-for="year in yearOptions"
+              :key="year.key"
+              :class="[
+                'px-3 py-1.5 text-sm rounded-lg transition-all duration-200 whitespace-nowrap',
+                selectedYear === year.key
+                  ? 'bg-secondary text-white'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
+              ]"
+              @click="selectedYear = year.key"
+            >
+              {{ year.label }}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -404,12 +406,5 @@ function openPdf(pdfUrl: string, title: string) {
         </button>
       </div>
     </div>
-
-    <!-- PDF 预览模态框 -->
-    <PdfModal
-      v-model="showPdfModal"
-      :pdf-url="currentPdfUrl"
-      :title="currentPdfTitle"
-    />
   </div>
 </template>

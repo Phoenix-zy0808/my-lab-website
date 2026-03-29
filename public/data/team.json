@@ -6,20 +6,50 @@
       "title": "硕士生导师",
       "role": "pi",
       "photo": "/images/team/chengfan.jpg",
-      "email": "zhangsan@university.edu.cn",
+      "email": "fangcheng@cjlu.edu.cn",
       "phone": "13041080376",
-      "office": "物理楼 301",
+      "office": "中国计量大学材料与化学学院，方圆南楼A412-1",
       "bio": "美国宾夕法尼亚州立大学与北京科技大学联合培养博士，现任中国计量大学材料与化学学院硕士生导师，兼任中华人民共和国人社部国家专业技术人才知识更新工程智库人工智能高级技术专家、教育部\"互联网+\"国赛评委、浙江省智能制造专家委员。主持及参与国家重点研发计划、国家自然科学基金等国家级科研项目 12 项，累计经费超 2500 万元。发表 SCI 论文 11 篇，合著专著 1 部。获 MS&T 2014 杰出报告奖、Acta Materialia 优秀审稿奖。主讲课程获评省一流课程",
       "education": [
-        { "time": "2001—2005", "school": "XX 大学", "degree": "学士", "major": "物理学" },
-        { "time": "2005—2010", "school": "XX 大学", "degree": "博士", "major": "物理学" }
+        {
+          "time": "2001—2005",
+          "school": "北京科技大学",
+          "degree": "学士",
+          "major": "材料科学与工程"
+        },
+        {
+          "time": "2005—2010",
+          "school": "美国宾夕法尼亚州立大学",
+          "degree": "博士",
+          "major": "人工智能"
+        }
       ],
       "workExperience": [
-        { "time": "2003.09—2011.06", "organization": "华东交通大学理工学院，江西师范大学科技学院", "position": "讲师" },
-        { "time": "2012.10—2014.11", "organization": "美国宾夕法尼亚州立大学，讲授课程：《Fundamentals of Materials Science and Engineering》", "position": "助教" },
-        { "time": "2019.06—至今", "organization": "中国计量大学，研究生导师。讲授课程：《材料科学基础 2》、《金属工艺学》、双语英文课程《Artificial Intelligence and Materials Calculation（人工智能与材料计算）》", "position": "研究生导师" },
-        { "time": "2020.03—至今", "organization": "阿里巴巴人工智能实验室（AI labs）", "position": "技术顾问、高级技术专家、专家组成员" },
-        { "time": "2021.03—2022.02", "organization": "中国计量科学研究院（北京）", "position": "挂职" }
+        {
+          "time": "2003.09—2011.06",
+          "organization": "华东交通大学理工学院，江西师范大学科技学院",
+          "position": "讲师"
+        },
+        {
+          "time": "2012.10—2014.11",
+          "organization": "美国宾夕法尼亚州立大学，讲授课程：《Fundamentals of Materials Science and Engineering》",
+          "position": "助教"
+        },
+        {
+          "time": "2019.06—至今",
+          "organization": "中国计量大学，研究生导师。讲授课程：《材料科学基础 2》、《金属工艺学》、双语英文课程《Artificial Intelligence and Materials Calculation（人工智能与材料计算）》",
+          "position": "研究生导师"
+        },
+        {
+          "time": "2020.03—至今",
+          "organization": "阿里巴巴人工智能实验室（AI labs）",
+          "position": "技术顾问、高级技术专家、专家组成员"
+        },
+        {
+          "time": "2021.03—2022.02",
+          "organization": "中国计量科学研究院（北京）",
+          "position": "挂职"
+        }
       ],
       "researchInterests": [
         "1、人工智能与多尺度计算（机器学习、第一性原理计算、相图计算、图像识别、自动驾驶、AI 辅助科研等）",
@@ -151,7 +181,9 @@
       "university": "景德镇陶瓷大学",
       "photo": "/images/team/placeholder.svg",
       "bio": "宁文灏，2024 级材料专业硕士生（景德镇陶瓷大学联培）。",
-      "researchInterests": ["材料"],
+      "researchInterests": [
+        "材料"
+      ],
       "joinDate": "2024-09"
     },
     {
@@ -163,7 +195,9 @@
       "major": "材料",
       "photo": "/images/team/placeholder.svg",
       "bio": "包锦航，2025 级材料专业硕士生。",
-      "researchInterests": ["材料"],
+      "researchInterests": [
+        "材料"
+      ],
       "joinDate": "2025-09"
     }
   ],
@@ -176,20 +210,24 @@
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "林翔，2022 级计算机专业本科生。",
-      "researchInterests": ["计算机"],
+      "bio": "2022级计算机专业在读，曾获得第七届智能机器人创意国赛一等奖，2024中国国际大创赛国银，2025浙江省挑战杯金奖，发表了1篇EI论文，6项发明专利，3项软著。",
+      "researchInterests": [
+        "计算机"
+      ],
       "joinDate": "2022-09"
     },
     {
       "id": "ug-22-2",
       "name": "叶子欣",
       "grade": "2022 级",
-      "major": "材料",
+      "major": "测控",
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "叶子欣，2022 级材料专业本科生。",
-      "researchInterests": ["材料"],
+      "bio": "2022 级测控技术与仪器专业在读，北京航空航天大学测控拟录取。",
+      "researchInterests": [
+        "测控"
+      ],
       "joinDate": "2022-09"
     },
     {
@@ -200,8 +238,10 @@
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "张悦丹，2022 级 AI 集成电路专业本科生。",
-      "researchInterests": ["AI 集成电路"],
+      "bio": "2022级 AI 集成电路专业在读。",
+      "researchInterests": [
+        "AI 集成电路"
+      ],
       "joinDate": "2022-09"
     },
     {
@@ -212,20 +252,25 @@
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "陆佳宜，2022 级材料专业本科生。",
-      "researchInterests": ["材料"],
+      "bio": "2022级材料专业在读。",
+      "researchInterests": [
+        "材料"
+      ],
       "joinDate": "2022-09"
     },
     {
       "id": "ug-23-1",
       "name": "翁丹妮",
       "grade": "2023 级",
-      "major": "光电信息科学与工程",
+      "major": "计算机科学与技术",
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "翁丹妮，2023 级光电信息科学与工程专业本科生，主要研究拉曼光谱技术在生物医学领域的应用。",
-      "researchInterests": ["拉曼光谱", "生物医学检测"],
+      "bio": "2023 级计算机科学与技术专业在读，曾获中国国际大学生创新大赛国银，浙江省挑战杯大学生课外科技作品竞赛省金奖，发表了EI论文2篇，中文核心论文1篇，4项发明专利，3篇软著。",
+      "researchInterests": [
+        "拉曼光谱",
+        "生物医学检测"
+      ],
       "joinDate": "2023-09"
     },
     {
@@ -236,8 +281,10 @@
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "黄娟，2023 级计算机专业本科生。",
-      "researchInterests": ["计算机"],
+      "bio": "2023级计算机专业在读。",
+      "researchInterests": [
+        "计算机"
+      ],
       "joinDate": "2023-09"
     },
     {
@@ -248,8 +295,10 @@
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "尉昕宇，2023 级材料专业本科生。",
-      "researchInterests": ["材料"],
+      "bio": "2023级材料专业在读。",
+      "researchInterests": [
+        "材料"
+      ],
       "joinDate": "2023-09"
     },
     {
@@ -260,20 +309,24 @@
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "王鹤立，2023 级材料专业本科生。",
-      "researchInterests": ["材料"],
+      "bio": "2023级材料专业在读。",
+      "researchInterests": [
+        "材料"
+      ],
       "joinDate": "2023-09"
     },
     {
       "id": "ug-23-5",
       "name": "唐佳颖",
       "grade": "2023 级",
-      "major": "材料",
+      "major": "测控",
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "唐佳颖，2023 级材料专业本科生。",
-      "researchInterests": ["材料"],
+      "bio": "2023级测控技术与仪器专业在读。",
+      "researchInterests": [
+        "测控"
+      ],
       "joinDate": "2023-09"
     },
     {
@@ -284,32 +337,38 @@
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "侯佳慧，2023 级材料专业本科生。",
-      "researchInterests": ["材料"],
+      "bio": "2023 级材料专业在读，目前获得浙江省大学生职业规划比赛金奖。",
+      "researchInterests": [
+        "材料"
+      ],
       "joinDate": "2023-09"
     },
     {
       "id": "ug-23-7",
       "name": "蒋朝政",
       "grade": "2023 级",
-      "major": "计算机",
+      "major": "材料",
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "蒋朝政，2023 级计算机专业本科生。",
-      "researchInterests": ["计算机"],
+      "bio": "2023 级计算机专业在读。",
+      "researchInterests": [
+        "计算机"
+      ],
       "joinDate": "2023-09"
     },
     {
       "id": "ug-23-8",
       "name": "汤佳丽",
       "grade": "2023 级",
-      "major": "材料",
+      "major": "测控",
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "汤佳丽，2023 级材料专业本科生。",
-      "researchInterests": ["材料"],
+      "bio": "2023级测控技术与仪器专业在读。",
+      "researchInterests": [
+        "测控"
+      ],
       "joinDate": "2023-09"
     },
     {
@@ -320,8 +379,10 @@
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "张垚，2023 级材料专业本科生。",
-      "researchInterests": ["材料"],
+      "bio": "2023 级材料专业在读。",
+      "researchInterests": [
+        "材料"
+      ],
       "joinDate": "2023-09"
     },
     {
@@ -332,8 +393,10 @@
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "胡昊俊，2023 级材料专业本科生。",
-      "researchInterests": ["材料"],
+      "bio": "2023 级材料专业在读。",
+      "researchInterests": [
+        "材料"
+      ],
       "joinDate": "2023-09"
     },
     {
@@ -344,8 +407,10 @@
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "邬丹妮，2023 级材料专业本科生。",
-      "researchInterests": ["材料"],
+      "bio": "2023 级材料专业在读。",
+      "researchInterests": [
+        "材料"
+      ],
       "joinDate": "2023-09"
     },
     {
@@ -356,8 +421,10 @@
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "林肯，2023 级材料专业本科生。",
-      "researchInterests": ["材料"],
+      "bio": "2023 级材料专业在读。",
+      "researchInterests": [
+        "材料"
+      ],
       "joinDate": "2023-09"
     },
     {
@@ -368,8 +435,10 @@
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "汪珂媛，2023 级材料专业本科生。",
-      "researchInterests": ["材料"],
+      "bio": "2023 级材料专业在读。",
+      "researchInterests": [
+        "材料"
+      ],
       "joinDate": "2023-09"
     },
     {
@@ -380,8 +449,10 @@
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "王期盼，2024 级材料专业本科生。",
-      "researchInterests": ["材料"],
+      "bio": "2024 级材料专业在读。",
+      "researchInterests": [
+        "材料"
+      ],
       "joinDate": "2024-09"
     },
     {
@@ -392,8 +463,10 @@
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "王梦羽，2024 级材料专业本科生。",
-      "researchInterests": ["材料"],
+      "bio": "2024 级材料专业在读。",
+      "researchInterests": [
+        "材料"
+      ],
       "joinDate": "2024-09"
     },
     {
@@ -404,8 +477,10 @@
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "李雨果，2024 级材料专业本科生。",
-      "researchInterests": ["材料"],
+      "bio": "2024 级材料专业在读。",
+      "researchInterests": [
+        "材料"
+      ],
       "joinDate": "2024-09"
     },
     {
@@ -416,8 +491,10 @@
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "刘思岐，2025 级材料专业本科生。",
-      "researchInterests": ["材料"],
+      "bio": "2025 级材料专业在读。",
+      "researchInterests": [
+        "材料"
+      ],
       "joinDate": "2025-09"
     },
     {
@@ -428,8 +505,10 @@
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "方文浩，2025 级材料专业本科生。",
-      "researchInterests": ["材料"],
+      "bio": "2025 级材料专业在读。",
+      "researchInterests": [
+        "材料"
+      ],
       "joinDate": "2025-09"
     }
   ],
