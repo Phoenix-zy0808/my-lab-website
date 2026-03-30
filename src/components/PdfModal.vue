@@ -54,45 +54,28 @@ onUnmounted(() => {
       leave-from-class="opacity-100"
       leave-to-class="opacity-0"
     >
-      <div v-if="isOpen" fixed inset-0 z-50 flex items-center justify-center>
+      <div v-if="isOpen" flex items-center inset-0 justify-center fixed z-50>
         <!-- 遮罩层 -->
         <div
-          absolute inset-0 bg="rgb(0 0 0 / 0.6)" backdrop-blur-sm
+          bg="rgb(0 0 0 / 0.6)" inset-0 absolute backdrop-blur-sm
           @click="close"
         />
 
         <!-- 模态框主体 -->
         <div
-          relative
-          bg-white
-          rounded-lg
-          shadow-2xl
-          w-full
-          sm:w-[500px]
-          sm:max-w-[90vw]
-          m-4
-          flex
-          flex-col
-          transition-all
-          duration-200
+          class="m-4 rounded-lg bg-white flex flex-col w-full shadow-2xl transition-all duration-200 relative sm:max-w-[90vw] sm:w-[500px]"
         >
           <!-- 头部 -->
           <div
-            flex
-            items-center
-            justify-between
-            px-6
-            py-4
-            border-b
-            border-gray-200
+
+            px-6 py-4 border-b border-gray-200 flex items-center justify-between
           >
-            <h3 text-lg font-semibold text-primary>
+            <h3 text-lg text-primary font-semibold>
               {{ title || 'PDF 预览' }}
             </h3>
             <button
-              icon-btn
-              text-xl
-              i-carbon-close
+
+              i-carbon-close icon-btn text-xl
               @click="close"
             />
           </div>
@@ -112,21 +95,12 @@ onUnmounted(() => {
 
           <!-- 底部操作栏 -->
           <div
-            flex
-            items-center
-            justify-end
-            gap-3
-            px-6
-            py-4
-            border-t
-            border-gray-200
-            bg-gray-50
+
+            px-6 py-4 border-t border-gray-200 bg-gray-50 flex gap-3 items-center justify-end
           >
             <button
-              btn-secondary
-              flex
-              items-center
-              gap-2
+
+              btn-secondary flex gap-2 items-center
               @click="openInNewWindow"
             >
               <div i-carbon-launch />

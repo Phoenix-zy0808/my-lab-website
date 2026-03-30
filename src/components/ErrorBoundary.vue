@@ -8,7 +8,7 @@ interface Props {
   showDetails?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   fallback: '内容加载失败，请稍后重试',
   showDetails: false,
 })
@@ -17,6 +17,8 @@ const emit = defineEmits<{
   /** 错误捕获时触发 */
   error: [error: Error, errorInfo: { componentStack?: string }]
 }>()
+
+const isDev = import.meta.env.DEV
 
 const hasError = ref(false)
 const errorMessage = ref<string>('')
@@ -58,7 +60,7 @@ onErrorCaptured((error, instance, info) => {
     <div
       v-else
       role="alert"
-      class="flex flex-col items-center justify-center p-8 text-center bg-red-50 rounded-lg border border-red-200"
+      class="p-8 text-center border border-red-200 rounded-lg bg-red-50 flex flex-col items-center justify-center"
     >
       <div class="i-carbon-warning text-4xl text-red-500 mb-4" aria-hidden="true" />
       <p class="text-red-700 font-medium mb-2">
@@ -66,12 +68,12 @@ onErrorCaptured((error, instance, info) => {
       </p>
 
       <!-- 开发环境显示错误详情 -->
-      <details v-if="showDetails || import.meta.env.DEV" class="mt-4 w-full max-w-md">
-        <summary class="cursor-pointer text-sm text-red-600 hover:text-red-700">
+      <details v-if="showDetails || isDev" class="mt-4 max-w-md w-full">
+        <summary class="text-sm text-red-600 cursor-pointer hover:text-red-700">
           错误详情
         </summary>
-        <div class="mt-2 p-3 bg-white rounded border border-red-200 text-left">
-          <p class="text-xs font-mono text-red-800 mb-2">
+        <div class="mt-2 p-3 text-left border border-red-200 rounded bg-white">
+          <p class="text-xs text-red-800 font-mono mb-2">
             {{ errorMessage }}
           </p>
           <pre class="text-xs text-gray-500 whitespace-pre-wrap">{{ errorStack }}</pre>
@@ -80,7 +82,7 @@ onErrorCaptured((error, instance, info) => {
 
       <!-- 重试按钮 -->
       <button
-        class="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
+        class="text-white mt-4 px-4 py-2 rounded bg-red-600 transition-colors hover:bg-red-700"
         @click="hasError = false"
       >
         重试

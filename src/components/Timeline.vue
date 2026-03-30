@@ -26,7 +26,7 @@ defineProps<Props>()
 <template>
   <div class="py-8">
     <!-- 标题 -->
-    <h3 v-if="title" class="text-lg font-semibold text-gray-800 mb-6">
+    <h3 v-if="title" class="text-lg text-gray-800 font-semibold mb-6">
       {{ title }}
     </h3>
 
@@ -34,12 +34,8 @@ defineProps<Props>()
     <div class="relative">
       <!-- 垂直线 -->
       <div
-        absolute
-        top-0
-        bottom-0
-        left-4
-        w-0.5
-        bg-gray-200
+
+        bg-gray-200 w-0.5 bottom-0 left-4 top-0 absolute
         aria-hidden="true"
       />
 
@@ -48,11 +44,11 @@ defineProps<Props>()
         <div
           v-for="(item, index) in items"
           :key="index"
-          class="relative pl-12"
+          class="pl-12 relative"
         >
           <!-- 时间点 -->
           <div
-            class="absolute left-0 top-0 w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+            class="rounded-full flex flex-shrink-0 h-8 w-8 items-center left-0 top-0 justify-center absolute"
             :class="[
               item.color === 'secondary'
                 ? 'bg-secondary text-white'
@@ -62,7 +58,7 @@ defineProps<Props>()
             ]"
           >
             <div v-if="index === 0" i-carbon-star text-sm aria-hidden="true" />
-            <div v-else w-2 h-2 rounded-full bg-white aria-hidden="true" />
+            <div v-else rounded-full bg-white h-2 w-2 aria-hidden="true" />
           </div>
 
           <!-- 时间 -->
@@ -81,10 +77,10 @@ defineProps<Props>()
 
           <!-- 内容 -->
           <div class="mt-1">
-            <h4 class="text-base font-semibold text-gray-800">
+            <h4 class="text-base text-gray-800 font-semibold">
               {{ item.title }}
             </h4>
-            <p v-if="item.description" class="text-sm text-gray-600 mt-1 leading-relaxed">
+            <p v-if="item.description" class="text-sm text-gray-600 leading-relaxed mt-1">
               {{ item.description }}
             </p>
           </div>

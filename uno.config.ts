@@ -8,13 +8,13 @@ import {
 export default defineConfig({
   theme: {
     colors: {
-      primary: '#0a3a52',
+      'primary': '#0a3a52',
       'primary-light': '#0f5a7a',
       'primary-dark': '#062838',
-      secondary: '#578b9e',
+      'secondary': '#578b9e',
       'secondary-light': '#7aa3b5',
       'secondary-dark': '#3d6f82',
-      accent: '#7ab8c9',
+      'accent': '#7ab8c9',
     },
   },
   shortcuts: {

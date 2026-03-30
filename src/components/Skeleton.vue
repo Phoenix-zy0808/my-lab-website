@@ -25,10 +25,8 @@ withDefaults(defineProps<Props>(), {
     <div
       v-for="i in lines"
       :key="i"
-      h-4
-      bg-gray-200
-      rounded
-      mb-2
+
+      mb-2 rounded bg-gray-200 h-4
       :class="{ 'animate-pulse': animated }"
       :style="{ width: i === lines ? '60%' : undefined }"
     />
@@ -38,8 +36,8 @@ withDefaults(defineProps<Props>(), {
   <div
     v-else-if="variant === 'circular'"
     :class="{ 'animate-pulse': animated }"
-    bg-gray-200
-    rounded-full
+
+    rounded-full bg-gray-200
     :style="{
       width: width || '48px',
       height: height || '48px',
@@ -50,8 +48,8 @@ withDefaults(defineProps<Props>(), {
   <div
     v-else-if="variant === 'rectangular'"
     :class="{ 'animate-pulse': animated }"
-    bg-gray-200
-    rounded
+
+    rounded bg-gray-200
     :style="{
       width: width || '100%',
       height: height || '160px',
@@ -62,8 +60,8 @@ withDefaults(defineProps<Props>(), {
   <div
     v-else-if="variant === 'rounded'"
     :class="{ 'animate-pulse': animated }"
-    bg-gray-200
-    rounded-lg
+
+    rounded-lg bg-gray-200
     :style="{
       width: width || '100%',
       height: height || '160px',

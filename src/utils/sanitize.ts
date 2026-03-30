@@ -1,7 +1,7 @@
 /**
  * XSS 防护工具
  * 简单的 HTML 转义函数，用于防止 XSS 攻击
- * 
+ *
  * @example
  * ```ts
  * const safe = escapeHtml(userInput)
@@ -17,7 +17,7 @@ export function escapeHtml(str: string): string {
     '<': '&lt;',
     '>': '&gt;',
     '"': '&quot;',
-    "'": '&#39;',
+    '\'': '&#39;',
   }
   return str.replace(/[&<>"']/g, char => htmlEscapes[char])
 }

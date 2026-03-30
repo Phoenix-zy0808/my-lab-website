@@ -24,8 +24,7 @@ const { imgRef, src: lazySrc, isLoaded } = props.image
   <component
     :is="link ? 'RouterLink' : 'div'"
     :to="link"
-    :class="[
-      'card-hover block no-underline',
+    class="card-hover no-underline block" :class="[
       imagePosition === 'left' ? 'flex flex-col sm:flex-row' : 'flex flex-col',
     ]"
     :aria-label="link ? `前往${title}页面` : undefined"
@@ -35,36 +34,33 @@ const { imgRef, src: lazySrc, isLoaded } = props.image
     <div
       v-if="image"
       ref="imgRef"
-      :class="[
-        'relative overflow-hidden rounded-lg mb-4',
+      class="mb-4 rounded-lg relative overflow-hidden" :class="[
         imagePosition === 'left' ? 'sm:w-48 sm:mb-0 sm:mr-4' : 'h-48',
       ]"
     >
       <img
         :src="lazySrc"
         :alt="title"
-        w-full
-        h-full
-        object-cover
+
         loading="lazy"
         decoding="async"
-        transition
-        duration-300
-        hover:scale-110
+
+        h-full w-full transition duration-300 object-cover hover:scale-110
         :class="{ 'opacity-0': !isLoaded }"
-      />
-      <!-- 加载占位 -->
+      >
+      <!-- 加载占位 - 带骨架屏动画 -->
       <div
         v-if="!isLoaded"
-        absolute
-        inset-0
+
         bg="gray-100"
-        flex
-        items-center
-        justify-center
+
+        flex items-center inset-0 justify-center absolute animate-pulse
         aria-hidden="true"
       >
-        <div i-carbon-image text-3xl text-gray-300 />
+        <div class="flex flex-col gap-2 items-center">
+          <div i-carbon-image text-3xl text-gray-300 />
+          <div class="rounded bg-gray-200 h-2 w-20 animate-pulse" />
+        </div>
       </div>
     </div>
 
@@ -73,41 +69,30 @@ const { imgRef, src: lazySrc, isLoaded } = props.image
       <!-- Icon -->
       <div
         v-if="icon"
-        w-12
-        h-12
-        rounded-lg
+
         bg="oklch(56% 0.062 207.6)/0.1"
-        flex
-        items-center
-        justify-center
-        text-primary
-        text-2xl
-        mb-3
+
+        text-2xl text-primary mb-3 rounded-lg flex h-12 w-12 items-center justify-center
         aria-hidden="true"
       >
         <div :class="icon" />
       </div>
 
       <!-- 标题 -->
-      <h3 text-xl font-semibold text-primary mb-2>
+      <h3 text-xl text-primary font-semibold mb-2>
         {{ title }}
       </h3>
 
       <!-- 描述 -->
-      <p v-if="description" text-gray-600 text-sm leading-relaxed>
+      <p v-if="description" text-sm text-gray-600 leading-relaxed>
         {{ description }}
       </p>
 
       <!-- 链接指示 -->
       <div
         v-if="link"
-        mt-4
-        flex
-        items-center
-        gap-2
-        text-secondary
-        text-sm
-        font-medium
+
+        text-sm text-secondary font-medium mt-4 flex gap-2 items-center
         aria-hidden="true"
       >
         <span>了解更多</span>

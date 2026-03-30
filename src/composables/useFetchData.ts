@@ -1,9 +1,13 @@
 import type { Ref } from 'vue'
 
+// 缓存 Map
+const cache = new Map<string, { data: any, timestamp: number }>()
+const CACHE_DURATION = 5 * 60 * 1000 // 5 分钟
+
 /**
  * 通用数据获取 Hook
  * 支持错误处理、加载状态和缓存
- * 
+ *
  * @template T - 数据类型
  * @param {string} url - 数据 URL
  * @param {boolean} immediate - 是否立即获取
@@ -18,6 +22,13 @@ export function useFetchData<T>(url: string, immediate = true) {
    * 获取数据
    */
   const fetchData = async () => {
+    // 检查缓存
+    const cached = cache.get(url)
+    if (cached && Date.now() - cached.timestamp < CACHE_DURATION) {
+      data.value = cached.data as T
+      return
+    }
+
     loading.value = true
     error.value = null
 
@@ -28,6 +39,9 @@ export function useFetchData<T>(url: string, immediate = true) {
       }
       const result = await response.json()
       data.value = result as T
+
+      // 写入缓存
+      cache.set(url, { data: result, timestamp: Date.now() })
     }
     catch (err) {
       error.value = err instanceof Error ? err : new Error('Failed to fetch data')

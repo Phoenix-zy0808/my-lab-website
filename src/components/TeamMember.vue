@@ -6,7 +6,7 @@ defineProps<{
 }>()
 
 // 角色映射
-const roleMap: Record<TeamMember['role'], { label: string; color: string }> = {
+const roleMap: Record<TeamMember['role'], { label: string, color: string }> = {
   pi: { label: 'PI', color: 'bg-primary text-white' },
   associate_professor: { label: '副教授', color: 'bg-secondary text-white' },
   research_assistant: { label: '科研助理', color: 'bg-accent text-white' },
@@ -23,30 +23,17 @@ const roleMap: Record<TeamMember['role'], { label: string; color: string }> = {
       <!-- 头像区域 -->
       <div flex-shrink-0>
         <div
-          w-24
-          h-24
-          rounded-full
-          bg-gradient-to-br
-          from-primary
-          to-secondary
-          flex
-          items-center
-          justify-center
-          text-white
-          text-3xl
-          font-bold
-          overflow-hidden
-          shadow-lg
+
+          text-3xl text-white font-bold rounded-full flex h-24 w-24 shadow-lg items-center justify-center overflow-hidden from-primary to-secondary bg-gradient-to-br
         >
           <img
             v-if="member.photo"
             :src="member.photo"
             :alt="member.name"
-            w-full
-            h-full
-            object-cover
+
+            h-full w-full object-cover
             @error="(e) => (e.target as HTMLImageElement).style.display = 'none'"
-          />
+          >
           <span v-else>
             {{ member.name.charAt(0) }}
           </span>
@@ -55,9 +42,9 @@ const roleMap: Record<TeamMember['role'], { label: string; color: string }> = {
 
       <!-- 信息区域 -->
       <div flex-1 min-w-0>
-        <div flex items-start justify-between gap-4 mb-2>
+        <div mb-2 flex gap-4 items-start justify-between>
           <div>
-            <h3 text-lg font-semibold text-primary group-hover:text-secondary transition-colors>
+            <h3 text-lg text-primary font-semibold transition-colors group-hover:text-secondary>
               {{ member.name }}
             </h3>
             <p text-sm text-secondary>
@@ -81,14 +68,13 @@ const roleMap: Record<TeamMember['role'], { label: string; color: string }> = {
         </p>
 
         <!-- 联系方式 -->
-        <div flex flex-wrap gap-3 text-sm text-gray-500>
+        <div text-sm text-gray-500 flex flex-wrap gap-3>
           <a
             v-if="member.email"
             :href="`mailto:${member.email}`"
-            class="hover:text-primary transition-colors"
-            flex
-            items-center
-            gap-1
+            class="transition-colors hover:text-primary"
+
+            flex gap-1 items-center
           >
             <div i-carbon-email />
             <span>{{ member.email }}</span>
@@ -101,12 +87,9 @@ const roleMap: Record<TeamMember['role'], { label: string; color: string }> = {
             <span
               v-for="interest in member.researchInterests"
               :key="interest"
-              text-xs
-              px-2
-              py-1
-              rounded-full
+
               bg="oklch(56% 0.062 207.6)/10"
-              text-primary
+              text-xs text-primary px-2 py-1 rounded-full
             >
               {{ interest }}
             </span>

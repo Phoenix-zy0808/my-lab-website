@@ -224,7 +224,7 @@
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "2022 级测控技术与仪器专业在读，北京航空航天大学测控拟录取。",
+      "bio": "2022级测控技术与仪器专业在读，北京航空航天大学测控拟录取。",
       "researchInterests": [
         "测控"
       ],
@@ -234,13 +234,13 @@
       "id": "ug-22-3",
       "name": "张悦丹",
       "grade": "2022 级",
-      "major": "AI 集成电路",
+      "major": "计算机",
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "2022级 AI 集成电路专业在读。",
+      "bio": "2022级计算机科学与技术专业在读，目前新加坡国立大学拟录取。",
       "researchInterests": [
-        "AI 集成电路"
+        "计算机"
       ],
       "joinDate": "2022-09"
     },
@@ -252,7 +252,7 @@
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "2022级材料专业在读。",
+      "bio": "2022级材料专业在读，北京科技大学研究生拟录取。",
       "researchInterests": [
         "材料"
       ],
@@ -268,8 +268,7 @@
       "photo": "/images/team/placeholder.svg",
       "bio": "2023 级计算机科学与技术专业在读，曾获中国国际大学生创新大赛国银，浙江省挑战杯大学生课外科技作品竞赛省金奖，发表了EI论文2篇，中文核心论文1篇，4项发明专利，3篇软著。",
       "researchInterests": [
-        "拉曼光谱",
-        "生物医学检测"
+        "计算机"
       ],
       "joinDate": "2023-09"
     },
@@ -295,7 +294,7 @@
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "2023级材料专业在读。",
+      "bio": "2023级材料专业在读，共有9项发明专利，其中2项为第一发明人，2项软著，SCI论文4篇，曾获得2024中国国际大创赛国银，2025挑战杯省金奖",
       "researchInterests": [
         "材料"
       ],
@@ -305,11 +304,11 @@
       "id": "ug-23-4",
       "name": "王鹤立",
       "grade": "2023 级",
-      "major": "材料",
+      "major": "测控",
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "2023级材料专业在读。",
+      "bio": "2023级测控技术与仪器专业在读。",
       "researchInterests": [
         "材料"
       ],
@@ -329,6 +328,34 @@
       ],
       "joinDate": "2023-09"
     },
+     {
+      "id": "ug-23-9",
+      "name": "张垚",
+      "grade": "2023 级",
+      "major": "人工智能",
+      "role": "undergraduate",
+      "title": "本科生",
+      "photo": "/images/team/placeholder.svg",
+      "bio": "2023级人工智能专业在读。",
+      "researchInterests": [
+        "材料"
+      ],
+      "joinDate": "2023-09"
+    },
+    {
+      "id": "ug-23-10",
+      "name": "胡昊俊",
+      "grade": "2023 级",
+      "major": "人工智能",
+      "role": "undergraduate",
+      "title": "本科生",
+      "photo": "/images/team/placeholder.svg",
+      "bio": "2023级人工智能专业在读。",
+      "researchInterests": [
+        "材料"
+      ],
+      "joinDate": "2023-09"
+    },
     {
       "id": "ug-23-6",
       "name": "侯佳慧",
@@ -337,7 +364,7 @@
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "2023 级材料专业在读，目前获得浙江省大学生职业规划比赛金奖。",
+      "bio": "2023 级材料专业在读，曾获得浙江省大学生职业规划比赛金奖。",
       "researchInterests": [
         "材料"
       ],
@@ -365,51 +392,24 @@
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "2023级测控技术与仪器专业在读。",
+      "bio": "2023级测控技术与仪器专业在读，共有4项发明专利，2项软著，论文1篇，曾获得大创赛国铜、省银，2025挑战杯省金奖。",
       "researchInterests": [
         "测控"
       ],
       "joinDate": "2023-09"
     },
-    {
-      "id": "ug-23-9",
-      "name": "张垚",
-      "grade": "2023 级",
-      "major": "材料",
-      "role": "undergraduate",
-      "title": "本科生",
-      "photo": "/images/team/placeholder.svg",
-      "bio": "2023 级材料专业在读。",
-      "researchInterests": [
-        "材料"
-      ],
-      "joinDate": "2023-09"
-    },
-    {
-      "id": "ug-23-10",
-      "name": "胡昊俊",
-      "grade": "2023 级",
-      "major": "材料",
-      "role": "undergraduate",
-      "title": "本科生",
-      "photo": "/images/team/placeholder.svg",
-      "bio": "2023 级材料专业在读。",
-      "researchInterests": [
-        "材料"
-      ],
-      "joinDate": "2023-09"
-    },
+
     {
       "id": "ug-23-11",
       "name": "邬丹妮",
       "grade": "2023 级",
-      "major": "材料",
+      "major": "人工智能",
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "2023 级材料专业在读。",
+      "bio": "2023级人工智能专业在读。",
       "researchInterests": [
-        "材料"
+        "人工智能"
       ],
       "joinDate": "2023-09"
     },
@@ -421,7 +421,7 @@
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "2023 级材料专业在读。",
+      "bio": "2023 级材料专业在读，共有5项软著，2项发明专利为第一发明人，曾获得中国国际大创赛全国金奖",
       "researchInterests": [
         "材料"
       ],
@@ -431,13 +431,13 @@
       "id": "ug-23-13",
       "name": "汪珂媛",
       "grade": "2023 级",
-      "major": "材料",
+      "major": "人工智能",
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "2023 级材料专业在读。",
+      "bio": "2023级南开大学人工智能专业在读。",
       "researchInterests": [
-        "材料"
+        "人工智能"
       ],
       "joinDate": "2023-09"
     },
@@ -445,13 +445,13 @@
       "id": "ug-24-1",
       "name": "王期盼",
       "grade": "2024 级",
-      "major": "材料",
+      "major": "计算机",
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "2024 级材料专业在读。",
+      "bio": "2024级计算机科学与技术专业在读。",
       "researchInterests": [
-        "材料"
+        "计算机"
       ],
       "joinDate": "2024-09"
     },
@@ -459,13 +459,13 @@
       "id": "ug-24-2",
       "name": "王梦羽",
       "grade": "2024 级",
-      "major": "材料",
+      "major": "计算机",
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "2024 级材料专业在读。",
+      "bio": "2024级计算机科学与技术专业在读。",
       "researchInterests": [
-        "材料"
+        "计算机"
       ],
       "joinDate": "2024-09"
     },
@@ -473,13 +473,13 @@
       "id": "ug-24-3",
       "name": "李雨果",
       "grade": "2024 级",
-      "major": "材料",
+      "major": "人工智能",
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "2024 级材料专业在读。",
+      "bio": "2024级人工智能专业在读。",
       "researchInterests": [
-        "材料"
+        "人工智能"
       ],
       "joinDate": "2024-09"
     },
@@ -491,7 +491,7 @@
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "2025 级材料专业在读。",
+      "bio": "2025级材料专业在读。",
       "researchInterests": [
         "材料"
       ],
@@ -505,7 +505,7 @@
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "2025 级材料专业在读。",
+      "bio": "2025级材料专业在读。",
       "researchInterests": [
         "材料"
       ],
@@ -523,7 +523,7 @@
       "currentCompany": "中石油",
       "currentPosition": "央企员工",
       "photo": "/images/team/placeholder.svg",
-      "bio": "邓新宇，2022 级电子信息专业硕士毕业生，现就职于央企中石油。",
+      "bio": "邓新宇，2022级电子信息专业硕士毕业生，现就职于央企中石油。",
       "graduationYear": "2025"
     },
     {
@@ -536,7 +536,7 @@
       "currentCompany": "杭州永瓷集团",
       "currentPosition": "工程师",
       "photo": "/images/team/placeholder.svg",
-      "bio": "刘明，2022 级电子信息专业硕士毕业生，现就职于杭州永瓷集团。",
+      "bio": "刘明，2022级电子信息专业硕士毕业生，现就职于杭州永瓷集团。",
       "graduationYear": "2025"
     },
     {
@@ -549,7 +549,7 @@
       "currentCompany": "大华集团",
       "currentPosition": "工程师",
       "photo": "/images/team/placeholder.svg",
-      "bio": "胡程璐，2022 级电子信息专业硕士毕业生，现就职于大华集团。",
+      "bio": "胡程璐，2022级电子信息专业硕士毕业生，现就职于大华集团。",
       "graduationYear": "2025"
     },
     {
@@ -562,7 +562,7 @@
       "currentCompany": "吉利汽车",
       "currentPosition": "工程师",
       "photo": "/images/team/placeholder.svg",
-      "bio": "何胜豪，2019 级材料专业硕士毕业生，现就职于吉利汽车。",
+      "bio": "何胜豪，2019级材料专业硕士毕业生，现就职于吉利汽车。",
       "graduationYear": "2022"
     },
     {
@@ -588,7 +588,7 @@
       "currentCompany": "深圳空天信息研究院",
       "currentPosition": "研究员",
       "photo": "/images/team/placeholder.svg",
-      "bio": "余施梦，2020 级电子信息专业硕士毕业生，现就职于深圳空天信息研究院。",
+      "bio": "余施梦，2020级电子信息专业硕士毕业生，现就职于深圳空天信息研究院。",
       "graduationYear": "2023"
     },
     {
@@ -601,7 +601,7 @@
       "currentCompany": "杭州大和热磁电子",
       "currentPosition": "工程师",
       "photo": "/images/team/placeholder.svg",
-      "bio": "孟方实，2021 级硕士毕业生，现就职于杭州大和热磁电子。",
+      "bio": "孟方实，2021级硕士毕业生，现就职于杭州大和热磁电子。",
       "graduationYear": "2024"
     },
     {
@@ -615,7 +615,7 @@
       "currentCompany": "中国移动",
       "currentPosition": "央企员工",
       "photo": "/images/team/placeholder.svg",
-      "bio": "马骁，量新学院 17 级工试本科生，2021 级电子信息硕士毕业生，现就职于央企中国移动。",
+      "bio": "马骁，量新学院17级工试本科生，2021级电子信息硕士毕业生，现就职于央企中国移动。",
       "graduationYear": "2024"
     }
   ],
@@ -629,7 +629,7 @@
       "role": "graduated_undergraduate",
       "title": "已毕业本科",
       "photo": "/images/team/placeholder.svg",
-      "bio": "鱼煊烨，2018 级材料专业本科生，现于新加坡国立大学攻读硕士学位。"
+      "bio": "鱼煊烨，2018级材料专业本科生，现于新加坡国立大学攻读硕士学位。"
     },
     {
       "id": "grad-u-19-1",
@@ -640,7 +640,7 @@
       "role": "graduated_undergraduate",
       "title": "已毕业本科",
       "photo": "/images/team/placeholder.svg",
-      "bio": "徐伟龙，2019 级计算机专业本科生，现于澳大利亚悉尼大学攻读硕士学位。"
+      "bio": "徐伟龙，2019级计算机专业本科生，现于澳大利亚悉尼大学攻读硕士学位。"
     },
     {
       "id": "grad-u-20-1",
@@ -657,12 +657,12 @@
       "id": "grad-u-20-2",
       "name": "陈文宇",
       "grade": "2020 级",
-      "major": "AI 集成电路",
+      "major": "AI集成电路",
       "currentSchool": "浙江大学",
       "role": "graduated_undergraduate",
       "title": "已毕业本科",
       "photo": "/images/team/placeholder.svg",
-      "bio": "陈文宇，2020 级 AI 集成电路专业本科生，现于浙江大学攻读硕士学位。"
+      "bio": "陈文宇，2020级材料专业本科生，现于浙江大学攻读AI集成电路硕士学位。"
     },
     {
       "id": "grad-u-21-1",
@@ -673,7 +673,7 @@
       "role": "graduated_undergraduate",
       "title": "已毕业本科",
       "photo": "/images/team/placeholder.svg",
-      "bio": "章博乐，2021 级计算机专业本科生，现于英国布里斯托大学攻读硕士学位。"
+      "bio": "章博乐，2021级计算机专业本科生，现于英国布里斯托大学攻读硕士学位。"
     },
     {
       "id": "grad-u-21-2",
@@ -684,7 +684,7 @@
       "role": "graduated_undergraduate",
       "title": "已毕业本科",
       "photo": "/images/team/placeholder.svg",
-      "bio": "黄泽宇，2021 级计算机中外合作专业本科生，现于英国伦敦大学国王学院攻读硕士学位。"
+      "bio": "黄泽宇，2021级计算机中外合作专业本科生，现于英国伦敦大学国王学院攻读硕士学位。"
     },
     {
       "id": "grad-u-21-3",
@@ -696,7 +696,7 @@
       "role": "graduated_undergraduate",
       "title": "已毕业本科",
       "photo": "/images/team/placeholder.svg",
-      "bio": "刘琦，2021 级材料专业本科生，现于华中科技大学攻读量子信息硕士学位。"
+      "bio": "刘琦，2021级材料专业本科生，现于华中科技大学攻读量子信息硕士学位。"
     }
   ]
 }

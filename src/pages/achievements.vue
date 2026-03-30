@@ -9,7 +9,8 @@ async function loadConfig() {
   try {
     const res = await fetch('/data/site-config.json')
     config.value = await res.json()
-  } catch (error) {
+  }
+  catch (error) {
     console.error('Failed to load site config:', error)
   }
 }
@@ -18,6 +19,16 @@ const achievements = ref<Achievement[]>([])
 const selectedType = ref<string>('all')
 const selectedYear = ref<string | number>('all')
 
+// Toast 提示状态
+const showToast = ref(false)
+const toastMessage = ref('')
+
+function showTemporaryMessage(msg: string) {
+  toastMessage.value = msg
+  showToast.value = true
+  setTimeout(() => (showToast.value = false), 3000)
+}
+
 // SEO Meta
 useSeoMeta({
   title: '成果展示',
@@ -25,7 +36,7 @@ useSeoMeta({
 })
 
 // 成果类型映射
-const typeMap: Record<Achievement['type'], { label: string; icon: string; color: string }> = {
+const typeMap: Record<Achievement['type'], { label: string, icon: string, color: string }> = {
   project: { label: '项目', icon: 'i-carbon-folder', color: 'bg-purple-100 text-purple-700' },
   patent: { label: '专利', icon: 'i-carbon-certificate', color: 'bg-emerald-100 text-emerald-700' },
   copyright: { label: '软著', icon: 'i-carbon-certificate', color: 'bg-green-100 text-green-700' },
@@ -50,7 +61,8 @@ async function loadAchievements() {
   try {
     const res = await fetch('/data/achievements.json')
     achievements.value = await res.json()
-  } catch (error) {
+  }
+  catch (error) {
     console.error('Failed to load achievements:', error)
   }
 }
@@ -62,7 +74,7 @@ onMounted(() => {
 
 // 年份选项
 const yearOptions = computed(() => {
-  const years = achievements.value.map(ach => {
+  const years = achievements.value.map((ach) => {
     const date = new Date(ach.date)
     return date.getFullYear().toString()
   })
@@ -79,7 +91,7 @@ const filteredAchievements = computed(() => {
   }
 
   if (selectedYear.value !== 'all') {
-    result = result.filter(ach => {
+    result = result.filter((ach) => {
       const date = new Date(ach.date)
       return date.getFullYear().toString() === selectedYear.value
     })
@@ -102,7 +114,6 @@ const totalPages = computed(() => {
 
 // 当前页的数据
 const currentPageData = computed(() => {
-  const total = filteredAchievements.value?.length || 0
   const size = pageSize || 10
   const page = currentPage.value || 1
 
@@ -114,7 +125,8 @@ const currentPageData = computed(() => {
 
 // 切换页码
 function changePage(page: number) {
-  if (page < 1 || page > totalPages.value) return
+  if (page < 1 || page > totalPages.value)
+    return
   currentPage.value = page
   // 滚动到顶部
   window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -127,9 +139,10 @@ watch([selectedType, selectedYear], () => {
 
 // 格式化论文引用（标准学术格式）
 function formatPaperCitation(ach: Achievement) {
-  if (ach.type !== 'paper' || !ach.authors) return null
+  if (ach.type !== 'paper' || !ach.authors)
+    return null
 
-  const authors = ach.authors.map((author, index) => {
+  const authors = ach.authors.map((author, _index) => {
     const isCoFirst = author.includes('†')
     const isCorresponding = author.includes('#')
     return {
@@ -150,7 +163,8 @@ function formatPaperCitation(ach: Achievement) {
 }
 
 // 打开 PDF - 修复路径编码
-function openPdf(pdfUrl: string, title: string) {
+function openPdf(pdfUrl: string, _title: string) {
+  showTemporaryMessage('正在打开 PDF...')
   // 确保路径以/开头
   const normalizedUrl = pdfUrl.startsWith('/') ? pdfUrl : `/${pdfUrl}`
   // 使用 encodeURI 编码中文路径
@@ -176,16 +190,15 @@ function openPdf(pdfUrl: string, title: string) {
       <!-- 筛选器 -->
       <div class="mb-8">
         <!-- 类型筛选 -->
-        <div class="overflow-x-auto overflow-y-hidden mb-4">
+        <div class="mb-4 overflow-x-auto overflow-y-hidden">
           <div class="flex flex-nowrap gap-2 min-w-max justify-center">
             <button
               v-for="filter in typeFilterOptions"
               :key="filter.key"
-              :class="[
-                'px-4 py-2 rounded-lg transition-all duration-200 flex items-center gap-2 whitespace-nowrap',
+              class="font-medium px-5 py-2.5 rounded-lg flex gap-2 whitespace-nowrap transition-all duration-300 items-center" :class="[
                 selectedType === filter.key
-                  ? 'bg-primary text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
+                  ? 'bg-white text-primary border-2 border-primary shadow-md'
+                  : 'bg-white text-gray-600 border-2 border-gray-200 hover:border-secondary hover:text-secondary',
               ]"
               @click="selectedType = filter.key"
             >
@@ -201,11 +214,10 @@ function openPdf(pdfUrl: string, title: string) {
             <button
               v-for="year in yearOptions"
               :key="year.key"
-              :class="[
-                'px-3 py-1.5 text-sm rounded-lg transition-all duration-200 whitespace-nowrap',
+              class="font-medium px-5 py-2.5 rounded-lg whitespace-nowrap transition-all duration-300" :class="[
                 selectedYear === year.key
-                  ? 'bg-secondary text-white'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
+                  ? 'bg-white text-secondary border-2 border-secondary shadow-md'
+                  : 'bg-white text-gray-600 border-2 border-gray-200 hover:border-secondary hover:text-secondary',
               ]"
               @click="selectedYear = year.key"
             >
@@ -245,11 +257,11 @@ function openPdf(pdfUrl: string, title: string) {
                   <span class="mx-1">.</span>
 
                   <!-- 标题 -->
-                  <span class="font-semibold text-primary">{{ ach.title }}</span>
+                  <span class="text-primary font-semibold">{{ ach.title }}</span>
                   <span class="mx-1">.</span>
 
                   <!-- 期刊名（斜体） -->
-                  <span class="italic text-gray-600">{{ ach.journal }}</span>
+                  <span class="text-gray-600 italic">{{ ach.journal }}</span>
 
                   <!-- 年份卷期页码 -->
                   <template v-if="ach.year">
@@ -269,13 +281,13 @@ function openPdf(pdfUrl: string, title: string) {
                 </p>
 
                 <!-- 链接 -->
-                <div class="flex gap-3 mt-2">
+                <div class="mt-2 flex gap-3">
                   <a
                     v-if="ach.doi"
                     :href="`https://doi.org/${ach.doi}`"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="text-sm text-secondary hover:underline flex items-center gap-1"
+                    class="text-sm text-secondary flex gap-1 items-center hover:underline"
                   >
                     <div i-carbon-link />
                     DOI
@@ -285,14 +297,14 @@ function openPdf(pdfUrl: string, title: string) {
                     :href="ach.link"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="text-sm text-secondary hover:underline flex items-center gap-1"
+                    class="text-sm text-secondary flex gap-1 items-center hover:underline"
                   >
                     <div i-carbon-launch text-xs />
                     链接
                   </a>
                   <button
                     v-if="ach.pdf"
-                    class="text-sm text-secondary hover:underline flex items-center gap-1"
+                    class="text-sm text-secondary flex gap-1 items-center hover:underline"
                     @click="openPdf(ach.pdf!, ach.title)"
                   >
                     <div i-carbon-pdf />
@@ -301,7 +313,7 @@ function openPdf(pdfUrl: string, title: string) {
                 </div>
 
                 <!-- 描述 -->
-                <p v-if="ach.description" class="text-sm text-gray-600 mt-2 leading-relaxed">
+                <p v-if="ach.description" class="text-sm text-gray-600 leading-relaxed mt-2">
                   {{ ach.description }}
                 </p>
               </div>
@@ -311,15 +323,10 @@ function openPdf(pdfUrl: string, title: string) {
           <!-- 其他类型成果（获奖、项目、专利、活动） -->
           <template v-else>
             <!-- 类型标签和日期 -->
-            <div flex items-start justify-between mb-3>
+            <div mb-3 flex items-start justify-between>
               <span
-                flex
-                items-center
-                gap-1
-                text-sm
-                px-2
-                py-1
-                rounded
+
+                text-sm px-2 py-1 rounded flex gap-1 items-center
                 :class="typeMap[ach.type].color"
               >
                 <div :class="typeMap[ach.type].icon" />
@@ -329,12 +336,12 @@ function openPdf(pdfUrl: string, title: string) {
             </div>
 
             <!-- 标题 -->
-            <h3 text-lg font-semibold text-primary mb-2>
+            <h3 text-lg text-primary font-semibold mb-2>
               {{ ach.title }}
             </h3>
 
             <!-- 描述 -->
-            <p text-gray-600 text-sm leading-relaxed mb-4>
+            <p text-sm text-gray-600 leading-relaxed mb-4>
               {{ ach.description }}
             </p>
 
@@ -342,12 +349,8 @@ function openPdf(pdfUrl: string, title: string) {
             <div flex gap-2>
               <button
                 v-if="ach.pdf"
-                btn-secondary
-                text-sm
-                py-1
-                flex
-                items-center
-                gap-1
+
+                text-sm btn-secondary py-1 flex gap-1 items-center
                 @click="openPdf(ach.pdf!, ach.title)"
               >
                 <div i-carbon-pdf />
@@ -358,12 +361,8 @@ function openPdf(pdfUrl: string, title: string) {
                 :href="ach.link"
                 target="_blank"
                 rel="noopener noreferrer"
-                btn
-                text-sm
-                py-1
-                flex
-                items-center
-                gap-1
+
+                text-sm btn py-1 flex gap-1 items-center
               >
                 链接
                 <div i-carbon-launch text-xs />
@@ -374,9 +373,9 @@ function openPdf(pdfUrl: string, title: string) {
       </div>
 
       <!-- 分页控件 -->
-      <div v-if="totalPages > 1" class="flex justify-center gap-2 mt-8">
+      <div v-if="totalPages > 1" class="mt-8 flex gap-2 justify-center">
         <button
-          class="px-3 py-1.5 rounded-lg transition-all duration-200 bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
+          class="text-gray-600 px-3 py-1.5 rounded-lg bg-gray-100 transition-all duration-200 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
           :disabled="currentPage === 1"
           @click="changePage(currentPage - 1)"
         >
@@ -386,8 +385,7 @@ function openPdf(pdfUrl: string, title: string) {
         <button
           v-for="page in totalPages"
           :key="page"
-          :class="[
-            'px-3 py-1.5 rounded-lg transition-all duration-200',
+          class="px-3 py-1.5 rounded-lg transition-all duration-200" :class="[
             currentPage === page
               ? 'bg-primary text-white'
               : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
@@ -398,7 +396,7 @@ function openPdf(pdfUrl: string, title: string) {
         </button>
 
         <button
-          class="px-3 py-1.5 rounded-lg transition-all duration-200 bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
+          class="text-gray-600 px-3 py-1.5 rounded-lg bg-gray-100 transition-all duration-200 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
           :disabled="currentPage === totalPages"
           @click="changePage(currentPage + 1)"
         >
@@ -406,5 +404,22 @@ function openPdf(pdfUrl: string, title: string) {
         </button>
       </div>
     </div>
+
+    <!-- Toast 提示 -->
+    <transition
+      enter-active-class="transition duration-300"
+      enter-from-class="opacity-0 translate-y-4"
+      enter-to-class="opacity-100 translate-y-0"
+      leave-active-class="transition duration-200"
+      leave-from-class="opacity-100"
+      leave-to-class="opacity-0"
+    >
+      <div
+        v-if="showToast"
+        class="text-sm text-white px-6 py-3 rounded-lg bg-black/80 shadow-lg bottom-8 left-1/2 fixed z-50 -translate-x-1/2"
+      >
+        {{ toastMessage }}
+      </div>
+    </transition>
   </div>
 </template>

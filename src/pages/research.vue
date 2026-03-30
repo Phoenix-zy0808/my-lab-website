@@ -20,7 +20,8 @@ async function loadConfig() {
   try {
     const res = await fetch('/data/site-config.json')
     config.value = await res.json()
-  } catch (error) {
+  }
+  catch (error) {
     console.error('Failed to load site config:', error)
   }
 }
@@ -30,7 +31,8 @@ async function loadResearch() {
   try {
     const res = await fetch('/data/research.json')
     directions.value = await res.json()
-  } catch (error) {
+  }
+  catch (error) {
     console.error('Failed to load research directions:', error)
   }
 }
@@ -53,7 +55,7 @@ onMounted(() => {
     />
 
     <!-- 主要内容 -->
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="mx-auto px-4 py-12 max-w-5xl lg:px-8 sm:px-6">
       <div space-y-12>
         <div
           v-for="(dir, index) in directions"
@@ -61,7 +63,7 @@ onMounted(() => {
         >
           <!-- 方向标题 -->
           <div class="mb-6">
-            <h2 class="text-2xl font-bold text-primary mb-2">
+            <h2 class="text-2xl text-primary font-bold mb-2">
               {{ index + 1 }}. {{ dir.title }}
             </h2>
           </div>
@@ -72,16 +74,13 @@ onMounted(() => {
           </p>
 
           <!-- 关键词 -->
-          <div v-if="dir.keywords?.length" class="flex flex-wrap gap-2 mb-8">
+          <div v-if="dir.keywords?.length" class="mb-8 flex flex-wrap gap-2">
             <span
               v-for="keyword in dir.keywords"
               :key="keyword"
-              text-xs
-              px-3
-              py-1
-              rounded-full
+
               bg="oklch(65% 0.045 200.5)/10"
-              text-secondary
+              text-xs text-secondary px-3 py-1 rounded-full
             >
               {{ keyword }}
             </span>
@@ -89,7 +88,7 @@ onMounted(() => {
 
           <!-- 研究进展 -->
           <div v-if="dir.progress?.length" class="mt-8">
-            <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+            <h3 class="text-lg text-gray-800 font-semibold mb-4 flex gap-2 items-center">
               <div i-carbon-time text-lg />
               研究进展
             </h3>
@@ -100,18 +99,14 @@ onMounted(() => {
                 :key="progress.id"
               >
                 <!-- 进展标题和日期 -->
-                <div class="flex items-center gap-3 mb-3">
-                  <h4 class="text-base font-semibold text-gray-800">
+                <div class="mb-3 flex gap-3 items-center">
+                  <h4 class="text-base text-gray-800 font-semibold">
                     {{ progress.title }}
                   </h4>
                   <span
                     v-if="progress.date"
-                    text-xs
-                    px-2
-                    py-1
-                    rounded
-                    bg-gray-100
-                    text-gray-500
+
+                    text-xs text-gray-500 px-2 py-1 rounded bg-gray-100
                   >
                     {{ progress.date }}
                   </span>
@@ -123,24 +118,23 @@ onMounted(() => {
                 </p>
 
                 <!-- 图片展示 -->
-                <div v-if="progress.images?.length" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div v-if="progress.images?.length" class="gap-4 grid grid-cols-1 sm:grid-cols-2">
                   <div
                     v-for="(img, imgIndex) in progress.images"
                     :key="imgIndex"
-                    class="rounded-lg overflow-hidden shadow-md"
+                    class="rounded-lg shadow-md overflow-hidden"
                   >
                     <img
                       :src="img.src"
                       :alt="img.caption"
-                      w-full
-                      h-48
-                      object-cover
+
+                      h-48 w-full object-cover
                       @error="(e) => {
                         const target = e.target as HTMLImageElement
                         target.src = '/images/gallery/placeholder.svg'
                       }"
-                    />
-                    <p class="text-xs text-gray-500 text-center py-2 bg-gray-50">
+                    >
+                    <p class="text-xs text-gray-500 py-2 text-center bg-gray-50">
                       {{ img.caption }}
                     </p>
                   </div>

@@ -65,7 +65,8 @@ watch(isMobileMenuOpen, (val) => {
     document.body.style.width = '100%'
     document.body.style.overflow = 'hidden'
     document.body.classList.add('menu-open')
-  } else {
+  }
+  else {
     // 恢复滚动位置
     document.body.style.position = ''
     document.body.style.top = ''
@@ -73,7 +74,7 @@ watch(isMobileMenuOpen, (val) => {
     document.body.style.overflow = ''
     document.body.classList.remove('menu-open')
     // 恢复到之前的滚动位置
-    const scrollY = parseInt(document.body.style.top || '0')
+    const scrollY = Number.parseInt(document.body.style.top || '0')
     if (scrollY) {
       window.scrollTo(0, Math.abs(scrollY))
     }
@@ -114,13 +115,8 @@ function handleEscape() {
 <template>
   <header
     role="banner"
-    fixed
-    top-0
-    left-0
-    right-0
-    z-50
-    transition-all
-    duration-300
+
+    transition-all duration-300 left-0 right-0 top-0 fixed z-50
     :class="[
       isScrolled ? 'bg-primary/95 backdrop-blur-sm shadow-lg' : 'bg-transparent',
     ]"
@@ -128,45 +124,29 @@ function handleEscape() {
     <!-- 错误提示 -->
     <div
       v-if="loadingError"
-      absolute
-      top-full
-      left-0
-      right-0
-      bg-red-600
-      text-white
-      text-sm
-      py-2
-      px-4
-      text-center
+
+      text-sm text-white px-4 py-2 text-center bg-red-600 left-0 right-0 top-full absolute
     >
       {{ loadingError }}
     </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto px-4 max-w-7xl lg:px-8 sm:px-6">
       <!-- 单行布局：Logo 和导航在同一行 -->
-      <div flex items-center justify-between h-18>
+      <div flex h-18 items-center justify-between>
         <!-- Logo / 实验室名称 -->
         <RouterLink
           to="/"
-          flex
-          items-center
-          gap-3
-          class="nav-link group"
+
+          flex gap-3 items-center
+          class="group nav-link"
           aria-label="返回首页"
         >
           <!-- Logo 图标 -->
           <div
-            w-10
-            h-10
-            rounded-full
+
             bg="rgb(255 255 255 / 0.2)"
-            flex
-            items-center
-            justify-center
-            text-white
-            text-xl
-            transition
-            duration-300
+
+            text-xl text-white rounded-full flex h-10 w-10 transition duration-300 items-center justify-center
             group-hover:bg="rgb(255 255 255 / 0.3)"
             aria-hidden="true"
           >
@@ -176,15 +156,13 @@ function handleEscape() {
 
           <!-- 实验室名称 -->
           <div>
-            <h1 text-white text-lg font-bold whitespace-nowrap>
+            <h1 text-lg text-white font-bold whitespace-nowrap>
               {{ config?.labName || (isLoading ? '加载中...' : '智能光谱分析实验室') }}
             </h1>
             <p
               v-if="config?.labNameEn || isLoading"
-              text-xs
-              hidden
-              sm:block
-              whitespace-nowrap
+
+              text-xs hidden whitespace-nowrap sm:block
               :style="{ color: 'rgba(255,255,255,0.6)' }"
             >
               {{ config?.labNameEn || '' }}
@@ -195,9 +173,8 @@ function handleEscape() {
         <!-- 桌面端导航 - 舒适间距 -->
         <nav
           class="hidden md:flex"
-          items-center
-          gap-2
-          flex-shrink-0
+
+          flex-shrink-0 gap-2 items-center
           role="navigation"
           aria-label="主导航"
         >
@@ -217,17 +194,12 @@ function handleEscape() {
         <button
           class="md:hidden"
           type="button"
-          w-10
-          h-10
-          rounded-lg
+
           bg="rgb(255 255 255 / 0.1)"
-          flex
-          items-center
-          justify-center
-          text-white
+
           hover:bg="rgb(255 255 255 / 0.2)"
-          transition
-          duration-200
+
+          text-white rounded-lg flex h-10 w-10 transition duration-200 items-center justify-center
           aria-label="切换导航菜单"
           :aria-expanded="isMobileMenuOpen"
           aria-controls="mobile-menu"
@@ -254,31 +226,21 @@ function handleEscape() {
       <div
         v-if="isMobileMenuOpen"
         id="mobile-menu"
-        fixed
-        inset-0
-        z-60
+
         bg="rgb(10 58 82 / 0.98)"
-        backdrop-blur-sm
-        lg:hidden
+
+        inset-0 fixed z-60 backdrop-blur-sm lg:hidden
         role="menu"
         @touchmove.prevent
       >
         <!-- 关闭按钮 -->
         <button
-          absolute
-          top-4
-          right-4
-          w-10
-          h-10
-          rounded-lg
+
           bg="rgb(255 255 255 / 0.1)"
-          flex
-          items-center
-          justify-center
-          text-white
+
           hover:bg="rgb(255 255 255 / 0.2)"
-          transition
-          duration-200
+
+          text-white rounded-lg flex h-10 w-10 transition duration-200 items-center right-4 top-4 justify-center absolute
           aria-label="关闭菜单"
           @click="closeMenu"
         >
@@ -287,38 +249,25 @@ function handleEscape() {
 
         <!-- 菜单内容 -->
         <div
-          flex
-          flex-col
-          items-center
-          justify-center
-          h-full
-          gap-4
-          px-4
-          py-8
+
           v-keyboard-navigation="{
             selector: 'a[role=menuitem]',
             onEscape: handleEscape,
-          }"
+          }" px-4 py-8 flex flex-col gap-4 h-full items-center
+          justify-center
         >
           <!-- Logo 区域 -->
-          <div text-center mb-8>
+          <div mb-8 text-center>
             <div
-              w-16
-              h-16
-              mx-auto
-              rounded-full
+
               bg="rgb(255 255 255 / 0.2)"
-              flex
-              items-center
-              justify-center
-              text-white
-              text-3xl
-              mb-4
+
+              text-3xl text-white mx-auto mb-4 rounded-full flex h-16 w-16 items-center justify-center
               aria-hidden="true"
             >
               <div i-carbon-microscope />
             </div>
-            <h2 text-white text-xl font-bold>
+            <h2 text-xl text-white font-bold>
               {{ config?.labName || '拉曼光谱实验室' }}
             </h2>
             <p text-sm :style="{ color: 'rgba(255,255,255,0.6)' }">
@@ -333,16 +282,11 @@ function handleEscape() {
               role="menuitem"
               :style="{ color: 'rgba(255,255,255,0.8)' }"
               class="hover:text-white!"
-              text-xl
-              font-medium
-              py-3
-              px-6
-              rounded-lg
-              transition
-              duration-200
+
+              text-xl font-medium px-6 py-3 rounded-lg transition duration-200
               :class="[
                 isActive(link.path)
-                  ? 'bg-white/20 text-white'
+                  ? 'bg-white/25 text-white font-bold border-b-2 border-white rounded-t-lg'
                   : 'hover:bg-white/10',
               ]"
               :aria-current="isActive(link.path) ? 'page' : undefined"

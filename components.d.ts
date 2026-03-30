@@ -11,6 +11,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    BackToTop: typeof import('./src/components/BackToTop.vue')['default']
     Card: typeof import('./src/components/Card.vue')['default']
     ErrorBoundary: typeof import('./src/components/ErrorBoundary.vue')['default']
     Header: typeof import('./src/components/Header.vue')['default']

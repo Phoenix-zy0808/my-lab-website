@@ -3,7 +3,7 @@ import type { Ref } from 'vue'
 /**
  * 滚动监听 Hook
  * 支持节流、滚动方向检测和滚动到顶部
- * 
+ *
  * @param {number} throttle - 节流时间（ms）
  * @returns {{ isScrolled: Ref<boolean>, scrollY: Ref<number>, scrollDirection: Ref<'up' | 'down' | null>, scrollToTop: () => void }}
  */

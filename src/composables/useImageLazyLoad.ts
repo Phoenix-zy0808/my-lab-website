@@ -1,7 +1,7 @@
 /**
  * 图片懒加载 Hook
  * 使用 Intersection Observer API 实现
- * 
+ *
  * @param {string} src - 图片真实地址
  * @param {string} placeholder - 占位图
  * @returns {{ src: Ref<string>, isLoaded: Ref<boolean>, imgRef: Ref<HTMLImageElement | null> }}
@@ -15,7 +15,8 @@ export function useImageLazyLoad(src: string, placeholder = '/images/gallery/pla
    * 加载图片
    */
   const loadImage = () => {
-    if (!src) return
+    if (!src)
+      return
 
     const img = new Image()
     img.onload = () => {

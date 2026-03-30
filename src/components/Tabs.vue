@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = defineProps<{
-  options: { key: string | number; label: string; icon?: string }[]
+  options: { key: string | number, label: string, icon?: string }[]
   modelValue: string | number
 }>()
 
@@ -19,13 +19,12 @@ const selected = computed({
     <button
       v-for="option in options"
       :key="option.key"
-      :class="[
-        'tab-btn',
+      class="tab-btn" :class="[
         selected === option.key ? 'tab-btn-active' : 'tab-btn-inactive',
       ]"
       @click="selected = option.key"
     >
-      <div v-if="option.icon" :class="option.icon" inline-block mr-2 />
+      <div v-if="option.icon" :class="option.icon" mr-2 inline-block />
       {{ option.label }}
     </button>
   </div>

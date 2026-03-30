@@ -72,5 +72,10 @@ export default defineConfig({
   // 构建配置 - 确保 PDF 资源正确处理
   build: {
     assetsInclude: ['**/*.pdf'],
+    // 生产环境移除 console（使用 esbuild）
+    minify: 'esbuild',
+    esbuild: {
+      drop: ['console', 'debugger'],
+    },
   },
 })

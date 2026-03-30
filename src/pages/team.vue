@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import type { TeamMember, TeamRole, SiteConfig } from '~/types'
+import type { SiteConfig, TeamMember, TeamRole } from '~/types'
 import { useSeoMeta } from '~/composables/useSeoMeta'
-import { useRouter } from 'vue-router'
 
 defineOptions({
   name: 'TeamPage',
@@ -13,7 +12,6 @@ useSeoMeta({
   description: '介绍实验室的教授、研究人员和学生团队',
 })
 
-const router = useRouter()
 const config = ref<SiteConfig | null>(null)
 
 // 加载站点配置
@@ -21,7 +19,8 @@ async function loadConfig() {
   try {
     const res = await fetch('/data/site-config.json')
     config.value = await res.json()
-  } catch (error) {
+  }
+  catch (error) {
     console.error('Failed to load site config:', error)
   }
 }
@@ -53,26 +52,21 @@ async function loadTeam() {
   try {
     const res = await fetch('/data/team.json')
     teamData.value = await res.json()
-    
+
     // 默认选中第一个成员
     const firstRole = roleCategories.find(r => teamData.value[r.key as TeamRole]?.length > 0)
     if (firstRole) {
       selectedRole.value = firstRole.key as TeamRole
       selectMember(teamData.value[firstRole.key as TeamRole][0])
     }
-  } catch (error) {
+  }
+  catch (error) {
     console.error('Failed to load team members:', error)
   }
 }
 
 function selectMember(member: TeamMember) {
   selectedMember.value = member
-}
-
-// 跳转到成员详情页
-function goToMemberDetail(memberId: string, role?: string) {
-  // 所有角色都跳转到 [id].vue
-  router.push(`/team/${memberId}`)
 }
 
 onMounted(() => {
@@ -86,7 +80,7 @@ const currentMembers = computed(() => {
 })
 
 // 角色映射
-const roleMap: Record<TeamMember['role'], { label: string; color: string }> = {
+const roleMap: Record<TeamMember['role'], { label: string, color: string }> = {
   pi: { label: 'PI', color: 'bg-primary text-white' },
   research_assistant: { label: '科研助理', color: 'bg-accent text-white' },
   master_student: { label: '硕士生', color: 'bg-purple-100 text-purple-700' },
@@ -106,8 +100,8 @@ const gradeOptions = computed(() => {
 
   const grades = currentMembers.value.map(member => member.grade || '未知年级')
   const uniqueGrades = [...new Set(grades)].sort((a, b) => {
-    const yearA = parseInt(a.replace('级', ''))
-    const yearB = parseInt(b.replace('级', ''))
+    const yearA = Number.parseInt(a.replace('级', ''))
+    const yearB = Number.parseInt(b.replace('级', ''))
     return yearB - yearA
   })
 
@@ -154,7 +148,8 @@ const currentMasterPageData = computed(() => {
 
 // 切换页码
 function changePage(page: number) {
-  if (page < 1 || page > totalPages.value) return
+  if (page < 1 || page > totalPages.value)
+    return
   currentPage.value = page
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
@@ -177,7 +172,7 @@ watch([selectedRole, selectedGrade], () => {
     />
 
     <!-- 主要内容 -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="mx-auto px-4 py-12 max-w-7xl lg:px-8 sm:px-6">
       <!-- Tabs 切换 -->
       <div class="mb-8">
         <div class="overflow-x-auto overflow-y-hidden">
@@ -185,11 +180,10 @@ watch([selectedRole, selectedGrade], () => {
             <button
               v-for="role in roleCategories"
               :key="role.key"
-              :class="[
-                'px-4 py-2 rounded-lg transition-all duration-200 whitespace-nowrap',
+              class="font-medium px-5 py-2.5 rounded-lg whitespace-nowrap transition-all duration-300" :class="[
                 selectedRole === role.key
-                  ? 'bg-primary text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
+                  ? 'bg-white text-primary border-2 border-primary shadow-md'
+                  : 'bg-white text-gray-600 border-2 border-gray-200 hover:border-secondary hover:text-secondary',
               ]"
               @click="selectedRole = role.key as TeamRole"
             >
@@ -200,14 +194,15 @@ watch([selectedRole, selectedGrade], () => {
       </div>
 
       <!-- 年级筛选（仅本科生和已毕业本科生显示） -->
-      <div v-if="selectedRole === 'undergraduate' || selectedRole === 'graduated_undergraduate'"
-           class="overflow-x-auto overflow-y-hidden mb-4">
+      <div
+        v-if="selectedRole === 'undergraduate' || selectedRole === 'graduated_undergraduate'"
+        class="mb-4 overflow-x-auto overflow-y-hidden"
+      >
         <div class="flex flex-nowrap gap-2 min-w-max justify-center">
           <button
             v-for="grade in gradeOptions"
             :key="grade.key"
-            :class="[
-              'px-3 py-1.5 text-sm rounded-lg transition-all duration-200 whitespace-nowrap',
+            class="text-sm px-3 py-1.5 rounded-lg whitespace-nowrap transition-all duration-200" :class="[
               selectedGrade === grade.key
                 ? 'bg-secondary text-white'
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
@@ -224,221 +219,209 @@ watch([selectedRole, selectedGrade], () => {
         <!-- PI 介绍 - 单栏布局 -->
         <template v-if="selectedRole === 'pi'">
           <!-- 白色卡片容器 -->
-          <div class="bg-white rounded-xl shadow-lg p-8">
-            <div class="max-w-5xl mx-auto">
+          <div class="p-8 rounded-xl bg-white shadow-lg">
+            <div class="mx-auto max-w-5xl">
               <div v-if="selectedMember" card>
-              <div class="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
-                <!-- 头像 -->
-                <div
-                  w-48
-                  h-48
-                  rounded-lg
-                  bg-gradient-to-br
-                  from-primary
-                  to-secondary
-                  flex
-                  items-center
-                  justify-center
-                  text-white
-                  text-5xl
-                  font-bold
-                  overflow-hidden
-                  shadow-lg
-                  flex-shrink-0
-                >
-                  <img
-                    v-if="selectedMember.photo"
-                    :src="selectedMember.photo"
-                    :alt="selectedMember.name"
-                    loading="lazy"
-                    decoding="async"
-                    w-full
-                    h-full
-                    object-cover
-                    @error="(e) => (e.target as HTMLImageElement).style.display = 'none'"
-                  />
-                  <span v-else>
-                    {{ selectedMember.name.charAt(0) }}
-                  </span>
-                </div>
-
-                <!-- 基本信息 -->
-                <div class="flex-1 text-center sm:text-left">
-                  <h2 class="text-2xl font-bold text-primary mb-2">
-                    {{ selectedMember.name }}
-                  </h2>
-                  <p class="text-lg text-secondary mb-4">
-                    {{ selectedMember.title }}
-                  </p>
-
-                  <!-- 联系方式 -->
-                  <div space-y-2 text-sm text-gray-600>
-                    <div v-if="selectedMember.email" flex items-center gap-2 justify-center sm:justify-start>
-                      <div i-carbon-email text-lg />
-                      <a :href="`mailto:${selectedMember.email}`" class="hover:text-primary">
-                        {{ selectedMember.email }}
-                      </a>
-                    </div>
-                    <div v-if="selectedMember.office" flex items-center gap-2 justify-center sm:justify-start>
-                      <div i-carbon-location text-lg />
-                      <span>{{ selectedMember.office }}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 个人简介 -->
-              <div class="mt-8">
-                <h3 class="text-xl font-semibold text-primary mb-4">
-                  个人简介
-                </h3>
-                <p class="text-gray-700 leading-relaxed">
-                  {{ selectedMember.bio }}
-                </p>
-              </div>
-
-              <!-- 教育经历 - 修改后：年份左对齐，纯文本，冒号结尾 -->
-              <div v-if="selectedMember.education?.length" class="mt-8">
-                <h3 class="text-xl font-semibold text-primary mb-4">
-                  教育经历
-                </h3>
-                <div class="space-y-3">
+                <div class="flex flex-col gap-6 items-center sm:flex-row sm:items-start">
+                  <!-- 头像 -->
                   <div
-                    v-for="(edu, index) in selectedMember.education"
-                    :key="index"
-                    class="flex flex-col sm:flex-row gap-2 sm:gap-4"
-                  >
-                    <!-- 时间 - 左对齐，固定宽度，冒号结尾，字体增大 -->
-                    <div class="sm:w-56 flex-shrink-0">
-                      <span class="text-base text-gray-700 font-medium whitespace-nowrap">
-                        {{ edu.time }}：
-                      </span>
-                    </div>
-                    <!-- 学校和专业 -->
-                    <div class="flex-1 min-w-0">
-                      <p class="text-gray-800">
-                        {{ edu.school }} - {{ edu.major }}
-                        <span class="text-sm text-gray-600 ml-2">
-                          {{ edu.degree }}
-                        </span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
-              <!-- 工作经历 - 修改后：年份左对齐，纯文本，冒号结尾 -->
-              <div v-if="selectedMember.workExperience?.length" class="mt-8">
-                <h3 class="text-xl font-semibold text-primary mb-4">
-                  工作经历
-                </h3>
-                <div class="space-y-3">
-                  <div
-                    v-for="(work, index) in selectedMember.workExperience"
-                    :key="index"
-                    class="flex flex-col sm:flex-row gap-2 sm:gap-4"
+                    text-5xl text-white font-bold rounded-lg flex flex-shrink-0 h-48 w-48 shadow-lg items-center justify-center overflow-hidden from-primary to-secondary bg-gradient-to-br
                   >
-                    <!-- 时间 - 左对齐，固定宽度，冒号结尾，字体增大 -->
-                    <div class="sm:w-56 flex-shrink-0">
-                      <span class="text-base text-gray-700 font-medium whitespace-nowrap">
-                        {{ work.time }}：
-                      </span>
-                    </div>
-                    <!-- 组织和职位 -->
-                    <div class="flex-1 min-w-0">
-                      <p class="text-gray-800">
-                        {{ work.organization }}
-                        <span v-if="work.position" class="text-sm text-gray-600 ml-2">
-                          {{ work.position }}
-                        </span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                    <img
+                      v-if="selectedMember.photo"
+                      :src="selectedMember.photo"
+                      :alt="selectedMember.name"
+                      loading="lazy"
+                      decoding="async"
 
-              <!-- 研究兴趣 -->
-              <div v-if="selectedMember.researchInterests?.length" class="mt-8">
-                <h3 class="text-xl font-semibold text-primary mb-4">
-                  研究兴趣
-                </h3>
-                <div flex flex-wrap gap-2>
-                  <span
-                    v-for="interest in selectedMember.researchInterests"
-                    :key="interest"
-                    class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm"
-                  >
-                    {{ interest }}
-                  </span>
-                </div>
-              </div>
-
-              <!-- 代表性论文 -->
-              <div v-if="selectedMember.publications?.length" class="mt-8">
-                <h3 class="text-xl font-semibold text-primary mb-4">
-                  代表性论文
-                </h3>
-                <ol class="space-y-2 text-sm text-gray-600 list-decimal list-inside">
-                  <li
-                    v-for="(pub, index) in selectedMember.publications"
-                    :key="index"
-                    class="leading-relaxed"
-                  >
-                    {{ pub }}
-                  </li>
-                </ol>
-              </div>
-
-              <!-- 科研项目 -->
-              <div v-if="selectedMember.researchProjects?.length" class="mt-8">
-                <h3 class="text-xl font-semibold text-primary mb-4">
-                  科研项目
-                </h3>
-                <div class="space-y-3">
-                  <div
-                    v-for="(project, index) in selectedMember.researchProjects"
-                    :key="index"
-                    class="leading-relaxed"
-                  >
-                    <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary text-white text-xs font-bold mr-2">
-                      {{ index + 1 }}
+                      h-full w-full object-cover
+                      @error="(e) => (e.target as HTMLImageElement).style.display = 'none'"
+                    >
+                    <span v-else>
+                      {{ selectedMember.name.charAt(0) }}
                     </span>
-                    <span class="font-medium text-gray-800">{{ project.name }}</span>，
-                    <span class="text-gray-600">{{ project.type }}</span>，
-                    <span class="text-gray-500">{{ project.role }}</span>
-                    <span v-if="project.grantNumber">，批号：{{ project.grantNumber }}</span>
-                    <span v-if="project.funding">，经费：{{ project.funding }}</span>
-                    <span class="text-gray-500">（{{ project.period }}）</span>
+                  </div>
+
+                  <!-- 基本信息 -->
+                  <div class="text-center flex-1 sm:text-left">
+                    <h2 class="text-2xl text-primary font-bold mb-2">
+                      {{ selectedMember.name }}
+                    </h2>
+                    <p class="text-lg text-secondary mb-4">
+                      {{ selectedMember.title }}
+                    </p>
+
+                    <!-- 联系方式 -->
+                    <div text-sm text-gray-600 space-y-2>
+                      <div v-if="selectedMember.email" flex gap-2 items-center justify-center sm:justify-start>
+                        <div i-carbon-email text-lg />
+                        <a :href="`mailto:${selectedMember.email}`" class="hover:text-primary">
+                          {{ selectedMember.email }}
+                        </a>
+                      </div>
+                      <div v-if="selectedMember.office" flex gap-2 items-center justify-center sm:justify-start>
+                        <div i-carbon-location text-lg />
+                        <span>{{ selectedMember.office }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 个人简介 -->
+                <div class="mt-8">
+                  <h3 class="text-xl text-primary font-semibold mb-4">
+                    个人简介
+                  </h3>
+                  <p class="text-gray-700 leading-relaxed">
+                    {{ selectedMember.bio }}
+                  </p>
+                </div>
+
+                <!-- 教育经历 - 修改后：年份左对齐，纯文本，冒号结尾 -->
+                <div v-if="selectedMember.education?.length" class="mt-8">
+                  <h3 class="text-xl text-primary font-semibold mb-4">
+                    教育经历
+                  </h3>
+                  <div class="space-y-3">
+                    <div
+                      v-for="(edu, index) in selectedMember.education"
+                      :key="index"
+                      class="flex flex-col gap-2 sm:flex-row sm:gap-4"
+                    >
+                      <!-- 时间 - 左对齐，固定宽度，冒号结尾，字体增大 -->
+                      <div class="flex-shrink-0 sm:w-56">
+                        <span class="text-base text-gray-700 font-medium whitespace-nowrap">
+                          {{ edu.time }}：
+                        </span>
+                      </div>
+                      <!-- 学校和专业 -->
+                      <div class="flex-1 min-w-0">
+                        <p class="text-gray-800">
+                          {{ edu.school }} - {{ edu.major }}
+                          <span class="text-sm text-gray-600 ml-2">
+                            {{ edu.degree }}
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 工作经历 - 修改后：年份左对齐，纯文本，冒号结尾 -->
+                <div v-if="selectedMember.workExperience?.length" class="mt-8">
+                  <h3 class="text-xl text-primary font-semibold mb-4">
+                    工作经历
+                  </h3>
+                  <div class="space-y-3">
+                    <div
+                      v-for="(work, index) in selectedMember.workExperience"
+                      :key="index"
+                      class="flex flex-col gap-2 sm:flex-row sm:gap-4"
+                    >
+                      <!-- 时间 - 左对齐，固定宽度，冒号结尾，字体增大 -->
+                      <div class="flex-shrink-0 sm:w-56">
+                        <span class="text-base text-gray-700 font-medium whitespace-nowrap">
+                          {{ work.time }}：
+                        </span>
+                      </div>
+                      <!-- 组织和职位 -->
+                      <div class="flex-1 min-w-0">
+                        <p class="text-gray-800">
+                          {{ work.organization }}
+                          <span v-if="work.position" class="text-sm text-gray-600 ml-2">
+                            {{ work.position }}
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 研究兴趣 -->
+                <div v-if="selectedMember.researchInterests?.length" class="mt-8">
+                  <h3 class="text-xl text-primary font-semibold mb-4">
+                    研究兴趣
+                  </h3>
+                  <div class="space-y-2">
+                    <div
+                      v-for="(interest, index) in selectedMember.researchInterests"
+                      :key="index"
+                      class="text-gray-700 leading-relaxed"
+                    >
+                      {{ interest }}
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 代表性论文 -->
+                <div v-if="selectedMember.publications?.length" class="mt-8">
+                  <h3 class="text-xl text-primary font-semibold mb-4">
+                    代表性论文
+                  </h3>
+                  <ol class="text-sm text-gray-600 list-decimal list-inside space-y-2">
+                    <li
+                      v-for="(pub, index) in selectedMember.publications"
+                      :key="index"
+                      class="leading-relaxed"
+                    >
+                      {{ pub }}
+                    </li>
+                  </ol>
+                </div>
+
+                <!-- 科研项目 -->
+                <div v-if="selectedMember.researchProjects?.length" class="mt-8">
+                  <h3 class="text-xl text-primary font-semibold mb-4">
+                    科研项目
+                  </h3>
+                  <div class="space-y-3">
+                    <div
+                      v-for="(project, index) in selectedMember.researchProjects"
+                      :key="index"
+                      class="leading-relaxed"
+                    >
+                      <span class="text-xs text-white font-bold mr-2 rounded-full bg-primary inline-flex h-6 w-6 items-center justify-center">
+                        {{ index + 1 }}
+                      </span>
+                      <span class="text-gray-800 font-medium">{{ project.name }}</span>，
+                      <span class="text-gray-600">{{ project.type }}</span>，
+                      <span class="text-gray-500">{{ project.role }}</span>
+                      <span v-if="project.grantNumber">，批号：{{ project.grantNumber }}</span>
+                      <span v-if="project.funding">，经费：{{ project.funding }}</span>
+                      <span class="text-gray-500">（{{ project.period }}）</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
         </template>
 
         <!-- 本科生和已毕业本科生 - 05 样式（垂直列表） -->
         <template v-else-if="selectedRole === 'undergraduate' || selectedRole === 'graduated_undergraduate'">
           <!-- 白色卡片容器 -->
-          <div class="bg-white rounded-xl shadow-lg p-8">
+          <div class="p-8 rounded-xl bg-white shadow-lg">
             <div class="space-y-8">
               <div
                 v-for="member in currentPageData"
                 :key="member.id"
-                class="flex flex-col sm:flex-row gap-6 pb-8 border-b border-gray-200 last:border-0 last:pb-0"
+                class="pb-8 border-b border-gray-200 flex flex-col gap-6 last:pb-0 last:border-0 sm:flex-row"
               >
                 <!-- 左侧头像（竖长方形） -->
-                <div class="sm:w-40 flex-shrink-0">
-                  <div class="w-32 sm:w-40 h-44 sm:h-52 rounded-lg overflow-hidden shadow-md bg-white mx-auto sm:mx-0">
+                <div class="flex-shrink-0 sm:w-40">
+                  <div class="mx-auto rounded-lg bg-white h-44 w-32 shadow-md overflow-hidden sm:mx-0 sm:h-52 sm:w-40">
                     <img
                       v-if="member.photo"
                       :src="member.photo"
-                      :alt="member.name"
-                      class="w-full h-full object-cover"
-                    />
+                      :alt="`${member.name} - ${member.title}`"
+                      class="h-full w-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    >
                     <div
                       v-else
-                      class="w-full h-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white text-3xl sm:text-4xl font-bold"
+                      class="text-3xl text-white font-bold flex h-full w-full items-center justify-center from-primary to-secondary bg-gradient-to-br sm:text-4xl"
                     >
                       {{ member.name.charAt(0) }}
                     </div>
@@ -449,14 +432,16 @@ watch([selectedRole, selectedGrade], () => {
                 <div class="flex-1">
                   <!-- 姓名 + 下划线 -->
                   <div class="mb-4 text-center sm:text-left">
-                    <h3 class="text-xl font-bold text-gray-800 border-b-2 border-primary pb-2 inline-block">
+                    <h3 class="text-xl text-gray-800 font-bold pb-2 border-b-2 border-primary inline-block">
                       {{ member.name }}
                     </h3>
                   </div>
 
                   <!-- 简介 + 邮箱 -->
                   <div class="text-gray-700 leading-relaxed">
-                    <p v-if="member.bio" class="mb-3">{{ member.bio }}</p>
+                    <p v-if="member.bio" class="mb-3">
+                      {{ member.bio }}
+                    </p>
                     <p v-if="member.email" class="text-sm">
                       邮箱：
                       <a :href="`mailto:${member.email}`" class="text-secondary hover:underline">
@@ -470,9 +455,9 @@ watch([selectedRole, selectedGrade], () => {
           </div>
 
           <!-- 分页控件 -->
-          <div v-if="totalPages > 1" class="flex justify-center gap-2 mt-8">
+          <div v-if="totalPages > 1" class="mt-8 flex gap-2 justify-center">
             <button
-              class="px-3 py-1.5 rounded-lg transition-all duration-200 bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              class="text-gray-600 px-3 py-1.5 rounded-lg bg-gray-100 transition-all duration-200 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
               :disabled="currentPage === 1"
               @click="changePage(currentPage - 1)"
             >
@@ -482,8 +467,7 @@ watch([selectedRole, selectedGrade], () => {
             <button
               v-for="page in totalPages"
               :key="page"
-              :class="[
-                'px-3 py-1.5 rounded-lg transition-all duration-200',
+              class="px-3 py-1.5 rounded-lg transition-all duration-200" :class="[
                 currentPage === page
                   ? 'bg-primary text-white'
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
@@ -494,7 +478,7 @@ watch([selectedRole, selectedGrade], () => {
             </button>
 
             <button
-              class="px-3 py-1.5 rounded-lg transition-all duration-200 bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              class="text-gray-600 px-3 py-1.5 rounded-lg bg-gray-100 transition-all duration-200 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
               :disabled="currentPage === totalPages"
               @click="changePage(currentPage + 1)"
             >
@@ -506,27 +490,27 @@ watch([selectedRole, selectedGrade], () => {
         <!-- 硕士生和已毕业硕士生 - 05 样式（垂直列表） -->
         <template v-else-if="selectedRole === 'master_student' || selectedRole === 'graduated_master'">
           <!-- 白色卡片容器 -->
-          <div class="bg-white rounded-xl shadow-lg p-8">
+          <div class="p-8 rounded-xl bg-white shadow-lg">
             <div class="space-y-8">
               <div
                 v-for="member in currentMasterPageData"
                 :key="member.id"
-                class="flex flex-col sm:flex-row gap-6 pb-8 border-b border-gray-200 last:border-0 last:pb-0"
+                class="pb-8 border-b border-gray-200 flex flex-col gap-6 last:pb-0 last:border-0 sm:flex-row"
               >
                 <!-- 左侧头像（竖长方形） -->
-                <div class="sm:w-40 flex-shrink-0">
-                  <div class="w-32 sm:w-40 h-44 sm:h-52 rounded-lg overflow-hidden shadow-md bg-white mx-auto sm:mx-0">
+                <div class="flex-shrink-0 sm:w-40">
+                  <div class="mx-auto rounded-lg bg-white h-44 w-32 shadow-md overflow-hidden sm:mx-0 sm:h-52 sm:w-40">
                     <img
                       v-if="member.photo"
                       :src="member.photo"
-                      :alt="member.name"
+                      :alt="`${member.name} - ${member.title}`"
                       loading="lazy"
                       decoding="async"
-                      class="w-full h-full object-cover"
-                    />
+                      class="h-full w-full object-cover"
+                    >
                     <div
                       v-else
-                      class="w-full h-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white text-3xl sm:text-4xl font-bold"
+                      class="text-3xl text-white font-bold flex h-full w-full items-center justify-center from-primary to-secondary bg-gradient-to-br sm:text-4xl"
                     >
                       {{ member.name.charAt(0) }}
                     </div>
@@ -537,14 +521,16 @@ watch([selectedRole, selectedGrade], () => {
                 <div class="flex-1">
                   <!-- 姓名 + 下划线 -->
                   <div class="mb-4 text-center sm:text-left">
-                    <h3 class="text-xl font-bold text-gray-800 border-b-2 border-primary pb-2 inline-block">
+                    <h3 class="text-xl text-gray-800 font-bold pb-2 border-b-2 border-primary inline-block">
                       {{ member.name }}
                     </h3>
                   </div>
 
                   <!-- 简介 + 邮箱 -->
                   <div class="text-gray-700 leading-relaxed">
-                    <p v-if="member.bio" class="mb-3">{{ member.bio }}</p>
+                    <p v-if="member.bio" class="mb-3">
+                      {{ member.bio }}
+                    </p>
                     <p v-if="member.email" class="text-sm">
                       邮箱：
                       <a :href="`mailto:${member.email}`" class="text-secondary hover:underline">
@@ -558,9 +544,9 @@ watch([selectedRole, selectedGrade], () => {
           </div>
 
           <!-- 分页控件 -->
-          <div v-if="totalPages > 1" class="flex justify-center gap-2 mt-8">
+          <div v-if="totalPages > 1" class="mt-8 flex gap-2 justify-center">
             <button
-              class="px-3 py-1.5 rounded-lg transition-all duration-200 bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              class="text-gray-600 px-3 py-1.5 rounded-lg bg-gray-100 transition-all duration-200 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
               :disabled="currentPage === 1"
               @click="changePage(currentPage - 1)"
             >
@@ -570,8 +556,7 @@ watch([selectedRole, selectedGrade], () => {
             <button
               v-for="page in totalPages"
               :key="page"
-              :class="[
-                'px-3 py-1.5 rounded-lg transition-all duration-200',
+              class="px-3 py-1.5 rounded-lg transition-all duration-200" :class="[
                 currentPage === page
                   ? 'bg-primary text-white'
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
@@ -582,7 +567,7 @@ watch([selectedRole, selectedGrade], () => {
             </button>
 
             <button
-              class="px-3 py-1.5 rounded-lg transition-all duration-200 bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              class="text-gray-600 px-3 py-1.5 rounded-lg bg-gray-100 transition-all duration-200 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
               :disabled="currentPage === totalPages"
               @click="changePage(currentPage + 1)"
             >
@@ -594,241 +579,222 @@ watch([selectedRole, selectedGrade], () => {
         <!-- 其他角色（副教授、科研助理）- 保留左右分栏布局 -->
         <template v-else>
           <!-- 白色卡片容器 -->
-          <div class="bg-white rounded-xl shadow-lg p-8">
-            <div grid grid-cols-1 lg:grid-cols-4 gap-6>
-            <!-- 左侧成员列表 -->
-            <div class="lg:col-span-1">
-              <div class="space-y-2">
-                <button
-                  v-for="member in currentMembers"
-                  :key="member.id"
-                  :class="[
-                    'w-full text-left px-4 py-3 rounded-lg transition-all duration-200 flex items-center gap-3',
-                    selectedMember?.id === member.id
-                      ? 'bg-primary text-white'
-                      : 'bg-gray-50 text-gray-700 hover:bg-gray-100',
-                  ]"
-                  @click="selectMember(member)"
-                >
-                  <!-- 小头像 -->
-                  <div
-                    w-10
-                    h-10
-                    rounded-full
-                    bg-gradient-to-br
-                    from-primary
-                    to-secondary
-                    flex
-                    items-center
-                    justify-center
-                    text-white
-                    text-sm
-                    font-bold
-                    flex-shrink-0
+          <div class="p-8 rounded-xl bg-white shadow-lg">
+            <div gap-6 grid grid-cols-1 lg:grid-cols-4>
+              <!-- 左侧成员列表 -->
+              <div class="lg:col-span-1">
+                <div class="space-y-2">
+                  <button
+                    v-for="member in currentMembers"
+                    :key="member.id"
+                    class="px-4 py-3 text-left rounded-lg flex gap-3 w-full transition-all duration-200 items-center" :class="[
+                      selectedMember?.id === member.id
+                        ? 'bg-primary text-white'
+                        : 'bg-gray-50 text-gray-700 hover:bg-gray-100',
+                    ]"
+                    @click="selectMember(member)"
                   >
-                    <span>{{ member.name.charAt(0) }}</span>
-                  </div>
-                  <div flex-1 min-w-0>
-                    <div text-sm font-medium truncate>{{ member.name }}</div>
-                    <div text-xs op="75" truncate>{{ member.title }}</div>
-                  </div>
-                </button>
+                    <!-- 小头像 -->
+                    <div
+
+                      text-sm text-white font-bold rounded-full flex flex-shrink-0 h-10 w-10 items-center justify-center from-primary to-secondary bg-gradient-to-br
+                    >
+                      <span>{{ member.name.charAt(0) }}</span>
+                    </div>
+                    <div flex-1 min-w-0>
+                      <div text-sm font-medium truncate>
+                        {{ member.name }}
+                      </div>
+                      <div text-xs op="75" truncate>
+                        {{ member.title }}
+                      </div>
+                    </div>
+                  </button>
+                </div>
               </div>
-            </div>
 
-            <!-- 右侧成员详情 -->
-            <div class="lg:col-span-3">
-              <div v-if="selectedMember" card>
-                <div class="flex flex-col sm:flex-row gap-6">
-                  <!-- 头像区域 -->
-                  <div class="sm:w-48 flex-shrink-0">
-                    <div
-                      w-48
-                      h-48
-                      rounded-lg
-                      bg-gradient-to-br
-                      from-primary
-                      to-secondary
-                      flex
-                      items-center
-                      justify-center
-                      text-white
-                      text-5xl
-                      font-bold
-                      overflow-hidden
-                      shadow-lg
-                      mx-auto sm:mx-0
-                    >
-                      <img
-                        v-if="selectedMember.photo"
-                        :src="selectedMember.photo"
-                        :alt="selectedMember.name"
-                        w-full
-                        h-full
-                        object-cover
-                        @error="(e) => (e.target as HTMLImageElement).style.display = 'none'"
-                      />
-                      <span v-else>
-                        {{ selectedMember.name.charAt(0) }}
-                      </span>
-                    </div>
+              <!-- 右侧成员详情 -->
+              <div class="lg:col-span-3">
+                <div v-if="selectedMember" card>
+                  <div class="flex flex-col gap-6 sm:flex-row">
+                    <!-- 头像区域 -->
+                    <div class="flex-shrink-0 sm:w-48">
+                      <div
 
-                    <!-- 角色标签 -->
-                    <div class="mt-4 text-center sm:text-left">
-                      <span
-                        text-sm
-                        px-3
-                        py-1
-                        rounded-full
-                        :class="roleMap[selectedMember.role].color"
+                        text-5xl text-white font-bold mx-auto rounded-lg flex h-48 w-48 shadow-lg items-center justify-center overflow-hidden from-primary to-secondary bg-gradient-to-br sm:mx-0
                       >
-                        {{ roleMap[selectedMember.role].label }}
-                      </span>
-                    </div>
-                  </div>
+                        <img
+                          v-if="selectedMember.photo"
+                          :src="selectedMember.photo"
+                          :alt="selectedMember.name"
 
-              <!-- 信息区域 -->
-              <div class="flex-1">
-                <!-- 姓名和标题 -->
-                <div class="mb-6">
-                  <h2 class="text-2xl font-bold text-primary mb-2">
-                    {{ selectedMember.name }}
-                  </h2>
-                  <p class="text-secondary">
-                    {{ selectedMember.title }}
-                  </p>
-                </div>
-
-                <!-- 联系方式 -->
-                <div class="mb-6 space-y-2 text-sm text-gray-600">
-                  <div v-if="selectedMember.email" flex items-center gap-2>
-                    <div i-carbon-email text-lg />
-                    <a :href="`mailto:${selectedMember.email}`" class="hover:text-primary">
-                      {{ selectedMember.email }}
-                    </a>
-                  </div>
-                  <div v-if="selectedMember.phone" flex items-center gap-2>
-                    <div i-carbon-phone text-lg />
-                    <span>{{ selectedMember.phone }}</span>
-                  </div>
-                  <div v-if="selectedMember.office" flex items-center gap-2>
-                    <div i-carbon-location text-lg />
-                    <span>{{ selectedMember.office }}</span>
-                  </div>
-                </div>
-
-                <!-- 个人简介 -->
-                <div v-if="selectedMember.bio" class="mb-6">
-                  <h3 class="text-lg font-semibold text-gray-800 mb-2 flex items-center gap-2">
-                    <div i-carbon-user text-lg />
-                    个人简介
-                  </h3>
-                  <p class="text-gray-600 leading-relaxed">
-                    {{ selectedMember.bio }}
-                  </p>
-                </div>
-
-                <!-- 研究兴趣 -->
-                <div v-if="selectedMember.researchInterests?.length" class="mb-6">
-                  <h3 class="text-lg font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                    <div i-carbon-microscope text-lg />
-                    研究兴趣
-                  </h3>
-                  <div class="flex flex-wrap gap-2">
-                    <span
-                      v-for="interest in selectedMember.researchInterests"
-                      :key="interest"
-                      text-xs
-                      px-3
-                      py-1
-                      rounded-full
-                      bg="oklch(65% 0.045 200.5)/10"
-                      text-secondary
-                    >
-                      {{ interest }}
-                    </span>
-                  </div>
-                </div>
-
-                <!-- 教育经历 -->
-                <div v-if="selectedMember.education?.length" class="mb-6">
-                  <h3 class="text-lg font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                    <div i-carbon-education text-lg />
-                    教育经历
-                  </h3>
-                  <div class="space-y-3">
-                    <div
-                      v-for="(edu, index) in selectedMember.education"
-                      :key="index"
-                      class="flex gap-3"
-                    >
-                      <div class="text-sm text-gray-500 w-32 flex-shrink-0">
-                        {{ edu.time }}
+                          h-full w-full object-cover
+                          @error="(e) => (e.target as HTMLImageElement).style.display = 'none'"
+                        >
+                        <span v-else>
+                          {{ selectedMember.name.charAt(0) }}
+                        </span>
                       </div>
-                      <div class="text-gray-700">
-                        <div class="font-medium">{{ edu.school }}</div>
-                        <div class="text-sm text-gray-500">
-                          {{ edu.major }} {{ edu.degree }}
+
+                      <!-- 角色标签 -->
+                      <div class="mt-4 text-center sm:text-left">
+                        <span
+                          text-sm
+                          px-3
+                          py-1
+                          rounded-full
+                          :class="roleMap[selectedMember.role].color"
+                        >
+                          {{ roleMap[selectedMember.role].label }}
+                        </span>
+                      </div>
+                    </div>
+
+                    <!-- 信息区域 -->
+                    <div class="flex-1">
+                      <!-- 姓名和标题 -->
+                      <div class="mb-6">
+                        <h2 class="text-2xl text-primary font-bold mb-2">
+                          {{ selectedMember.name }}
+                        </h2>
+                        <p class="text-secondary">
+                          {{ selectedMember.title }}
+                        </p>
+                      </div>
+
+                      <!-- 联系方式 -->
+                      <div class="text-sm text-gray-600 mb-6 space-y-2">
+                        <div v-if="selectedMember.email" flex gap-2 items-center>
+                          <div i-carbon-email text-lg />
+                          <a :href="`mailto:${selectedMember.email}`" class="hover:text-primary">
+                            {{ selectedMember.email }}
+                          </a>
+                        </div>
+                        <div v-if="selectedMember.phone" flex gap-2 items-center>
+                          <div i-carbon-phone text-lg />
+                          <span>{{ selectedMember.phone }}</span>
+                        </div>
+                        <div v-if="selectedMember.office" flex gap-2 items-center>
+                          <div i-carbon-location text-lg />
+                          <span>{{ selectedMember.office }}</span>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
 
-                <!-- 工作经历 -->
-                <div v-if="selectedMember.workExperience?.length" class="mb-6">
-                  <h3 class="text-lg font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                    <div i-carbon-id-management text-lg />
-                    工作经历
-                  </h3>
-                  <div class="space-y-3">
-                    <div
-                      v-for="(work, index) in selectedMember.workExperience"
-                      :key="index"
-                      class="flex gap-3"
-                    >
-                      <div class="text-sm text-gray-500 w-32 flex-shrink-0">
-                        {{ work.time }}
+                      <!-- 个人简介 -->
+                      <div v-if="selectedMember.bio" class="mb-6">
+                        <h3 class="text-lg text-gray-800 font-semibold mb-2 flex gap-2 items-center">
+                          <div i-carbon-user text-lg />
+                          个人简介
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                          {{ selectedMember.bio }}
+                        </p>
                       </div>
-                      <div class="text-gray-700">
-                        <div class="font-medium">{{ work.organization }}</div>
-                        <div class="text-sm text-gray-500">
-                          {{ work.position }}
+
+                      <!-- 研究兴趣 -->
+                      <div v-if="selectedMember.researchInterests?.length" class="mb-6">
+                        <h3 class="text-lg text-gray-800 font-semibold mb-3 flex gap-2 items-center">
+                          <div i-carbon-microscope text-lg />
+                          研究兴趣
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                          <span
+                            v-for="interest in selectedMember.researchInterests"
+                            :key="interest"
+
+                            bg="oklch(65% 0.045 200.5)/10"
+                            text-xs text-secondary px-3 py-1 rounded-full
+                          >
+                            {{ interest }}
+                          </span>
                         </div>
                       </div>
+
+                      <!-- 教育经历 -->
+                      <div v-if="selectedMember.education?.length" class="mb-6">
+                        <h3 class="text-lg text-gray-800 font-semibold mb-3 flex gap-2 items-center">
+                          <div i-carbon-education text-lg />
+                          教育经历
+                        </h3>
+                        <div class="space-y-3">
+                          <div
+                            v-for="(edu, index) in selectedMember.education"
+                            :key="index"
+                            class="flex gap-3"
+                          >
+                            <div class="text-sm text-gray-500 flex-shrink-0 w-32">
+                              {{ edu.time }}
+                            </div>
+                            <div class="text-gray-700">
+                              <div class="font-medium">
+                                {{ edu.school }}
+                              </div>
+                              <div class="text-sm text-gray-500">
+                                {{ edu.major }} {{ edu.degree }}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- 工作经历 -->
+                      <div v-if="selectedMember.workExperience?.length" class="mb-6">
+                        <h3 class="text-lg text-gray-800 font-semibold mb-3 flex gap-2 items-center">
+                          <div i-carbon-id-management text-lg />
+                          工作经历
+                        </h3>
+                        <div class="space-y-3">
+                          <div
+                            v-for="(work, index) in selectedMember.workExperience"
+                            :key="index"
+                            class="flex gap-3"
+                          >
+                            <div class="text-sm text-gray-500 flex-shrink-0 w-32">
+                              {{ work.time }}
+                            </div>
+                            <div class="text-gray-700">
+                              <div class="font-medium">
+                                {{ work.organization }}
+                              </div>
+                              <div class="text-sm text-gray-500">
+                                {{ work.position }}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- 代表性论文 -->
+                      <div v-if="selectedMember.publications?.length" class="mb-6">
+                        <h3 class="text-lg text-gray-800 font-semibold mb-3 flex gap-2 items-center">
+                          <div i-carbon-document text-lg />
+                          代表性论文
+                        </h3>
+                        <ol class="text-sm text-gray-600 list-decimal list-inside space-y-2">
+                          <li
+                            v-for="(pub, index) in selectedMember.publications"
+                            :key="index"
+                            class="leading-relaxed"
+                          >
+                            {{ pub }}
+                          </li>
+                        </ol>
+                      </div>
                     </div>
                   </div>
-                </div>
-
-                <!-- 代表性论文 -->
-                <div v-if="selectedMember.publications?.length" class="mb-6">
-                  <h3 class="text-lg font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                    <div i-carbon-document text-lg />
-                    代表性论文
-                  </h3>
-                  <ol class="space-y-2 text-sm text-gray-600 list-decimal list-inside">
-                    <li
-                      v-for="(pub, index) in selectedMember.publications"
-                      :key="index"
-                      class="leading-relaxed"
-                    >
-                      {{ pub }}
-                    </li>
-                  </ol>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        </div>
-      </div>
         </template>
       </div>
 
       <!-- 空状态 -->
-      <div v-if="currentMembers.length === 0" text-center py-12>
+      <div v-if="currentMembers.length === 0" py-12 text-center>
         <div i-carbon-account text-6xl text-gray-300 mb-4 />
-        <p text-gray-500>暂无成员信息</p>
+        <p text-gray-500>
+          暂无成员信息
+        </p>
       </div>
     </div>
   </div>

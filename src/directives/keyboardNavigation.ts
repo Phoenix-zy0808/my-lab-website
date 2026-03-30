@@ -1,4 +1,4 @@
-import type { Directive, DirectiveBinding } from 'vue'
+import type { Directive } from 'vue'
 
 interface KeyboardNavigationOptions {
   /** 可选的选择器，用于查找可聚焦元素 */
@@ -17,7 +17,7 @@ interface KeyboardNavigationOptions {
 /**
  * 键盘导航指令
  * 支持方向键、Enter、Escape 等键盘操作
- * 
+ *
  * @example
  * ```vue
  * <div v-keyboard-navigation="{ selector: 'button', onEnter: handleClick }">
@@ -40,7 +40,7 @@ export const vKeyboardNavigation: Directive<HTMLElement, KeyboardNavigationOptio
     const getFocusableElements = () => {
       const elements = el.querySelectorAll<HTMLElement>(selector)
       return Array.from(elements).filter(
-        (item) => !item.hasAttribute('disabled') && !item.getAttribute('aria-hidden'),
+        item => !item.hasAttribute('disabled') && !item.getAttribute('aria-hidden'),
       )
     }
 

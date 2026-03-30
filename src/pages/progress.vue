@@ -20,7 +20,8 @@ async function loadConfig() {
   try {
     const res = await fetch('/data/site-config.json')
     config.value = await res.json()
-  } catch (error) {
+  }
+  catch (error) {
     console.error('Failed to load site config:', error)
   }
 }
@@ -30,7 +31,8 @@ async function loadNews() {
   try {
     const res = await fetch('/data/progress.json')
     news.value = await res.json()
-  } catch (error) {
+  }
+  catch (error) {
     console.error('Failed to load news:', error)
   }
 }
@@ -53,7 +55,7 @@ onMounted(() => {
     />
 
     <!-- 主要内容 -->
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="mx-auto px-4 py-12 max-w-4xl lg:px-8 sm:px-6">
       <!-- 新闻列表 -->
       <div v-if="news.length > 0" class="space-y-4">
         <div
@@ -61,35 +63,32 @@ onMounted(() => {
           :key="item.id"
           class="py-4 border-b border-gray-100 last:border-0"
         >
-          <div class="flex items-start gap-3">
+          <div class="flex gap-3 items-start">
             <!-- 箭头图标 -->
             <div
-              class="w-5 h-5 rounded-full flex items-center justify-center text-secondary flex-shrink-0 mt-1"
+              class="text-secondary mt-1 rounded-full flex flex-shrink-0 h-5 w-5 items-center justify-center"
             >
               <div i-carbon-caret-right text-sm />
             </div>
 
             <!-- 内容 -->
             <div class="flex-1 min-w-0">
-              <div class="flex items-start justify-between gap-4">
-                <h3 class="text-base font-semibold text-gray-800">
+              <div class="flex gap-4 items-start justify-between">
+                <h3 class="text-base text-gray-800 font-semibold">
                   {{ item.title }}
                 </h3>
                 <span class="text-sm text-gray-500 flex-shrink-0">
                   {{ item.date }}
                 </span>
               </div>
-              <p v-if="item.summary" class="text-sm text-gray-600 mt-2 leading-relaxed">
+              <p v-if="item.summary" class="text-sm text-gray-600 leading-relaxed mt-2">
                 {{ item.summary }}
               </p>
               <div v-if="item.category" class="mt-2">
                 <span
-                  text-xs
-                  px-2
-                  py-1
-                  rounded
+
                   bg="oklch(65% 0.045 200.5)/10"
-                  text-secondary
+                  text-xs text-secondary px-2 py-1 rounded
                 >
                   {{ item.category }}
                 </span>
@@ -100,9 +99,11 @@ onMounted(() => {
       </div>
 
       <!-- 空状态 -->
-      <div v-else text-center py-12>
+      <div v-else py-12 text-center>
         <div i-carbon-calendar text-6xl text-gray-300 mb-4 />
-        <p text-gray-500>暂无新闻</p>
+        <p text-gray-500>
+          暂无新闻
+        </p>
       </div>
     </div>
   </div>

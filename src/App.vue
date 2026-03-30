@@ -1,14 +1,18 @@
 <script setup lang="ts">
+import ErrorBoundary from '~/components/ErrorBoundary.vue'
 // 全局样式和布局
 </script>
 
 <template>
-  <div min-h-screen flex flex-col bg-white>
+  <div bg-white flex flex-col min-h-screen>
     <Header />
     <main flex-1>
-      <RouterView />
+      <ErrorBoundary>
+        <RouterView />
+      </ErrorBoundary>
     </main>
     <TheFooter />
+    <BackToTop />
   </div>
 </template>
 

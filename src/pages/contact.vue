@@ -19,7 +19,8 @@ async function loadConfig() {
   try {
     const res = await fetch('/data/site-config.json')
     config.value = await res.json()
-  } catch (error) {
+  }
+  catch (error) {
     console.error('Failed to load site config:', error)
   }
 }
@@ -28,12 +29,8 @@ onMounted(() => {
   loadConfig()
 })
 
-// 地图配置（可选）
-const mapConfig = {
-  // 这里可以嵌入高德/百度/Google 地图 iframe
-  // 例如：<iframe src="https://uri.amap.com/..." ...></iframe>
-  url: '',
-}
+// 地图配置（使用图片）
+const mapImage = '/images/contact/map.jpg'
 </script>
 
 <template>
@@ -49,58 +46,46 @@ const mapConfig = {
 
     <!-- 主要内容 -->
     <div page-container py-12>
-      <div grid grid-cols-1 lg:grid-cols-2 gap-12>
+      <div gap-12 grid grid-cols-1 lg:grid-cols-2>
         <!-- 联系方式 -->
         <div>
-          <h2 text-2xl font-bold text-primary mb-6>
+          <h2 text-2xl text-primary font-bold mb-6>
             联系方式
           </h2>
 
           <div space-y-6>
             <!-- 地址 -->
-            <div flex items-start gap-4>
+            <div flex gap-4 items-start>
               <div
-                w-12
-                h-12
-                rounded-lg
+
                 bg="oklch(56% 0.062 207.6)/10"
-                flex
-                items-center
-                justify-center
-                text-primary
-                text-xl
-                flex-shrink-0
+
+                text-xl text-primary rounded-lg flex flex-shrink-0 h-12 w-12 items-center justify-center
               >
                 <div i-carbon-location />
               </div>
               <div>
-                <h3 text-lg font-semibold text-gray-800 mb-1>
+                <h3 text-lg text-gray-800 font-semibold mb-1>
                   地址
                 </h3>
                 <p text-gray-600>
-                  {{ config?.address || 'XX 省 XX 市 XX 路 XX 号' }}
+                  {{ config?.address || '浙江省杭州市 XX 路 XX 号' }}
                 </p>
               </div>
             </div>
 
             <!-- 邮箱 -->
-            <div flex items-start gap-4>
+            <div flex gap-4 items-start>
               <div
-                w-12
-                h-12
-                rounded-lg
+
                 bg="oklch(56% 0.062 207.6)/10"
-                flex
-                items-center
-                justify-center
-                text-primary
-                text-xl
-                flex-shrink-0
+
+                text-xl text-primary rounded-lg flex flex-shrink-0 h-12 w-12 items-center justify-center
               >
                 <div i-carbon-email />
               </div>
               <div>
-                <h3 text-lg font-semibold text-gray-800 mb-1>
+                <h3 text-lg text-gray-800 font-semibold mb-1>
                   邮箱
                 </h3>
                 <a
@@ -114,23 +99,17 @@ const mapConfig = {
             </div>
 
             <!-- 电话 -->
-            <div flex items-start gap-4>
+            <div flex gap-4 items-start>
               <div
-                w-12
-                h-12
-                rounded-lg
+
                 bg="oklch(56% 0.062 207.6)/10"
-                flex
-                items-center
-                justify-center
-                text-primary
-                text-xl
-                flex-shrink-0
+
+                text-xl text-primary rounded-lg flex flex-shrink-0 h-12 w-12 items-center justify-center
               >
                 <div i-carbon-phone />
               </div>
               <div>
-                <h3 text-lg font-semibold text-gray-800 mb-1>
+                <h3 text-lg text-gray-800 font-semibold mb-1>
                   电话
                 </h3>
                 <p text-gray-600>
@@ -141,7 +120,7 @@ const mapConfig = {
 
             <!-- 社交媒体 -->
             <div v-if="config?.socialLinks?.length">
-              <h3 text-lg font-semibold text-gray-800 mb-4>
+              <h3 text-lg text-gray-800 font-semibold mb-4>
                 关注我们
               </h3>
               <div flex gap-4>
@@ -151,19 +130,10 @@ const mapConfig = {
                   :href="link.url"
                   target="_blank"
                   rel="noopener noreferrer"
-                  w-10
-                  h-10
-                  rounded-lg
+
                   bg="oklch(56% 0.062 207.6)/10"
-                  flex
-                  items-center
-                  justify-center
-                  text-primary
-                  text-xl
-                  hover:bg-primary
-                  hover:text-white
-                  transition
-                  duration-200
+
+                  text-xl text-primary rounded-lg flex h-10 w-10 transition duration-200 items-center justify-center hover:text-white hover:bg-primary
                   :class="link.icon"
                   :title="link.platform"
                 />
@@ -172,113 +142,86 @@ const mapConfig = {
           </div>
         </div>
 
-        <!-- 地图（可选） -->
+        <!-- 地图（图片） -->
         <div>
-          <h2 text-2xl font-bold text-primary mb-6>
+          <h2 text-2xl text-primary font-bold mb-6>
             位置地图
           </h2>
           <div
-            w-full
-            h-80
-            rounded-lg
-            overflow-hidden
-            bg-gray-100
-            flex
-            items-center
-            justify-center
+
+            rounded-lg bg-gray-100 h-80 w-full overflow-hidden
           >
-            <!-- 如果有地图 URL，嵌入 iframe -->
-            <iframe
-              v-if="mapConfig.url"
-              :src="mapConfig.url"
-              w-full
-              h-full
-              border-0
-            />
-            <!-- 占位图 -->
-            <div v-else text-center text-gray-400>
-              <div i-carbon-map text-4xl mb-2 />
-              <p>地图加载中...</p>
-            </div>
+            <img
+              :src="mapImage"
+              alt="位置地图"
+
+              h-full w-full object-cover
+              @error="($event.target as HTMLImageElement).style.display = 'none'"
+            >
+          </div>
+          <!-- 地图链接（可选） -->
+          <div class="mt-4 text-center">
+            <a
+              href="https://uri.amap.com/marker?position=120.35071,30.30876&keyword=中国计量大学"
+              target="_blank"
+              rel="noopener noreferrer"
+
+              btn-secondary inline-flex gap-2 items-center
+            >
+              <div i-carbon-map />
+              在地图应用中打开
+            </a>
           </div>
         </div>
       </div>
 
       <!-- 留言表单（可选） -->
       <div mt-16>
-        <h2 text-2xl font-bold text-primary mb-6>
+        <h2 text-2xl text-primary font-bold mb-6>
           在线留言
         </h2>
         <div card>
           <form space-y-4>
-            <div grid grid-cols-1 md:grid-cols-2 gap-4>
+            <div gap-4 grid grid-cols-1 md:grid-cols-2>
               <div>
-                <label block text-sm font-medium text-gray-700 mb-2>
+                <label text-sm text-gray-700 font-medium mb-2 block>
                   姓名
                 </label>
                 <input
                   type="text"
-                  w-full
-                  px-4
-                  py-2
-                  border
-                  border-gray-300
-                  rounded-lg
-                  focus:ring-2
-                  focus:ring-primary
-                  focus:border-transparent
-                />
+
+                  px-4 py-2 border border-gray-300 rounded-lg w-full focus:border-transparent focus:ring-2 focus:ring-primary
+                >
               </div>
               <div>
-                <label block text-sm font-medium text-gray-700 mb-2>
+                <label text-sm text-gray-700 font-medium mb-2 block>
                   邮箱
                 </label>
                 <input
                   type="email"
-                  w-full
-                  px-4
-                  py-2
-                  border
-                  border-gray-300
-                  rounded-lg
-                  focus:ring-2
-                  focus:ring-primary
-                  focus:border-transparent
-                />
+
+                  px-4 py-2 border border-gray-300 rounded-lg w-full focus:border-transparent focus:ring-2 focus:ring-primary
+                >
               </div>
             </div>
             <div>
-              <label block text-sm font-medium text-gray-700 mb-2>
-                  主题
-                </label>
+              <label text-sm text-gray-700 font-medium mb-2 block>
+                主题
+              </label>
               <input
                 type="text"
-                w-full
-                px-4
-                py-2
-                border
-                border-gray-300
-                rounded-lg
-                focus:ring-2
-                focus:ring-primary
-                focus:border-transparent
-              />
+
+                px-4 py-2 border border-gray-300 rounded-lg w-full focus:border-transparent focus:ring-2 focus:ring-primary
+              >
             </div>
             <div>
-              <label block text-sm font-medium text-gray-700 mb-2>
+              <label text-sm text-gray-700 font-medium mb-2 block>
                 留言内容
               </label>
               <textarea
                 rows="5"
-                w-full
-                px-4
-                py-2
-                border
-                border-gray-300
-                rounded-lg
-                focus:ring-2
-                focus:ring-primary
-                focus:border-transparent
+
+                px-4 py-2 border border-gray-300 rounded-lg w-full focus:border-transparent focus:ring-2 focus:ring-primary
               />
             </div>
             <div>

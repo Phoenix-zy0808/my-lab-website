@@ -5,7 +5,7 @@ import { computed } from 'vue'
  * 设备检测 Hook
  * 用于检测当前设备的类型和特性
  *
- * @returns {Object} 设备检测信息
+ * @returns {object} 设备检测信息
  */
 export function useDeviceDetect() {
   // 基础断点
@@ -30,12 +30,18 @@ export function useDeviceDetect() {
 
   // 设备类型
   const deviceType = computed(() => {
-    if (isFoldable.value) return 'foldable'
-    if (isTablet.value) return 'tablet'
-    if (isDesktop.value) return 'desktop'
-    if (isSmallMobile.value) return 'small-mobile'
-    if (isLargeMobile.value) return 'large-mobile'
-    if (isMobile.value) return 'mobile'
+    if (isFoldable.value)
+      return 'foldable'
+    if (isTablet.value)
+      return 'tablet'
+    if (isDesktop.value)
+      return 'desktop'
+    if (isSmallMobile.value)
+      return 'small-mobile'
+    if (isLargeMobile.value)
+      return 'large-mobile'
+    if (isMobile.value)
+      return 'mobile'
     return 'unknown'
   })
 

@@ -21,13 +21,13 @@ export interface SocialLink {
 }
 
 // 团队成员相关
-export type TeamRole =
-  | 'pi'
-  | 'research_assistant'
-  | 'master_student'
-  | 'undergraduate'
-  | 'graduated_master'
-  | 'graduated_undergraduate'
+export type TeamRole
+  = | 'pi'
+    | 'research_assistant'
+    | 'master_student'
+    | 'undergraduate'
+    | 'graduated_master'
+    | 'graduated_undergraduate'
 
 export interface TeamMember {
   id: string

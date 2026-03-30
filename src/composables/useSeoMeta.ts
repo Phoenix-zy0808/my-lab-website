@@ -1,4 +1,4 @@
-import { watchEffect, onMounted } from 'vue'
+import { onMounted, watchEffect } from 'vue'
 
 /**
  * SEO Meta 标签配置接口
@@ -13,7 +13,7 @@ export interface UseSeoMetaInput {
 /**
  * 设置页面 SEO Meta 标签
  * 简化版本：只设置最基本的 title 和 description
- * 
+ *
  * @example
  * ```ts
  * useSeoMeta({
@@ -44,7 +44,8 @@ export function useSeoMeta(meta: UseSeoMetaInput) {
  * 设置或更新 meta 标签
  */
 function setMetaTag(name: string, content: string) {
-  if (typeof document === 'undefined') return
+  if (typeof document === 'undefined')
+    return
 
   let meta = document.querySelector(`meta[name="${name}"]`)
 

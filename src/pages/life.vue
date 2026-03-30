@@ -149,7 +149,7 @@ interface LazyImageState {
 const imageStates = reactive<Record<string, LazyImageState>>({})
 
 // 初始化图片状态
-galleryImages.forEach(img => {
+galleryImages.forEach((img) => {
   imageStates[img.id] = {
     isLoaded: false,
     isVisible: false,
@@ -159,10 +159,10 @@ galleryImages.forEach(img => {
 // Intersection Observer
 let observer: IntersectionObserver | null = null
 
-const initObserver = () => {
+function initObserver() {
   if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
     // 降级处理：全部标记为可见
-    Object.keys(imageStates).forEach(id => {
+    Object.keys(imageStates).forEach((id) => {
       imageStates[id].isVisible = true
     })
     return
@@ -185,8 +185,9 @@ const initObserver = () => {
   )
 }
 
-const registerImage = (el: HTMLImageElement | null, id: string) => {
-  if (!el || !observer) return
+function registerImage(el: HTMLImageElement | null, _id: string) {
+  if (!el || !observer)
+    return
   observer.observe(el)
 }
 
@@ -195,7 +196,8 @@ async function loadConfig() {
   try {
     const res = await fetch('/data/site-config.json')
     config.value = await res.json()
-  } catch (error) {
+  }
+  catch (error) {
     console.error('Failed to load site config:', error)
   }
 }
@@ -222,7 +224,7 @@ watch(
   () => {
     // 分类变化后，重新初始化观察
     setTimeout(() => {
-      filteredImages.value.forEach(img => {
+      filteredImages.value.forEach((img) => {
         const el = document.querySelector(`[data-image-id="${img.id}"]`) as HTMLImageElement
         if (el && observer && !imageStates[img.id].isVisible) {
           observer.observe(el)
@@ -255,11 +257,11 @@ watch(
       </div>
 
       <!-- 图片画廊 -->
-      <div v-if="filteredImages.length > 0" grid grid-cols-2 md:grid-cols-3 gap-4>
+      <div v-if="filteredImages.length > 0" gap-4 grid grid-cols-2 md:grid-cols-3>
         <div
           v-for="image in filteredImages"
           :key="image.id"
-          class="group relative overflow-hidden rounded-lg shadow-lg aspect-square"
+          class="group rounded-lg aspect-square shadow-lg relative overflow-hidden"
         >
           <!-- 使用原生 loading="lazy" + Intersection Observer -->
           <img
@@ -267,14 +269,11 @@ watch(
             :data-image-id="image.id"
             :src="imageStates[image.id].isVisible ? image.src : ''"
             :alt="image.title"
-            w-full
-            h-full
-            object-cover
+
             loading="lazy"
             decoding="async"
-            transition
-            duration-300
-            group-hover:scale-110
+
+            h-full w-full transition duration-300 object-cover group-hover:scale-110
             :class="{ 'opacity-0': !imageStates[image.id].isLoaded }"
             @load="imageStates[image.id].isLoaded = true"
             @error="(e) => {
@@ -282,23 +281,27 @@ watch(
               target.src = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23ddd%22 width=%22200%22 height=%22200%22/%3E%3Ctext fill=%22%23999%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22%3E暂无图片%3C/text%3E%3C/svg%3E'
               imageStates[image.id].isLoaded = true
             }"
-          />
+          >
           <!-- 加载占位 -->
           <div
             v-if="!imageStates[image.id].isLoaded"
-            class="absolute inset-0 bg-gray-100 flex items-center justify-center"
+            class="bg-gray-100 flex items-center inset-0 justify-center absolute"
           >
             <div class="i-carbon-image text-3xl text-gray-300" />
           </div>
 
           <!-- 遮罩层 -->
           <div
-            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300"
+            class="opacity-0 transition duration-300 inset-0 absolute from-black/80 to-transparent via-black/20 bg-gradient-to-t group-hover:opacity-100"
           >
-            <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
-              <h3 class="font-semibold text-lg">{{ image.title }}</h3>
-              <p class="text-sm text-gray-300">{{ image.description }}</p>
-              <div class="flex items-center gap-2 mt-2 text-xs text-gray-400">
+            <div class="text-white p-4 bottom-0 left-0 right-0 absolute">
+              <h3 class="text-lg font-semibold">
+                {{ image.title }}
+              </h3>
+              <p class="text-sm text-gray-300">
+                {{ image.description }}
+              </p>
+              <div class="text-xs text-gray-400 mt-2 flex gap-2 items-center">
                 <span>{{ image.category }}</span>
                 <span>•</span>
                 <span>{{ image.date }}</span>
@@ -309,9 +312,11 @@ watch(
       </div>
 
       <!-- 空状态 -->
-      <div v-else text-center py-12>
+      <div v-else py-12 text-center>
         <div i-carbon-image text-6xl text-gray-300 mb-4 />
-        <p text-gray-500>暂无图片</p>
+        <p text-gray-500>
+          暂无图片
+        </p>
       </div>
     </div>
   </div>
