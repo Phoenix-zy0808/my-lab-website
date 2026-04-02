@@ -5,23 +5,29 @@
       "name": "程芳",
       "title": "硕士生导师",
       "role": "pi",
-      "photo": "/images/team/chengfan.jpg",
+      "photo": "/images/team/chengfang.jpg",
       "email": "fangcheng@cjlu.edu.cn",
       "phone": "13041080376",
       "office": "中国计量大学材料与化学学院，方圆南楼A412-1",
-      "bio": "美国宾夕法尼亚州立大学与北京科技大学联合培养博士，现任中国计量大学材料与化学学院硕士生导师，兼任中华人民共和国人社部国家专业技术人才知识更新工程智库人工智能高级技术专家、教育部\"互联网+\"国赛评委、浙江省智能制造专家委员。主持及参与国家重点研发计划、国家自然科学基金等国家级科研项目 12 项，累计经费超 2500 万元。发表 SCI 论文 11 篇，合著专著 1 部。获 MS&T 2014 杰出报告奖、Acta Materialia 优秀审稿奖。主讲课程获评省一流课程",
+      "bio": "美国宾夕法尼亚州立大学与北京科技大学联合培养博士，现任中国计量大学材料与化学学院硕士生导师，兼任中华人民共和国人社部国家专业技术人才知识更新工程智库人工智能高级技术专家、教育部中国国际大学生创新创业大赛国赛评委、浙江省智能制造专家委员。主持及参与国家重点研发计划、国家自然科学基金等国家级科研项目 12 项，累计经费超 2500 万元。发表 SCI 论文 11 篇，美国发明专利1件，国内发明专利12件，软件著作权数量11项，合著专著 1 部。获 MS&T 2014 杰出报告奖，Acta Materialia 优秀审稿奖，国家地理信息科技进步奖二等奖，中国国际大学生创新大赛（2023）国家金奖（第一指导教师），第四届全球人工智能大会优秀策展奖，主讲课程《人工智能与材料计算》获评省一流课程，",
+      "honors": [
+        "MS&T 2014 杰出报告奖",
+        "Acta Materialia 优秀审稿奖",
+        "浙江省智能制造专家委员",
+        "教育部中国国际大学生创新创业大赛国赛评委"
+      ],
       "education": [
         {
-          "time": "2001—2005",
-          "school": "北京科技大学",
-          "degree": "学士",
-          "major": "材料科学与工程"
-        },
-        {
-          "time": "2005—2010",
+          "time": "2012.09-2014.11",
           "school": "美国宾夕法尼亚州立大学",
-          "degree": "博士",
-          "major": "人工智能"
+          "degree": "博士PHD",
+          "major": "人工智能交叉"
+        },
+         {
+          "time": "2011.09-2019.06",
+          "school": "北京科技大学",
+          "degree": "工学博士",
+          "major": "材料科学与工程"
         }
       ],
       "workExperience": [
@@ -66,6 +72,16 @@
         "Fang Cheng, LIU Ting-Yu, ZHANG Qi-Ren, QIAO Hai-Ling, ZHOU Xiu-Wen, Computer Simulation of Electronic Structures and Absorption Spectra for KMgF3 Crystal with Potassium Vacancy, Chinese Physics Letters,Vol.28,No.3,2011, Pages 036106 1-4.",
         "Wanyuan Gui, Junpin Lin, Fang Cheng, Guojian Hao, Liang Yongfeng, Zhang Hui, Effect of Electrolytic Plasma Processing on the Removal of Surface Scale for Fe6.5Si Alloy [J]. ChemistrySelect, 2(3), 2017, Pages 1158-1162.",
         "K Zheng, YR Wang, RY Wang, YL Wang, Fang Cheng, Microstructure, oxidation behavior and adhesion of a CoNiCrAlTaY coating deposited on a high Nb–TiAl alloy by plasma surface metallizing technique [J]. Vacuum, 179 (2020), 109494-109504.",
+        "Yangyang Wan, Fang Cheng*, Junpin Lin, Yongfeng Liang, Optimizing high-temperature oxidation resistance in Ti-50Al-W alloys A first-principles and machine learning approach, Materials & Design, 258 (2025) 114654-114675. (1区TOP期刊，IF=7.9).",
+        "Xingpu Zhang, Fang Cheng*, Yang Sun, Fei Teng, Shen, Hangyan Shen, Jiangwei Wang, Mechanism controlling the thickening of T1 phase in an Al–Cu–Li–Mg–Ag alloy, Materials Research Letters 2025, VOL. 13, NO. 12, 1208–1215 (1区，IF=7.9).",
+        "Dongxin Yao, Shuang Cao*, Piaopiao Wei, Peng Zhang, Fang Cheng, Yaxiong Zeng, Hailu Fu*, Zhongbiao Wu, Effcient catalytic decomposition of N2O over neodymium-modifed Co3O4 catalysts, Chemical Engineering Journal 521 (2025) ,167174- 167182 (1区TOP期刊，IF=12.08).",
+        "Xiao Ma, Fang Cheng*, Weiqing Huang, Lian He, Zixin Ye, Shimeng Yu, Ling Hu, Dingkun Yu and Hangyan Shen, First-Principles Calculations of the Mechanical Properties of Doped Cu3P Alloys, Materials 2024, 17, 1677-1691.",
+        "Shimeng Yu, Fang Cheng*, Lian He, Weigang Tang, Yongsheng Wang, Rong Chen, Chenglu Hu,Xiao Ma  and Hangyan Shen, Enhancing Wettability of Cu3P/Cu Systems through Doping with Si, Sn, and Zr Elements: Insights from First Principles Analysis, Materials, 2023, 16, 2492-2504.",
+        "N.X. Wang; Y.S. Wang; K. Zheng; J.Q. Zhi; B. Zhou; Y.X. Wu; Y.P. Xue; Y. Ma; Fang Cheng; J. Gao; H.J. Hei; X.M. Wang; S.W. Yu; Achieving CVD diamond films on Mo0.5(TiZrTaW)0.5 highly concentrated alloy for ultrastrong corrosion resistance, [J]. Surface and Coatings Technology, 2023, 466: 129620.",
+        "Bole Zhang, Cong Wang, Fang Cheng*, Lian He, Yuedan Zhang, Data-driven predictive modelling and impact analysis of global temperature rise, [C]. Fourth International Conference on Applied Mathematics, Modelling, and Intelligent Computing (CAMMIC 2024), 13219.",
+        "Bole Zhang, Cong Wang, Fang Cheng*, Lian He, and Danni Weng, Harmony in the Deep: Lamprey gender ratio model based on the Lotka-Volterra model, [C]. 2024 International Conference on Modeling, Natural Language Processing and Machine Learning (CMNM 2024), 10(2024), 238-244.",
+        "Bole Zhang, Cong Wang, Weidi Wang, Fang Cheng*, Lian He, A Silicon Element Qality Inspection System Based on YOLOv8, [C]. MLPRAE'24: Proceedings of the International Conference on Machine Learning, Pattern Recognition and Automation Engineering, 10(2024), 29-35.",
+        "Bole Zhang, Weidi Wang, Fang Cheng*, Xiang Lin, Credit Scoring Card Combination Optimization Model Based on QUBO, [C]. MLPRAE'24: Proceedings of the International Conference on Machine Learning, Pattern Recognition and Automation Engineering, 10(2024), 159-165,",
         "出版专著《材料相变及形变基础》（合著，第二），化工出版社，2022."
       ],
       "researchProjects": [
@@ -91,7 +107,7 @@
           "role": "主持",
           "grantNumber": "02301200006",
           "funding": "",
-          "period": "2019-2021"
+          "period": "2020-2021"
         },
         {
           "name": "无人驾驶中的深度学习和计算机视觉技术研究",
@@ -164,13 +180,94 @@
           "grantNumber": "2011CB60550",
           "funding": "3100 万",
           "period": "2016-2019"
+        },
+         {
+          "name": "基于人工智能技术的刀片材料基因关键工艺研究",
+          "type": "",
+          "role": "主持",
+          "grantNumber": "",
+          "funding": "150万",
+          "period": "2022-2024"
+        },
+         {
+          "name": "浙江省重大项目合金腐蚀机理研究",
+          "type": "",
+          "role": "参研",
+          "grantNumber": "",
+          "funding": "100万",
+          "period": "2024-2026"
+        },
+         {
+          "name": "轻质高温 TiAl 金属间化合物合金及制备加工的科学技术基础",
+          "type": "",
+          "role": "主持",
+          "grantNumber": "",
+          "funding": "150万",
+          "period": "2024-2025"
         }
       ],
       "joinDate": "2015-09"
     }
   ],
-  "research_assistant": [],
+  "research_assistant": [
+    {
+      "id": "grad-m-xx-1",
+      "name": "万杨阳",
+      "title": "硕士生",
+      "role": "graduated_master",
+      "grade": "未知",
+      "major": "未知",
+      "currentSchool": "浙江大学",
+      "currentProgram": "博士",
+      "photo": "/images/team/wanyangyang.jpg",
+      "bio": "万杨阳，浙江大学博士拟录取。",
+      "honors": [
+        "GRE 英语成绩证书",
+        "第二十二届中国研究生数学建模竞赛二等奖",
+        "第二十一届中国研究生数学建模竞赛二等奖",
+        "华数杯全国大学生数学建模竞赛三等奖",
+        "2025 年 APMCM 亚太地区大学生数学建模竞赛三等奖",
+        "天府杯全国大学生数学建模竞赛一等奖",
+        "中国大学生机械工程创新创意大赛三等奖",
+        "安徽省大学生物理学术竞赛三等奖",
+        "欧波同杯二等奖",
+        "浙江省恒源祥杯第七届浙江省大学生公共关系策划大赛三等奖",
+        "发明专利 1 项（一种便携式集球型羽毛球发球机，2026-03-23 初审合格）",
+        "授权软件著作权 5 项（易刷题软件、羽毛球发球机的夹球送球系统、羽毛球发球机的红外感应系统、羽毛球发球机的语音控制系统、饼干原料和面清洗装置一体化操作控制管理系统）",
+        "发表论文 4 篇（第一作者 1 篇：合成酯类油热氧化性能衰变规律研究，中科院二区 3 篇）"
+      ],
+      "graduationYear": "未知"
+    }
+  ],
   "master_student": [
+    {
+      "id": "grad-m-xx-1",
+      "name": "万杨阳",
+      "title": "硕士生",
+      "role": "graduated_master",
+      "grade": "未知",
+      "major": "未知",
+      "currentSchool": "浙江大学",
+      "currentProgram": "博士",
+      "photo": "/images/team/wanyangyang.jpg",
+      "bio": "万杨阳，浙江大学博士拟录取。",
+      "honors": [
+        "GRE 英语成绩证书",
+        "第二十二届中国研究生数学建模竞赛二等奖",
+        "第二十一届中国研究生数学建模竞赛二等奖",
+        "华数杯全国大学生数学建模竞赛三等奖",
+        "2025 年 APMCM 亚太地区大学生数学建模竞赛三等奖",
+        "天府杯全国大学生数学建模竞赛一等奖",
+        "中国大学生机械工程创新创意大赛三等奖",
+        "安徽省大学生物理学术竞赛三等奖",
+        "欧波同杯二等奖",
+        "浙江省恒源祥杯第七届浙江省大学生公共关系策划大赛三等奖",
+        "发明专利 1 项（一种便携式集球型羽毛球发球机，2026-03-23 初审合格）",
+        "授权软件著作权 5 项（易刷题软件、羽毛球发球机的夹球送球系统、羽毛球发球机的红外感应系统、羽毛球发球机的语音控制系统、饼干原料和面清洗装置一体化操作控制管理系统）",
+        "发表论文 4 篇（第一作者 1 篇：合成酯类油热氧化性能衰变规律研究，中科院二区 3 篇）"
+      ],
+      "graduationYear": "未知"
+    },
     {
       "id": "master-24-1",
       "name": "宁文灏",
@@ -179,8 +276,11 @@
       "grade": "2024 级",
       "major": "材料（联培）",
       "university": "景德镇陶瓷大学",
-      "photo": "/images/team/placeholder.svg",
+      "photo": "/images/team/ningwenhao.jpg",
       "bio": "宁文灏，2024 级材料专业硕士生（景德镇陶瓷大学联培）。",
+      "honors": [
+        "江西省研究生学业奖学金"
+      ],
       "researchInterests": [
         "材料"
       ],
@@ -193,8 +293,9 @@
       "role": "master_student",
       "grade": "2025 级",
       "major": "材料",
-      "photo": "/images/team/placeholder.svg",
+      "photo": "/images/team/baojinhang.jpg",
       "bio": "包锦航，2025 级材料专业硕士生。",
+      "honors": [],
       "researchInterests": [
         "材料"
       ],
@@ -223,8 +324,20 @@
       "major": "测控",
       "role": "undergraduate",
       "title": "本科生",
-      "photo": "/images/team/placeholder.svg",
+      "photo": "/images/team/yezixin.jpg",
       "bio": "2022级测控技术与仪器专业在读，北京航空航天大学测控拟录取。",
+      "honors": [
+        "国家奖学金",
+        "省政府奖学金",
+        "校一等奖学金",
+        "2024 挑战杯省金奖（量材智能）",
+        "2024 挑战杯省金奖（飞行器燃料）",
+        "2024 年度新苗人才计划项目结题优秀",
+        "授权发明专利 4 项（一种基于激光辅助等离子体增强 CVD 的 WC 硬质涂层及其制备方法等）",
+        "授权实用新型专利 1 项（一种电池匀热块 CN202421567906）",
+        "授权软件著作权 3 项（控制软件、数据分析软件、校准软件）",
+        "发表 SCI 论文 4 篇（Heat dissipation analysis 等，Materials 期刊 2024）"
+      ],
       "researchInterests": [
         "测控"
       ],
@@ -237,8 +350,13 @@
       "major": "计算机",
       "role": "undergraduate",
       "title": "本科生",
-      "photo": "/images/team/placeholder.svg",
+      "photo": "/images/team/zhangyuedan.jpg",
       "bio": "2022级计算机科学与技术专业在读，目前新加坡国立大学拟录取。",
+      "honors": [
+        "2025 浙江省'挑战杯'金奖",
+        "发表 EI 论文 1 篇（A comparative study of One-Hot, TF-IDF，收录于 EI-Compendex）",
+        "授权软件著作权 3 项（基于 PYQT 的人工智能驱动合金框架设计软件、基于 PYQT 的岩石拉曼光谱主成分分析可视化软件、基于 PYQT 的违法广告分类与检测软件 V1.0）"
+      ],
       "researchInterests": [
         "计算机"
       ],
@@ -251,8 +369,10 @@
       "major": "材料",
       "role": "undergraduate",
       "title": "本科生",
-      "photo": "/images/team/placeholder.svg",
+      "photo": "/images/team/lujiayi.jpg",
       "bio": "2022级材料专业在读，北京科技大学研究生拟录取。",
+      "honors": [
+      ],
       "researchInterests": [
         "材料"
       ],
@@ -265,8 +385,19 @@
       "major": "计算机科学与技术",
       "role": "undergraduate",
       "title": "本科生",
-      "photo": "/images/team/placeholder.svg",
-      "bio": "2023 级计算机科学与技术专业在读，曾获中国国际大学生创新大赛国银，浙江省挑战杯大学生课外科技作品竞赛省金奖，发表了EI论文2篇，中文核心论文1篇，4项发明专利，3篇软著。",
+      "photo": "/images/team/wendanni.jpg",
+      "bio": "2023 级计算机科学与技术专业在读。",
+      "honors": [
+        "中国国际大学生创新大赛全国银奖",
+        "浙江省挑战杯大学生课外科技作品竞赛省金奖",
+        "第十一届统计建模大赛省赛证书",
+        "长三角数学建模竞赛省二等奖",
+        "全国三维数字化创新设计大赛省二等奖",
+        "用英语讲中国故事杭州赛区二等奖",
+        "2025 年浙江省大学生科技创新活动计划暨新苗人才计划项目立项",
+        "授权发明专利 7 项（基于多视角特征交互的三维手部重建方法及装置等，含一作、三作、四作）",
+        "授权软件著作权 2 项"
+      ],
       "researchInterests": [
         "计算机"
       ],
@@ -281,6 +412,7 @@
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
       "bio": "2023级计算机专业在读。",
+      "honors": [],
       "researchInterests": [
         "计算机"
       ],
@@ -293,8 +425,16 @@
       "major": "材料",
       "role": "undergraduate",
       "title": "本科生",
-      "photo": "/images/team/placeholder.svg",
-      "bio": "2023级材料专业在读，共有9项发明专利，其中2项为第一发明人，2项软著，SCI论文4篇，曾获得2024中国国际大创赛国银，2025挑战杯省金奖",
+      "photo": "/images/team/weixinyu.jpg",
+      "bio": "2023级材料专业在读。",
+      "honors": [
+        "2024 中国国际大学生创新大赛全国银奖",
+        "2025 浙江省'挑战杯'省金奖",
+        "授权发明专利 7 项（一种双核 Cu2I2P2S2 型杂化半导体发光材料及其荧光传感应用等）",
+        "授权英国外观专利 1 项（带荧光防伪标识的钠电池组 6462895）",
+        "授权软件著作权 1 项（ICP-MS 检测数据智能化处理技术研究平台 V1.0，第一作者）",
+        "发表 SCI 论文 4 篇"
+      ],
       "researchInterests": [
         "材料"
       ],
@@ -307,8 +447,24 @@
       "major": "测控",
       "role": "undergraduate",
       "title": "本科生",
-      "photo": "/images/team/placeholder.svg",
+      "photo": "/images/team/wangheli.png",
       "bio": "2023级测控技术与仪器专业在读。",
+      "honors": [
+        "校二等奖学金",
+        "广州高铁计量奖学金",
+        "浙江省工图竞赛省二等奖",
+        "美国大学生数学建模竞赛全国一等奖",
+        "MathorCup 大数据竞赛全国金奖",
+        "MathorCup 数学应用挑战赛全国一等奖",
+        "全国大学生数学建模竞赛省级一等奖",
+        "长三角数学建模竞赛一等奖",
+        "亚太杯量子计算挑战赛全国一等奖",
+        "五一杯数学建模竞赛二等奖",
+        "2025 浙江省'挑战杯'省金奖",
+        "中国国际大学生创新大赛全国银奖",
+        "浙江省高等数学竞赛省三等奖",
+        "发表中文核心论文 1 篇（拉曼光谱智能化技术及其应用进展，化学分析计量 2025）"
+      ],
       "researchInterests": [
         "材料"
       ],
@@ -321,14 +477,23 @@
       "major": "测控",
       "role": "undergraduate",
       "title": "本科生",
-      "photo": "/images/team/placeholder.svg",
+      "photo": "/images/team/tangjiayin.png",
       "bio": "2023级测控技术与仪器专业在读。",
+      "honors": [
+        "参与新苗项目、省创项目各一项；",
+        "发明专利6项，其中授权3项、公开1项、受理1项",
+        "实用新型专利受理1项",
+        "发表论文1篇",
+        "授权软著3件",
+        "获得挑战杯大挑省金奖、挑战杯小挑省金奖",
+        "中国国际大学生创新大赛省银奖"
+      ],
       "researchInterests": [
         "测控"
       ],
       "joinDate": "2023-09"
     },
-     {
+    {
       "id": "ug-23-9",
       "name": "张垚",
       "grade": "2023 级",
@@ -337,6 +502,14 @@
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
       "bio": "2023级人工智能专业在读。",
+      "honors": [
+        "发明专利受理1项",
+        "软著授权3件",
+        "挑战杯“揭榜挂帅”国家二等奖",
+        "中国大学生服务外包创新创业大赛东部区域赛三等奖",
+        "浙江省智能机器人创意大赛省级三等奖",
+        "全国大学生数学建模竞赛省级三等奖"
+      ],
       "researchInterests": [
         "材料"
       ],
@@ -349,8 +522,11 @@
       "major": "人工智能",
       "role": "undergraduate",
       "title": "本科生",
-      "photo": "/images/team/placeholder.svg",
+      "photo": "/images/team/huhaojun.jpg",
       "bio": "2023级人工智能专业在读。",
+      "honors": [
+        "授权软件著作权 2 项"
+      ],
       "researchInterests": [
         "材料"
       ],
@@ -364,7 +540,10 @@
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "2023 级材料专业在读，曾获得浙江省大学生职业规划比赛金奖。",
+      "bio": "2023 级材料专业在读。",
+      "honors": [
+        "浙江省大学生职业规划比赛金奖"
+      ],
       "researchInterests": [
         "材料"
       ],
@@ -377,8 +556,15 @@
       "major": "材料",
       "role": "undergraduate",
       "title": "本科生",
-      "photo": "/images/team/placeholder.svg",
+      "photo": "/images/team/jiangchaozheng.jpeg",
       "bio": "2023 级计算机专业在读。",
+      "honors": [
+        "浙江省政府奖学金",
+        "2024 年度新苗人才计划项目结题优秀",
+        "2025 浙江省'挑战杯'省金奖",
+        "参与发明专利 5 项（一种基于波前 - 功率协同调控方法的梯度极化 BBO 晶体量子纠缠源装置等）",
+        "授权软件著作权 1 项（拉曼光谱智能分析系统，2024）"
+      ],
       "researchInterests": [
         "计算机"
       ],
@@ -391,14 +577,23 @@
       "major": "测控",
       "role": "undergraduate",
       "title": "本科生",
-      "photo": "/images/team/placeholder.svg",
-      "bio": "2023级测控技术与仪器专业在读，共有4项发明专利，2项软著，论文1篇，曾获得大创赛国铜、省银，2025挑战杯省金奖。",
+      "photo": "/images/team/tangjiali.jpg",
+      "bio": "2023级测控技术与仪器专业在读。",
+      "honors": [
+        "2024 年度新苗人才计划项目结题优秀",
+        "2025 浙江省'挑战杯'省金奖",
+        "全国大学生物理竞赛三等奖",
+        "浙江省物理竞赛三等奖",
+        "授权发明专利 3 项（量子长距离通信、量子拉曼光谱等，含受理、实审）",
+        "授权美国专利 1 项（量热 Declaration and Assignment）",
+        "授权实用新型专利 4 项（一种锂电池多模态热质特性同步检测装置等）",
+        "发表论文 1 篇（细化算法在干涉圆环参数提取中的作用）"
+      ],
       "researchInterests": [
         "测控"
       ],
       "joinDate": "2023-09"
     },
-
     {
       "id": "ug-23-11",
       "name": "邬丹妮",
@@ -406,8 +601,16 @@
       "major": "人工智能",
       "role": "undergraduate",
       "title": "本科生",
-      "photo": "/images/team/placeholder.svg",
+      "photo": "/images/team/wudanni.jpeg",
       "bio": "2023级人工智能专业在读。",
+      "honors": [
+        "2025 浙江省'挑战杯'省金奖",
+        "中国高校智能机器人创意大赛全国一等奖",
+        "浙江省智能机器人创意大赛省一等奖",
+        "浙江省大学生网络与信息安全竞赛网络安全知识挑战赛省二等奖",
+        "参与发明专利 7 项（一种基于 U-Net 架构的循环生成对抗网络的拉曼光谱降噪算法等）",
+        "授权软件著作权 2 项"
+      ],
       "researchInterests": [
         "人工智能"
       ],
@@ -420,8 +623,14 @@
       "major": "材料",
       "role": "undergraduate",
       "title": "本科生",
-      "photo": "/images/team/placeholder.svg",
-      "bio": "2023 级材料专业在读，共有5项软著，2项发明专利为第一发明人，曾获得中国国际大创赛全国金奖",
+      "photo": "/images/team/linken.jpg",
+      "bio": "2023 级材料专业在读。",
+      "honors": [
+        "中国国际大学生创新大赛全国金奖",
+        "授权软件著作权5项",
+        "授权发明专利2项（均为第一发明人）"
+
+      ],
       "researchInterests": [
         "材料"
       ],
@@ -434,8 +643,11 @@
       "major": "人工智能",
       "role": "undergraduate",
       "title": "本科生",
-      "photo": "/images/team/placeholder.svg",
+      "photo": "/images/team/wangkeyuan.jpg",
       "bio": "2023级南开大学人工智能专业在读。",
+      "honors": [
+        "参与软件著作权 1 项（ICP-MS 检测数据智能化处理技术研究平台 V1.0，2025）"
+      ],
       "researchInterests": [
         "人工智能"
       ],
@@ -448,8 +660,14 @@
       "major": "计算机",
       "role": "undergraduate",
       "title": "本科生",
-      "photo": "/images/team/placeholder.svg",
+      "photo": "/images/team/wangqipan.jpg",
       "bio": "2024级计算机科学与技术专业在读。",
+      "honors": [
+        "计算机软著1篇",
+        "第十九届“挑战杯”全国大学生课外学术科技作品竞赛“揭榜挂帅”国家二等奖",
+        "第十六届中国大学生服务外包创新创业大赛东部区域赛三等奖",
+        "2025年中国计量大学第八届理学院数学建模竞赛二等奖"
+      ],
       "researchInterests": [
         "计算机"
       ],
@@ -462,8 +680,12 @@
       "major": "计算机",
       "role": "undergraduate",
       "title": "本科生",
-      "photo": "/images/team/placeholder.svg",
+      "photo": "/images/team/wangmengyu.jpg",
       "bio": "2024级计算机科学与技术专业在读。",
+      "honors": [
+        "国家励志奖学金",
+        "校优秀三等奖学金"
+      ],
       "researchInterests": [
         "计算机"
       ],
@@ -476,8 +698,14 @@
       "major": "人工智能",
       "role": "undergraduate",
       "title": "本科生",
-      "photo": "/images/team/placeholder.svg",
+      "photo": "/images/team/liyuguo.jpg",
       "bio": "2024级人工智能专业在读。",
+      "honors": [
+        "计算机软著1篇",
+        "第十九届“挑战杯”全国大学生课外学术科技作品竞赛“揭榜挂帅”国家二等奖",
+        "全国大学生数学建模大赛三等奖",
+        "第五届长三角高校数学建模竞赛三等奖"
+      ],
       "researchInterests": [
         "人工智能"
       ],
@@ -492,6 +720,7 @@
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
       "bio": "2025级材料专业在读。",
+      "honors": [],
       "researchInterests": [
         "材料"
       ],
@@ -504,10 +733,43 @@
       "major": "材料",
       "role": "undergraduate",
       "title": "本科生",
-      "photo": "/images/team/placeholder.svg",
+      "photo": "/images/team/fangwenhao.jpg",
       "bio": "2025级材料专业在读。",
+      "honors": [
+        "2025年第七届全国高校计算机能力挑战赛三等奖"
+      ],
       "researchInterests": [
         "材料"
+      ],
+      "joinDate": "2025-09"
+    },
+    {
+      "id": "ug-25-3",
+      "name": "洪心悦",
+      "grade": "2025 级",
+      "major": "计算机",
+      "role": "undergraduate",
+      "title": "本科生",
+      "photo": "/images/team/hongxinyue.jpg",
+      "bio": "2025级计算机科学与技术专业在读。",
+      "honors": [],
+      "researchInterests": [
+        "计算机"
+      ],
+      "joinDate": "2025-09"
+    },
+    {
+      "id": "ug-25-4",
+      "name": "沈琪超",
+      "grade": "2025 级",
+      "major": "计算机",
+      "role": "undergraduate",
+      "title": "本科生",
+      "photo": "/images/team/shenqichao.jpg",
+      "bio": "2025级计算机科学与技术专业在读。",
+      "honors": [],
+      "researchInterests": [
+        "计算机"
       ],
       "joinDate": "2025-09"
     }
@@ -524,6 +786,7 @@
       "currentPosition": "央企员工",
       "photo": "/images/team/placeholder.svg",
       "bio": "邓新宇，2022级电子信息专业硕士毕业生，现就职于央企中石油。",
+      "honors": [],
       "graduationYear": "2025"
     },
     {
@@ -536,7 +799,12 @@
       "currentCompany": "杭州永瓷集团",
       "currentPosition": "工程师",
       "photo": "/images/team/placeholder.svg",
-      "bio": "刘明，2022级电子信息专业硕士毕业生，现就职于杭州永瓷集团。",
+      "bio": "刘明，2022级电子信息专业硕士毕业生，现就职于杭州永磁集团有限公司算法工程师。",
+      "honors": [
+        "中国国际大学生创新大赛国家金奖",
+        "挑战杯小挑金奖",
+        "研究生国家奖学金"
+      ],
       "graduationYear": "2025"
     },
     {
@@ -550,6 +818,7 @@
       "currentPosition": "工程师",
       "photo": "/images/team/placeholder.svg",
       "bio": "胡程璐，2022级电子信息专业硕士毕业生，现就职于大华集团。",
+      "honors": [],
       "graduationYear": "2025"
     },
     {
@@ -563,20 +832,8 @@
       "currentPosition": "工程师",
       "photo": "/images/team/placeholder.svg",
       "bio": "何胜豪，2019级材料专业硕士毕业生，现就职于吉利汽车。",
+      "honors": [],
       "graduationYear": "2022"
-    },
-    {
-      "id": "grad-m-xx-1",
-      "name": "万杨阳",
-      "title": "已毕业硕士",
-      "role": "graduated_master",
-      "grade": "未知",
-      "major": "未知",
-      "currentSchool": "浙江大学",
-      "currentProgram": "博士",
-      "photo": "/images/team/placeholder.svg",
-      "bio": "万杨阳，硕士毕业生，现于浙江大学攻读博士学位。",
-      "graduationYear": "未知"
     },
     {
       "id": "grad-m-20-1",
@@ -589,6 +846,7 @@
       "currentPosition": "研究员",
       "photo": "/images/team/placeholder.svg",
       "bio": "余施梦，2020级电子信息专业硕士毕业生，现就职于深圳空天信息研究院。",
+      "honors": [],
       "graduationYear": "2023"
     },
     {
@@ -600,8 +858,9 @@
       "major": "未知",
       "currentCompany": "杭州大和热磁电子",
       "currentPosition": "工程师",
-      "photo": "/images/team/placeholder.svg",
+      "photo": "/images/team/mengfangshi.jpg",
       "bio": "孟方实，2021级硕士毕业生，现就职于杭州大和热磁电子。",
+      "honors": [],
       "graduationYear": "2024"
     },
     {
@@ -616,6 +875,7 @@
       "currentPosition": "央企员工",
       "photo": "/images/team/placeholder.svg",
       "bio": "马骁，量新学院17级工试本科生，2021级电子信息硕士毕业生，现就职于央企中国移动。",
+      "honors": [],
       "graduationYear": "2024"
     }
   ],
@@ -628,8 +888,9 @@
       "currentSchool": "新加坡国立大学",
       "role": "graduated_undergraduate",
       "title": "已毕业本科",
-      "photo": "/images/team/placeholder.svg",
-      "bio": "鱼煊烨，2018级材料专业本科生，现于新加坡国立大学攻读硕士学位。"
+      "photo": "/images/team/yuxuanye.jpg",
+      "bio": "鱼煊烨，2018级材料专业本科生，现于新加坡国立大学攻读硕士学位。",
+      "honors": []
     },
     {
       "id": "grad-u-19-1",
@@ -639,8 +900,9 @@
       "currentSchool": "悉尼大学",
       "role": "graduated_undergraduate",
       "title": "已毕业本科",
-      "photo": "/images/team/placeholder.svg",
-      "bio": "徐伟龙，2019级计算机专业本科生，现于澳大利亚悉尼大学攻读硕士学位。"
+      "photo": "/images/team/xuweilong.jpg",
+      "bio": "徐伟龙，2019级计算机专业本科生，现于澳大利亚悉尼大学攻读硕士学位。",
+      "honors": []
     },
     {
       "id": "grad-u-20-1",
@@ -651,7 +913,8 @@
       "role": "graduated_undergraduate",
       "title": "已毕业本科",
       "photo": "/images/team/placeholder.svg",
-      "bio": "洪崟骅，2020 级材料专业本科生，现于新加坡国立大学攻读硕士学位。"
+      "bio": "洪崟骅，2020 级材料专业本科生，现于新加坡国立大学攻读硕士学位。",
+      "honors": []
     },
     {
       "id": "grad-u-20-2",
@@ -662,7 +925,8 @@
       "role": "graduated_undergraduate",
       "title": "已毕业本科",
       "photo": "/images/team/placeholder.svg",
-      "bio": "陈文宇，2020级材料专业本科生，现于浙江大学攻读AI集成电路硕士学位。"
+      "bio": "陈文宇，2020级材料专业本科生，现于浙江大学攻读AI集成电路硕士学位。",
+      "honors": []
     },
     {
       "id": "grad-u-21-1",
@@ -672,8 +936,25 @@
       "currentSchool": "英国布里斯托大学",
       "role": "graduated_undergraduate",
       "title": "已毕业本科",
-      "photo": "/images/team/placeholder.svg",
-      "bio": "章博乐，2021级计算机专业本科生，现于英国布里斯托大学攻读硕士学位。"
+      "photo": "/images/team/zhangbole.jpg",
+      "bio": "章博乐，2021级计算机专业本科生，现于英国布里斯托大学攻读硕士学位。",
+      "honors": [
+         "2024 挑战杯省金奖（量材智能）",
+         "第九届浙江省国际'互联网+'大学生创新创业大赛金奖（量材智能）",
+         "美国大学生数学建模竞赛二等奖",
+         "亚太杯数学建模竞赛二等奖",
+         "MathorCup 数学应用挑战赛全国一等奖",
+         "MathorCup 大数据竞赛全国金奖",
+         "全国大学生数学建模竞赛省级二等奖",
+         "长三角数学建模竞赛一等奖",
+         "第十五届数模校赛奖项",
+         "浙江省工图竞赛省级奖",
+         "ADPC 程序设计竞赛奖",
+         "大学生数学网络竞赛奖",
+         "浙游诗画省铜奖",
+         "网络安全竞赛奖",
+         "晶通杯竞赛奖"
+      ]
     },
     {
       "id": "grad-u-21-2",
@@ -684,7 +965,8 @@
       "role": "graduated_undergraduate",
       "title": "已毕业本科",
       "photo": "/images/team/placeholder.svg",
-      "bio": "黄泽宇，2021级计算机中外合作专业本科生，现于英国伦敦大学国王学院攻读硕士学位。"
+      "bio": "黄泽宇，2021级计算机中外合作专业本科生，现于英国伦敦大学国王学院攻读硕士学位。",
+      "honors": []
     },
     {
       "id": "grad-u-21-3",
@@ -696,7 +978,8 @@
       "role": "graduated_undergraduate",
       "title": "已毕业本科",
       "photo": "/images/team/placeholder.svg",
-      "bio": "刘琦，2021级材料专业本科生，现于华中科技大学攻读量子信息硕士学位。"
+      "bio": "刘琦，2021级材料专业本科生，现于华中科技大学攻读量子信息硕士学位。",
+      "honors": []
     }
   ]
 }
