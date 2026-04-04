@@ -214,7 +214,7 @@
       "id": "grad-m-xx-1",
       "name": "万杨阳",
       "title": "硕士生",
-      "role": "graduated_master",
+      "role": "master_student",
       "grade": "未知",
       "major": "未知",
       "currentSchool": "浙江大学",
@@ -244,7 +244,7 @@
       "id": "grad-m-xx-1",
       "name": "万杨阳",
       "title": "硕士生",
-      "role": "graduated_master",
+      "role": "master_student",
       "grade": "未知",
       "major": "未知",
       "currentSchool": "浙江大学",
@@ -311,7 +311,14 @@
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/placeholder.svg",
-      "bio": "2022级计算机专业在读，曾获得第七届智能机器人创意国赛一等奖，2024中国国际大创赛国银，2025浙江省挑战杯金奖，发表了1篇EI论文，6项发明专利，3项软著。",
+      "bio": "2022级计算机专业在读。",
+      "honors": [
+        "第七届智能机器人创意国赛一等奖",
+        "2024中国国际大创赛国银",
+        "2025浙江省挑战杯金奖",
+        "发表1篇EI论文",
+        "拥有6项发明专利和3项软著"
+      ],
       "researchInterests": [
         "计算机"
       ],
@@ -351,7 +358,7 @@
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/zhangyuedan.jpg",
-      "bio": "2022级计算机科学与技术专业在读，目前新加坡国立大学拟录取。",
+      "bio": "2022级计算机科学与技术专业在读，新加坡国立大学拟录取。",
       "honors": [
         "2025 浙江省'挑战杯'金奖",
         "发表 EI 论文 1 篇（A comparative study of One-Hot, TF-IDF，收录于 EI-Compendex）",
@@ -500,7 +507,7 @@
       "major": "人工智能",
       "role": "undergraduate",
       "title": "本科生",
-      "photo": "/images/team/placeholder.svg",
+      "photo": "/images/team/zhangyao.jpg",
       "bio": "2023级人工智能专业在读。",
       "honors": [
         "发明专利受理1项",
@@ -766,6 +773,21 @@
       "role": "undergraduate",
       "title": "本科生",
       "photo": "/images/team/shenqichao.jpg",
+      "bio": "2025级计算机科学与技术专业在读。",
+      "honors": [],
+      "researchInterests": [
+        "计算机"
+      ],
+      "joinDate": "2025-09"
+    },
+    {
+      "id": "ug-25-5",
+      "name": "洪悦真",
+      "grade": "2025 级",
+      "major": "计算机",
+      "role": "undergraduate",
+      "title": "本科生",
+      "photo": "/images/team/hongyuezhen.png",
       "bio": "2025级计算机科学与技术专业在读。",
       "honors": [],
       "researchInterests": [
