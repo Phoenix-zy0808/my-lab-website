@@ -179,6 +179,15 @@ const roleMap: Record<TeamMember['role'], { label: string, color: string }> = {
             </p>
           </div>
 
+          <!-- 荣誉 -->
+          <div v-if="member.honors?.length" class="mb-8">
+            <ul class="list-disc list-inside space-y-1.5">
+              <li v-for="(honor, index) in member.honors" :key="index" class="text-sm text-gray-600 leading-normal">
+                {{ honor }}
+              </li>
+            </ul>
+          </div>
+
           <!-- 教育经历 -->
           <div v-if="member.education?.length" class="mb-8">
             <h3 class="text-2xl text-primary font-semibold mb-4">

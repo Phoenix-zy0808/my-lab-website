@@ -437,7 +437,7 @@ watch([selectedRole, selectedGrade], () => {
                     </h3>
                   </div>
 
-                  <!-- 简介 + 邮箱 -->
+                  <!-- 简介 + 邮箱 + 荣誉 -->
                   <div class="text-gray-700 leading-relaxed">
                     <p v-if="member.bio" class="mb-3">
                       {{ member.bio }}
@@ -448,6 +448,11 @@ watch([selectedRole, selectedGrade], () => {
                         {{ member.email }}
                       </a>
                     </p>
+                    <ul v-if="member.honors?.length" class="mt-4 list-disc list-inside space-y-1.5">
+                      <li v-for="(honor, index) in member.honors" :key="index" class="text-sm text-gray-600 leading-normal">
+                        {{ honor }}
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -526,7 +531,7 @@ watch([selectedRole, selectedGrade], () => {
                     </h3>
                   </div>
 
-                  <!-- 简介 + 邮箱 -->
+                  <!-- 简介 + 邮箱 + 荣誉 -->
                   <div class="text-gray-700 leading-relaxed">
                     <p v-if="member.bio" class="mb-3">
                       {{ member.bio }}
@@ -537,6 +542,11 @@ watch([selectedRole, selectedGrade], () => {
                         {{ member.email }}
                       </a>
                     </p>
+                    <ul v-if="member.honors?.length" class="mt-4 list-disc list-inside space-y-1.5">
+                      <li v-for="(honor, index) in member.honors" :key="index" class="text-sm text-gray-600 leading-normal">
+                        {{ honor }}
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>

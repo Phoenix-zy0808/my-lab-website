@@ -132,6 +132,15 @@ function goBack() {
           </p>
         </div>
 
+        <!-- 荣誉 -->
+        <div v-if="member.honors?.length" class="mb-10">
+          <ul class="list-disc list-inside space-y-1.5">
+            <li v-for="(honor, index) in member.honors" :key="index" class="text-sm text-gray-600 leading-normal">
+              {{ honor }}
+            </li>
+          </ul>
+        </div>
+
         <!-- 研究兴趣 -->
         <div v-if="member.researchInterests?.length" class="mb-10">
           <h2 class="text-lg text-gray-800 font-bold mb-4">
