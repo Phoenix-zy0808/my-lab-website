@@ -79,16 +79,6 @@ const currentMembers = computed(() => {
   return teamData.value[selectedRole.value] || []
 })
 
-// 角色映射
-const roleMap: Record<TeamMember['role'], { label: string, color: string }> = {
-  pi: { label: 'PI', color: 'bg-primary text-white' },
-  research_assistant: { label: '科研助理', color: 'bg-accent text-white' },
-  master_student: { label: '硕士生', color: 'bg-purple-100 text-purple-700' },
-  undergraduate: { label: '本科生', color: 'bg-indigo-100 text-indigo-700' },
-  graduated_master: { label: '已毕业硕士', color: 'bg-gray-100 text-gray-700' },
-  graduated_undergraduate: { label: '已毕业本科', color: 'bg-gray-100 text-gray-700' },
-}
-
 // 年级筛选（仅对本科生和已毕业本科生显示）
 const selectedGrade = ref<string>('all')
 
@@ -586,211 +576,61 @@ watch([selectedRole, selectedGrade], () => {
           </div>
         </template>
 
-        <!-- 其他角色（副教授、科研助理）- 保留左右分栏布局 -->
-        <template v-else>
+        <!-- 科研助理 - 垂直列表布局 -->
+        <template v-else-if="selectedRole === 'research_assistant'">
           <!-- 白色卡片容器 -->
           <div class="p-8 rounded-xl bg-white shadow-lg">
-            <div gap-6 grid grid-cols-1 lg:grid-cols-4>
-              <!-- 左侧成员列表 -->
-              <div class="lg:col-span-1">
-                <div class="space-y-2">
-                  <button
-                    v-for="member in currentMembers"
-                    :key="member.id"
-                    class="px-4 py-3 text-left rounded-lg flex gap-3 w-full transition-all duration-200 items-center" :class="[
-                      selectedMember?.id === member.id
-                        ? 'bg-primary text-white'
-                        : 'bg-gray-50 text-gray-700 hover:bg-gray-100',
-                    ]"
-                    @click="selectMember(member)"
-                  >
-                    <!-- 小头像 -->
-                    <div
-
-                      text-sm text-white font-bold rounded-full flex flex-shrink-0 h-10 w-10 items-center justify-center from-primary to-secondary bg-gradient-to-br
+            <div class="space-y-8">
+              <div
+                v-for="member in currentMembers"
+                :key="member.id"
+                class="pb-8 border-b border-gray-200 flex flex-col gap-6 last:pb-0 last:border-0 sm:flex-row"
+              >
+                <!-- 左侧头像（竖长方形） -->
+                <div class="flex-shrink-0 sm:w-40">
+                  <div class="mx-auto rounded-lg bg-white h-44 w-32 shadow-md overflow-hidden sm:mx-0 sm:h-52 sm:w-40">
+                    <img
+                      v-if="member.photo"
+                      :src="member.photo"
+                      :alt="`${member.name} - ${member.title}`"
+                      class="h-full w-full object-cover"
+                      loading="lazy"
+                      decoding="async"
                     >
-                      <span>{{ member.name.charAt(0) }}</span>
+                    <div
+                      v-else
+                      class="text-3xl text-white font-bold flex h-full w-full items-center justify-center from-primary to-secondary bg-gradient-to-br sm:text-4xl"
+                    >
+                      {{ member.name.charAt(0) }}
                     </div>
-                    <div flex-1 min-w-0>
-                      <div text-sm font-medium truncate>
-                        {{ member.name }}
-                      </div>
-                      <div text-xs op="75" truncate>
-                        {{ member.title }}
-                      </div>
-                    </div>
-                  </button>
+                  </div>
                 </div>
-              </div>
 
-              <!-- 右侧成员详情 -->
-              <div class="lg:col-span-3">
-                <div v-if="selectedMember" card>
-                  <div class="flex flex-col gap-6 sm:flex-row">
-                    <!-- 头像区域 -->
-                    <div class="flex-shrink-0 sm:w-48">
-                      <div
+                <!-- 右侧信息 -->
+                <div class="flex-1">
+                  <!-- 姓名 + 下划线 -->
+                  <div class="mb-4 text-center sm:text-left">
+                    <h3 class="text-xl text-gray-800 font-bold pb-2 border-b-2 border-primary inline-block">
+                      {{ member.name }}
+                    </h3>
+                  </div>
 
-                        text-5xl text-white font-bold mx-auto rounded-lg flex h-48 w-48 shadow-lg items-center justify-center overflow-hidden from-primary to-secondary bg-gradient-to-br sm:mx-0
-                      >
-                        <img
-                          v-if="selectedMember.photo"
-                          :src="selectedMember.photo"
-                          :alt="selectedMember.name"
-
-                          h-full w-full object-cover
-                          @error="(e) => (e.target as HTMLImageElement).style.display = 'none'"
-                        >
-                        <span v-else>
-                          {{ selectedMember.name.charAt(0) }}
-                        </span>
-                      </div>
-
-                      <!-- 角色标签 -->
-                      <div class="mt-4 text-center sm:text-left">
-                        <span
-                          text-sm
-                          px-3
-                          py-1
-                          rounded-full
-                          :class="roleMap[selectedMember.role].color"
-                        >
-                          {{ roleMap[selectedMember.role].label }}
-                        </span>
-                      </div>
-                    </div>
-
-                    <!-- 信息区域 -->
-                    <div class="flex-1">
-                      <!-- 姓名和标题 -->
-                      <div class="mb-6">
-                        <h2 class="text-2xl text-primary font-bold mb-2">
-                          {{ selectedMember.name }}
-                        </h2>
-                        <p class="text-secondary">
-                          {{ selectedMember.title }}
-                        </p>
-                      </div>
-
-                      <!-- 联系方式 -->
-                      <div class="text-sm text-gray-600 mb-6 space-y-2">
-                        <div v-if="selectedMember.email" flex gap-2 items-center>
-                          <div i-carbon-email text-lg />
-                          <a :href="`mailto:${selectedMember.email}`" class="hover:text-primary">
-                            {{ selectedMember.email }}
-                          </a>
-                        </div>
-                        <div v-if="selectedMember.phone" flex gap-2 items-center>
-                          <div i-carbon-phone text-lg />
-                          <span>{{ selectedMember.phone }}</span>
-                        </div>
-                        <div v-if="selectedMember.office" flex gap-2 items-center>
-                          <div i-carbon-location text-lg />
-                          <span>{{ selectedMember.office }}</span>
-                        </div>
-                      </div>
-
-                      <!-- 个人简介 -->
-                      <div v-if="selectedMember.bio" class="mb-6">
-                        <h3 class="text-lg text-gray-800 font-semibold mb-2 flex gap-2 items-center">
-                          <div i-carbon-user text-lg />
-                          个人简介
-                        </h3>
-                        <p class="text-gray-600 leading-relaxed">
-                          {{ selectedMember.bio }}
-                        </p>
-                      </div>
-
-                      <!-- 研究兴趣 -->
-                      <div v-if="selectedMember.researchInterests?.length" class="mb-6">
-                        <h3 class="text-lg text-gray-800 font-semibold mb-3 flex gap-2 items-center">
-                          <div i-carbon-microscope text-lg />
-                          研究兴趣
-                        </h3>
-                        <div class="flex flex-wrap gap-2">
-                          <span
-                            v-for="interest in selectedMember.researchInterests"
-                            :key="interest"
-
-                            bg="oklch(65% 0.045 200.5)/10"
-                            text-xs text-secondary px-3 py-1 rounded-full
-                          >
-                            {{ interest }}
-                          </span>
-                        </div>
-                      </div>
-
-                      <!-- 教育经历 -->
-                      <div v-if="selectedMember.education?.length" class="mb-6">
-                        <h3 class="text-lg text-gray-800 font-semibold mb-3 flex gap-2 items-center">
-                          <div i-carbon-education text-lg />
-                          教育经历
-                        </h3>
-                        <div class="space-y-3">
-                          <div
-                            v-for="(edu, index) in selectedMember.education"
-                            :key="index"
-                            class="flex gap-3"
-                          >
-                            <div class="text-sm text-gray-500 flex-shrink-0 w-32">
-                              {{ edu.time }}
-                            </div>
-                            <div class="text-gray-700">
-                              <div class="font-medium">
-                                {{ edu.school }}
-                              </div>
-                              <div class="text-sm text-gray-500">
-                                {{ edu.major }} {{ edu.degree }}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- 工作经历 -->
-                      <div v-if="selectedMember.workExperience?.length" class="mb-6">
-                        <h3 class="text-lg text-gray-800 font-semibold mb-3 flex gap-2 items-center">
-                          <div i-carbon-id-management text-lg />
-                          工作经历
-                        </h3>
-                        <div class="space-y-3">
-                          <div
-                            v-for="(work, index) in selectedMember.workExperience"
-                            :key="index"
-                            class="flex gap-3"
-                          >
-                            <div class="text-sm text-gray-500 flex-shrink-0 w-32">
-                              {{ work.time }}
-                            </div>
-                            <div class="text-gray-700">
-                              <div class="font-medium">
-                                {{ work.organization }}
-                              </div>
-                              <div class="text-sm text-gray-500">
-                                {{ work.position }}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- 代表性论文 -->
-                      <div v-if="selectedMember.publications?.length" class="mb-6">
-                        <h3 class="text-lg text-gray-800 font-semibold mb-3 flex gap-2 items-center">
-                          <div i-carbon-document text-lg />
-                          代表性论文
-                        </h3>
-                        <ol class="text-sm text-gray-600 list-decimal list-inside space-y-2">
-                          <li
-                            v-for="(pub, index) in selectedMember.publications"
-                            :key="index"
-                            class="leading-relaxed"
-                          >
-                            {{ pub }}
-                          </li>
-                        </ol>
-                      </div>
-                    </div>
+                  <!-- 简介 + 邮箱 + 荣誉 -->
+                  <div class="text-gray-700 leading-relaxed">
+                    <p v-if="member.bio" class="mb-3">
+                      {{ member.bio }}
+                    </p>
+                    <p v-if="member.email" class="text-sm">
+                      邮箱：
+                      <a :href="`mailto:${member.email}`" class="text-secondary hover:underline">
+                        {{ member.email }}
+                      </a>
+                    </p>
+                    <ul v-if="member.honors?.length" class="mt-4 list-disc list-inside space-y-1.5">
+                      <li v-for="(honor, index) in member.honors" :key="index" class="text-sm text-gray-600 leading-normal">
+                        {{ honor }}
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
