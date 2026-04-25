@@ -6,16 +6,14 @@ defineOptions({
   name: 'ResearchPage',
 })
 
-// SEO Meta
 useSeoMeta({
   title: '研究方向',
-  description: '探索我们在拉曼光谱领域的前沿研究方向',
+  description: '围绕智能光谱分析、光谱检测系统、算法建模与交叉智能应用，开展面向实际问题的研究。',
 })
 
 const config = ref<SiteConfig | null>(null)
 const directions = ref<ResearchDirection[]>([])
 
-// 加载站点配置
 async function loadConfig() {
   try {
     const res = await fetch('/data/site-config.json')
@@ -26,7 +24,6 @@ async function loadConfig() {
   }
 }
 
-// 加载研究方向数据
 async function loadResearch() {
   try {
     const res = await fetch('/data/research.json')
@@ -45,105 +42,105 @@ onMounted(() => {
 
 <template>
   <div>
-    <!-- 页面头部 -->
     <Hero
       size="medium"
       :background="config?.heroImage"
-      :title="config?.labName || '智能光谱分析实验室'"
-      :subtitle="config?.labNameEn || 'Laboratory for Intelligent Spectral Analysis'"
-      :description="config?.description"
+      title="智能光谱分析与材料信息课题组"
+      subtitle="Intelligent Spectral Analysis and Materials Informatics Group"
+      description="聚焦光谱信号解析、材料信息建模与智能检测应用，开展交叉研究与人才培养。"
     />
 
-    <!-- 主要内容 -->
-    <div class="mx-auto px-4 py-12 max-w-5xl lg:px-8 sm:px-6">
-      <div space-y-12>
-        <div
-          v-for="(dir, index) in directions"
-          :key="dir.id"
+    <div class="mx-auto px-4 py-12 max-w-6xl lg:px-8 sm:px-6">
+      <section class="mb-12 flex flex-wrap gap-4 items-end justify-between">
+        <h1 class="text-3xl text-primary tracking-tight font-bold">
+          研究方向
+        </h1>
+        <p class="text-sm text-gray-600 max-w-xl md:text-right">
+          四个方向分别对应方法研究、系统实现、算法建模与交叉应用。
+        </p>
+      </section>
+
+      <section class="space-y-14">
+        <article
+          v-for="(direction, index) in directions"
+          :key="direction.id"
+          class="pb-12 border-b border-gray-200 relative last:pb-0 last:border-b-0"
         >
-          <!-- 方向标题 -->
-          <div class="mb-6">
-            <h2 class="text-2xl text-primary font-bold mb-2">
-              {{ index + 1 }}. {{ dir.title }}
-            </h2>
+          <div class="mb-4 flex gap-3 items-center">
+            <span class="text-[11px] text-secondary tracking-[0.24em] font-semibold">
+              {{ String(index + 1).padStart(2, '0') }}
+            </span>
+            <div class="bg-gray-200 flex-1 h-px" />
           </div>
 
-          <!-- 方向描述 -->
-          <p class="text-gray-700 leading-relaxed mb-6">
-            {{ dir.description }}
-          </p>
+          <div
+            class="max-w-4xl"
+            :class="index % 2 === 1 ? 'ml-auto' : ''"
+          >
+            <h2 class="text-3xl text-gray-900 leading-tight font-bold">
+              {{ direction.title }}
+            </h2>
 
-          <!-- 关键词 -->
-          <div v-if="dir.keywords?.length" class="mb-8 flex flex-wrap gap-2">
+            <p
+              v-if="direction.highlight"
+              class="text-base text-secondary leading-7 font-medium mt-3"
+            >
+              {{ direction.highlight }}
+            </p>
+
+            <p class="text-gray-700 leading-8 mt-5">
+              {{ direction.summary }}
+            </p>
+          </div>
+
+          <div
+            class="mt-8 gap-6 grid lg:grid-cols-2"
+            :class="index % 2 === 1 ? 'lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1' : ''"
+          >
+            <div class="px-6 py-5 border border-gray-200 rounded-2xl bg-gray-50">
+              <h3 class="text-lg text-gray-900 font-semibold mb-4">
+                研究重点
+              </h3>
+              <ul class="space-y-3">
+                <li
+                  v-for="item in direction.focus"
+                  :key="item"
+                  class="text-gray-700 leading-7 flex gap-3 items-start"
+                >
+                  <span class="mt-2 rounded-full bg-secondary flex-shrink-0 h-1.5 w-1.5" />
+                  <span>{{ item }}</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="px-6 py-5 border border-gray-300 rounded-2xl bg-white shadow-sm">
+              <h3 class="text-lg text-gray-900 font-semibold mb-4">
+                应用场景
+              </h3>
+              <ul class="space-y-3">
+                <li
+                  v-for="item in direction.applications"
+                  :key="item"
+                  class="text-gray-700 leading-7 flex gap-3 items-start"
+                >
+                  <span class="mt-2 rounded-full bg-primary flex-shrink-0 h-1.5 w-1.5" />
+                  <span>{{ item }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-6 flex flex-wrap gap-2">
             <span
-              v-for="keyword in dir.keywords"
+              v-for="keyword in direction.keywords"
               :key="keyword"
-
-              bg="oklch(65% 0.045 200.5)/10"
-              text-xs text-secondary px-3 py-1 rounded-full
+              class="text-xs text-gray-700 px-3 py-1.5 border border-gray-200 rounded-full bg-white"
             >
               {{ keyword }}
             </span>
           </div>
-
-          <!-- 研究进展 -->
-          <div v-if="dir.progress?.length" class="mt-8">
-            <h3 class="text-lg text-gray-800 font-semibold mb-4 flex gap-2 items-center">
-              <div i-carbon-time text-lg />
-              研究进展
-            </h3>
-
-            <div class="space-y-8">
-              <div
-                v-for="progress in dir.progress"
-                :key="progress.id"
-              >
-                <!-- 进展标题和日期 -->
-                <div class="mb-3 flex gap-3 items-center">
-                  <h4 class="text-base text-gray-800 font-semibold">
-                    {{ progress.title }}
-                  </h4>
-                  <span
-                    v-if="progress.date"
-
-                    text-xs text-gray-500 px-2 py-1 rounded bg-gray-100
-                  >
-                    {{ progress.date }}
-                  </span>
-                </div>
-
-                <!-- 进展描述 -->
-                <p class="text-sm text-gray-600 leading-relaxed mb-4">
-                  {{ progress.description }}
-                </p>
-
-                <!-- 图片展示 -->
-                <div v-if="progress.images?.length" class="gap-4 grid grid-cols-1 sm:grid-cols-2">
-                  <div
-                    v-for="(img, imgIndex) in progress.images"
-                    :key="imgIndex"
-                    class="rounded-lg shadow-md overflow-hidden"
-                  >
-                    <img
-                      :src="img.src"
-                      :alt="img.caption"
-
-                      h-48 w-full object-cover
-                      @error="(e) => {
-                        const target = e.target as HTMLImageElement
-                        target.src = '/images/gallery/placeholder.svg'
-                      }"
-                    >
-                    <p class="text-xs text-gray-500 py-2 text-center bg-gray-50">
-                      {{ img.caption }}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        </article>
+      </section>
     </div>
   </div>
 </template>

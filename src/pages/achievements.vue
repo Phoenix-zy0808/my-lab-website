@@ -4,7 +4,6 @@ import { useSeoMeta } from '~/composables/useSeoMeta'
 
 const config = ref<SiteConfig | null>(null)
 
-// 加载站点配置
 async function loadConfig() {
   try {
     const res = await fetch('/data/site-config.json')
@@ -19,23 +18,22 @@ const achievements = ref<Achievement[]>([])
 const selectedType = ref<string>('all')
 const selectedYear = ref<string | number>('all')
 
-// Toast 提示状态
 const showToast = ref(false)
 const toastMessage = ref('')
 
-function showTemporaryMessage(msg: string) {
-  toastMessage.value = msg
+function showTemporaryMessage(message: string) {
+  toastMessage.value = message
   showToast.value = true
-  setTimeout(() => (showToast.value = false), 3000)
+  setTimeout(() => {
+    showToast.value = false
+  }, 3000)
 }
 
-// SEO Meta
 useSeoMeta({
   title: '成果展示',
-  description: '展示实验室的论文、获奖、项目和专利等科研成果',
+  description: '展示课题组的论文、专利、软著、项目与竞赛荣誉等成果信息。',
 })
 
-// 成果类型映射
 const typeMap: Record<Achievement['type'], { label: string, icon: string, color: string }> = {
   project: { label: '项目', icon: 'i-carbon-folder', color: 'bg-purple-100 text-purple-700' },
   patent: { label: '专利', icon: 'i-carbon-certificate', color: 'bg-emerald-100 text-emerald-700' },
@@ -45,18 +43,18 @@ const typeMap: Record<Achievement['type'], { label: string, icon: string, color:
   honor: { label: '荣誉', icon: 'i-carbon-trophy', color: 'bg-red-100 text-red-700' },
 }
 
-// 类型筛选选项
 const typeFilterOptions = [
   { key: 'all', label: '全部', icon: 'i-carbon-filter' },
-  { key: 'project', label: '项目', icon: 'i-carbon-folder' },
+  { key: 'paper', label: '论文', icon: 'i-carbon-document' },
   { key: 'patent', label: '专利', icon: 'i-carbon-certificate' },
   { key: 'copyright', label: '软著', icon: 'i-carbon-certificate' },
-  { key: 'paper', label: '论文', icon: 'i-carbon-document' },
+  { key: 'project', label: '项目', icon: 'i-carbon-folder' },
   { key: 'competition', label: '竞赛', icon: 'i-carbon-trophy' },
   { key: 'honor', label: '荣誉', icon: 'i-carbon-trophy' },
 ]
 
-// 加载成果数据
+const schoolLevelCompetitionPattern = /校特等奖|校一等奖|校二等奖|校三等奖|校级|校\b|挑战杯校/
+
 async function loadAchievements() {
   try {
     const res = await fetch('/data/achievements.json')
@@ -72,133 +70,144 @@ onMounted(() => {
   loadAchievements()
 })
 
-// 年份选项
+function isSchoolLevelCompetition(achievement: Achievement) {
+  if (achievement.type !== 'competition')
+    return false
+
+  const text = `${achievement.title} ${achievement.description || ''}`
+  return schoolLevelCompetitionPattern.test(text)
+}
+
+function getDisplayYear(achievement: Achievement) {
+  const source = achievement.type === 'paper' && achievement.year
+    ? String(achievement.year)
+    : achievement.date
+
+  const date = new Date(source)
+  if (!Number.isNaN(date.getTime()))
+    return String(date.getFullYear())
+
+  return String(achievement.year || source).slice(0, 4)
+}
+
 const yearOptions = computed(() => {
-  const years = achievements.value.map((ach) => {
-    const date = new Date(ach.date)
-    return date.getFullYear().toString()
-  })
+  const years = achievements.value
+    .filter(achievement => !isSchoolLevelCompetition(achievement))
+    .map(achievement => getDisplayYear(achievement))
+    .filter(Boolean)
+
   const uniqueYears = [...new Set(years)].sort((a, b) => b.localeCompare(a))
   return [{ key: 'all', label: '全部年份' }, ...uniqueYears.map(year => ({ key: year, label: year }))]
 })
 
-// 按类型和年份筛选
 const filteredAchievements = computed(() => {
-  let result = achievements.value
+  let result = achievements.value.filter(achievement => !isSchoolLevelCompetition(achievement))
 
-  if (selectedType.value !== 'all') {
-    result = result.filter(ach => ach.type === selectedType.value)
-  }
+  if (selectedType.value !== 'all')
+    result = result.filter(achievement => achievement.type === selectedType.value)
 
-  if (selectedYear.value !== 'all') {
-    result = result.filter((ach) => {
-      const date = new Date(ach.date)
-      return date.getFullYear().toString() === selectedYear.value
-    })
-  }
+  if (selectedYear.value !== 'all')
+    result = result.filter(achievement => getDisplayYear(achievement) === selectedYear.value)
 
-  // 按日期降序排序
   return result.sort((a, b) => b.date.localeCompare(a.date))
 })
 
-// 分页相关
 const currentPage = ref(1)
-const pageSize = 10 // 每页显示 10 条
+const pageSize = 10
 
-// 计算总页数
 const totalPages = computed(() => {
-  const total = filteredAchievements.value?.length || 0
-  const size = pageSize || 10
-  return Math.ceil(total / size)
+  const total = filteredAchievements.value.length
+  return Math.max(1, Math.ceil(total / pageSize))
 })
 
-// 当前页的数据
 const currentPageData = computed(() => {
-  const size = pageSize || 10
-  const page = currentPage.value || 1
-
-  const start = (page - 1) * size
-  const end = start + size
-
-  return filteredAchievements.value?.slice(start, end) || []
+  const start = (currentPage.value - 1) * pageSize
+  const end = start + pageSize
+  return filteredAchievements.value.slice(start, end)
 })
 
-// 切换页码
 function changePage(page: number) {
   if (page < 1 || page > totalPages.value)
     return
+
   currentPage.value = page
-  // 滚动到顶部
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
-// 当筛选条件改变时，重置页码到第一页
 watch([selectedType, selectedYear], () => {
   currentPage.value = 1
 })
 
-// 格式化论文引用（标准学术格式）
-function formatPaperCitation(ach: Achievement) {
-  if (ach.type !== 'paper' || !ach.authors)
-    return null
-
-  const authors = ach.authors.map((author, _index) => {
-    const isCoFirst = author.includes('†')
+function formatPaperAuthors(authors: string[]) {
+  return authors.map((author) => {
+    const isCoFirst = author.includes('†') || author.includes('*')
     const isCorresponding = author.includes('#')
+
     return {
-      name: author.replace(/[†#]/g, ''),
+      name: author.replace(/[†*#]/g, '').trim(),
       isCoFirst,
       isCorresponding,
     }
   })
-
-  const journalInfo = [
-    ach.journal,
-    ach.year,
-    ach.volume && `${ach.volume}${ach.issue ? `(${ach.issue})` : ''}`,
-    ach.pages,
-  ].filter(Boolean).join(', ')
-
-  return { authors, journalInfo }
 }
 
-// 打开 PDF - 修复路径编码
-function openPdf(pdfUrl: string, _title: string) {
-  showTemporaryMessage('正在打开 PDF...')
-  // 确保路径以/开头
-  const normalizedUrl = pdfUrl.startsWith('/') ? pdfUrl : `/${pdfUrl}`
-  // 使用 encodeURI 编码中文路径
-  const encodedUrl = encodeURI(normalizedUrl)
-  // 直接在新窗口打开
-  window.open(encodedUrl, '_blank', 'noopener,noreferrer')
+function formatDateLabel(achievement: Achievement) {
+  if (achievement.type === 'paper') {
+    if (achievement.date)
+      return achievement.date.replace('-', '.')
+    if (achievement.year)
+      return String(achievement.year)
+  }
+
+  return achievement.date ? achievement.date.replace('-', '.') : ''
+}
+
+function getTimePrefix(achievement: Achievement) {
+  switch (achievement.type) {
+    case 'patent':
+      return '申请时间'
+    case 'copyright':
+      return '登记时间'
+    case 'project':
+      return '立项时间'
+    case 'competition':
+      return '获奖时间'
+    case 'honor':
+      return '时间'
+    default:
+      return ''
+  }
+}
+
+function openAttachment(attachmentUrl: string) {
+  const normalizedUrl = attachmentUrl.startsWith('/') ? attachmentUrl : `/${attachmentUrl}`
+  showTemporaryMessage('附件将以新标签页打开。')
+  window.open(encodeURI(normalizedUrl), '_blank', 'noopener,noreferrer')
 }
 </script>
 
 <template>
   <div>
-    <!-- 页面头部 -->
     <Hero
       size="medium"
       :background="config?.heroImage"
-      :title="config?.labName || '智能光谱分析实验室'"
-      :subtitle="config?.labNameEn || 'Laboratory for Intelligent Spectral Analysis'"
-      :description="config?.description"
+      :title="config?.labName || '智能光谱分析与材料信息课题组'"
+      :subtitle="config?.labNameEn || 'Intelligent Spectral Analysis and Materials Informatics Group'"
+      :description="config?.description || '聚焦光谱信号解析、材料信息建模与智能检测应用，开展交叉研究与人才培养。'"
     />
 
-    <!-- 主要内容 -->
     <div page-container py-12>
-      <!-- 筛选器 -->
       <div class="mb-8">
-        <!-- 类型筛选 -->
         <div class="mb-4 overflow-x-auto overflow-y-hidden">
           <div class="flex flex-nowrap gap-2 min-w-max justify-center">
             <button
               v-for="filter in typeFilterOptions"
               :key="filter.key"
-              class="font-medium px-5 py-2.5 rounded-lg flex gap-2 whitespace-nowrap transition-all duration-300 items-center" :class="[
+              class="font-medium px-5 py-2.5 rounded-lg flex gap-2 whitespace-nowrap transition-all duration-300 items-center"
+              :class="[
                 selectedType === filter.key
-                  ? 'bg-white text-primary border-2 border-primary shadow-md'
-                  : 'bg-white text-gray-600 border-2 border-gray-200 hover:border-secondary hover:text-secondary',
+                  ? 'bg-primary text-white border border-primary shadow-sm'
+                  : 'bg-white text-gray-600 border border-gray-200 hover:border-secondary/60 hover:text-secondary',
               ]"
               @click="selectedType = filter.key"
             >
@@ -208,16 +217,16 @@ function openPdf(pdfUrl: string, _title: string) {
           </div>
         </div>
 
-        <!-- 年份筛选 -->
         <div class="overflow-x-auto overflow-y-hidden">
           <div class="flex flex-nowrap gap-2 min-w-max justify-center">
             <button
               v-for="year in yearOptions"
               :key="year.key"
-              class="font-medium px-5 py-2.5 rounded-lg whitespace-nowrap transition-all duration-300" :class="[
+              class="font-medium px-5 py-2.5 rounded-lg whitespace-nowrap transition-all duration-300"
+              :class="[
                 selectedYear === year.key
-                  ? 'bg-white text-secondary border-2 border-secondary shadow-md'
-                  : 'bg-white text-gray-600 border-2 border-gray-200 hover:border-secondary hover:text-secondary',
+                  ? 'bg-secondary text-white border border-secondary shadow-sm'
+                  : 'bg-white text-gray-600 border border-gray-200 hover:border-secondary/60 hover:text-secondary',
               ]"
               @click="selectedYear = year.key"
             >
@@ -227,61 +236,69 @@ function openPdf(pdfUrl: string, _title: string) {
         </div>
       </div>
 
-      <!-- 成果列表 -->
-      <div v-if="currentPageData.length > 0" space-y-6>
+      <div v-if="currentPageData.length > 0" space-y-8>
         <div
           v-for="ach in currentPageData"
           :key="ach.id"
-          class="pb-6 border-b border-gray-100 last:border-0"
+          class="pb-8 border-b border-gray-100 last:border-0"
         >
-          <!-- 论文类型特殊格式 -->
-          <template v-if="ach.type === 'paper' && ach.authors">
+          <template v-if="ach.type === 'paper' && ach.authors?.length">
             <div class="flex gap-3">
-              <!-- 序号 -->
               <span class="text-sm text-gray-500 flex-shrink-0 w-8">
                 ({{ currentPageData.indexOf(ach) + 1 }})
               </span>
 
-              <!-- 内容 -->
               <div class="flex-1">
-                <!-- 作者列表 -->
+                <div class="mb-2 flex flex-wrap gap-2 items-center">
+                  <span
+                    class="text-xs text-blue-700 px-2.5 py-1 border border-blue-100 rounded-full bg-blue-50"
+                  >
+                    论文
+                  </span>
+                  <span
+                    v-if="formatDateLabel(ach)"
+                    class="text-xs text-gray-600 px-2.5 py-1 border border-gray-200 rounded-full bg-gray-50"
+                  >
+                    {{ formatDateLabel(ach) }}
+                  </span>
+                </div>
+
                 <p class="text-sm text-gray-700 leading-relaxed">
-                  <template v-for="(authorObj, idx) in formatPaperCitation(ach)?.authors" :key="idx">
-                    <span :class="authorObj.isCoFirst ? 'font-bold' : ''">
-                      {{ authorObj.name }}
+                  <template v-for="(author, idx) in formatPaperAuthors(ach.authors)" :key="`${ach.id}-${idx}`">
+                    <span :class="author.isCoFirst ? 'font-bold' : ''">
+                      {{ author.name }}
                     </span>
-                    <sup v-if="authorObj.isCoFirst" text-xs text-secondary>†</sup>
-                    <sup v-if="authorObj.isCorresponding" text-xs text-secondary>#</sup>
-                    <span v-if="idx < ach.authors!.length - 1">, </span>
+                    <sup v-if="author.isCoFirst" text-xs text-secondary>*</sup>
+                    <sup v-if="author.isCorresponding" text-xs text-secondary>#</sup>
+                    <span v-if="idx < ach.authors.length - 1">, </span>
                   </template>
-                  <span class="mx-1">.</span>
-
-                  <!-- 标题 -->
-                  <span class="text-primary font-semibold">{{ ach.title }}</span>
-                  <span class="mx-1">.</span>
-
-                  <!-- 期刊名（斜体） -->
-                  <span class="text-gray-600 italic">{{ ach.journal }}</span>
-
-                  <!-- 年份卷期页码 -->
-                  <template v-if="ach.year">
-                    <span class="mx-1">, </span>
-                    <span class="text-sm">{{ ach.year }}</span>
-                  </template>
-
-                  <template v-if="ach.volume">
-                    <span class="mx-1">, </span>
-                    <span class="text-sm">
-                      {{ ach.volume }}
-                      <template v-if="ach.issue">({{ ach.issue }})</template>
-                      <template v-if="ach.pages">: {{ ach.pages }}</template>
-                    </span>
-                  </template>
-                  <span class="mx-1">.</span>
                 </p>
 
-                <!-- 链接 -->
-                <div class="mt-2 flex gap-3">
+                <h3 class="text-lg text-primary leading-8 font-semibold mt-2">
+                  {{ ach.title }}
+                </h3>
+
+                <p class="text-sm text-gray-600 leading-relaxed mt-2">
+                  <span v-if="ach.journal" class="italic">{{ ach.journal }}</span>
+                  <template v-if="ach.year">
+                    <span v-if="ach.journal">, </span>{{ ach.year }}
+                  </template>
+                  <template v-if="ach.volume">
+                    <span>, {{ ach.volume }}</span>
+                    <template v-if="ach.issue">
+                      ({{ ach.issue }})
+                    </template>
+                  </template>
+                  <template v-if="ach.pages">
+                    <span>: {{ ach.pages }}</span>
+                  </template>
+                </p>
+
+                <p v-if="ach.description" class="text-sm text-gray-600 leading-relaxed mt-3">
+                  {{ ach.description }}
+                </p>
+
+                <div class="mt-4 flex flex-wrap gap-3">
                   <a
                     v-if="ach.doi"
                     :href="`https://doi.org/${ach.doi}`"
@@ -300,79 +317,77 @@ function openPdf(pdfUrl: string, _title: string) {
                     class="text-sm text-secondary flex gap-1 items-center hover:underline"
                   >
                     <div i-carbon-launch text-xs />
-                    链接
+                    相关链接
                   </a>
                   <button
                     v-if="ach.pdf"
                     class="text-sm text-secondary flex gap-1 items-center hover:underline"
-                    @click="openPdf(ach.pdf!, ach.title)"
+                    @click="openAttachment(ach.pdf)"
                   >
-                    <div i-carbon-pdf />
-                    PDF
+                    <div i-carbon-launch text-xs />
+                    查看附件
                   </button>
                 </div>
-
-                <!-- 描述 -->
-                <p v-if="ach.description" class="text-sm text-gray-600 leading-relaxed mt-2">
-                  {{ ach.description }}
-                </p>
               </div>
             </div>
           </template>
 
-          <!-- 其他类型成果（获奖、项目、专利、活动） -->
           <template v-else>
-            <!-- 类型标签和日期 -->
-            <div mb-3 flex items-start justify-between>
-              <span
-
-                text-sm px-2 py-1 rounded flex gap-1 items-center
-                :class="typeMap[ach.type].color"
-              >
+            <div class="mb-3 flex flex-wrap gap-2 items-center">
+              <span text-sm px-2.5 py-1 rounded-full flex gap-1 items-center :class="typeMap[ach.type].color">
                 <div :class="typeMap[ach.type].icon" />
                 {{ typeMap[ach.type].label }}
               </span>
-              <span text-sm text-gray-500>{{ ach.date }}</span>
+              <span
+                v-if="formatDateLabel(ach)"
+                class="text-xs text-gray-600 px-2.5 py-1 border border-gray-200 rounded-full bg-gray-50"
+              >
+                <template v-if="getTimePrefix(ach)">
+                  {{ getTimePrefix(ach) }}：
+                </template>
+                {{ formatDateLabel(ach) }}
+              </span>
             </div>
 
-            <!-- 标题 -->
-            <h3 text-lg text-primary font-semibold mb-2>
+            <h3 text-lg text-primary leading-8 font-semibold mb-2>
               {{ ach.title }}
             </h3>
 
-            <!-- 描述 -->
             <p text-sm text-gray-600 leading-relaxed mb-4>
               {{ ach.description }}
             </p>
 
-            <!-- 操作按钮 -->
-            <div flex gap-2>
+            <div flex flex-wrap gap-3>
               <button
                 v-if="ach.pdf"
-
-                text-sm btn-secondary py-1 flex gap-1 items-center
-                @click="openPdf(ach.pdf!, ach.title)"
+                class="text-sm text-secondary flex gap-1 items-center hover:underline"
+                @click="openAttachment(ach.pdf)"
               >
-                <div i-carbon-pdf />
-                查看
+                <div i-carbon-launch text-xs />
+                查看附件
               </button>
               <a
                 v-if="ach.link"
                 :href="ach.link"
                 target="_blank"
                 rel="noopener noreferrer"
-
-                text-sm btn py-1 flex gap-1 items-center
+                class="text-sm text-secondary flex gap-1 items-center hover:underline"
               >
-                链接
                 <div i-carbon-launch text-xs />
+                相关链接
               </a>
             </div>
           </template>
         </div>
       </div>
 
-      <!-- 分页控件 -->
+      <div v-else py-12 text-center>
+        <div i-carbon-document text-6xl text-gray-300 mb-4 />
+        <p text-gray-500>
+          暂无成果信息
+        </p>
+      </div>
+
       <div v-if="totalPages > 1" class="mt-8 flex gap-2 justify-center">
         <button
           class="text-gray-600 px-3 py-1.5 rounded-lg bg-gray-100 transition-all duration-200 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
@@ -385,7 +400,8 @@ function openPdf(pdfUrl: string, _title: string) {
         <button
           v-for="page in totalPages"
           :key="page"
-          class="px-3 py-1.5 rounded-lg transition-all duration-200" :class="[
+          class="px-3 py-1.5 rounded-lg transition-all duration-200"
+          :class="[
             currentPage === page
               ? 'bg-primary text-white'
               : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
@@ -405,7 +421,6 @@ function openPdf(pdfUrl: string, _title: string) {
       </div>
     </div>
 
-    <!-- Toast 提示 -->
     <transition
       enter-active-class="transition duration-300"
       enter-from-class="opacity-0 translate-y-4"

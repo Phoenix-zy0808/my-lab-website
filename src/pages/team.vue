@@ -6,15 +6,13 @@ defineOptions({
   name: 'TeamPage',
 })
 
-// SEO Meta
 useSeoMeta({
   title: '团队成员',
-  description: '介绍实验室的教授、研究人员和学生团队',
+  description: '介绍课题组教师、科研助理与学生团队。',
 })
 
 const config = ref<SiteConfig | null>(null)
 
-// 加载站点配置
 async function loadConfig() {
   try {
     const res = await fetch('/data/site-config.json')
@@ -37,7 +35,6 @@ const teamData = ref<Record<string, TeamMember[]>>({
 const selectedRole = ref<TeamRole>('pi')
 const selectedMember = ref<TeamMember | null>(null)
 
-// 角色分类
 const roleCategories = [
   { key: 'pi', label: 'PI 介绍' },
   { key: 'research_assistant', label: '科研助理' },
@@ -47,14 +44,12 @@ const roleCategories = [
   { key: 'graduated_undergraduate', label: '已毕业本科生' },
 ]
 
-// 加载团队成员数据
 async function loadTeam() {
   try {
     const res = await fetch('/data/team.json')
     teamData.value = await res.json()
 
-    // 默认选中第一个成员
-    const firstRole = roleCategories.find(r => teamData.value[r.key as TeamRole]?.length > 0)
+    const firstRole = roleCategories.find(role => teamData.value[role.key as TeamRole]?.length > 0)
     if (firstRole) {
       selectedRole.value = firstRole.key as TeamRole
       selectMember(teamData.value[firstRole.key as TeamRole][0])
@@ -74,19 +69,13 @@ onMounted(() => {
   loadTeam()
 })
 
-// 当前角色下的成员列表
-const currentMembers = computed(() => {
-  return teamData.value[selectedRole.value] || []
-})
+const currentMembers = computed(() => teamData.value[selectedRole.value] || [])
 
-// 年级筛选（仅对本科生和已毕业本科生显示）
 const selectedGrade = ref<string>('all')
 
-// 年级选项
 const gradeOptions = computed(() => {
-  if (selectedRole.value !== 'undergraduate' && selectedRole.value !== 'graduated_undergraduate') {
+  if (selectedRole.value !== 'undergraduate' && selectedRole.value !== 'graduated_undergraduate')
     return []
-  }
 
   const grades = currentMembers.value.map(member => member.grade || '未知年级')
   const uniqueGrades = [...new Set(grades)].sort((a, b) => {
@@ -98,53 +87,46 @@ const gradeOptions = computed(() => {
   return [{ key: 'all', label: '全部年级' }, ...uniqueGrades.map(grade => ({ key: grade, label: grade }))]
 })
 
-// 按年级筛选
 const filteredByGrade = computed(() => {
   let result = currentMembers.value
 
-  if (selectedGrade.value !== 'all') {
+  if (selectedGrade.value !== 'all')
     result = result.filter(member => member.grade === selectedGrade.value)
-  }
 
   return result
 })
 
-// 分页相关
 const currentPage = ref(1)
-const pageSize = 12 // 每页显示 12 人
+const pageSize = 12
 
-// 计算总页数
 const totalPages = computed(() => {
-  const total = filteredByGrade.value?.length || 0
+  const total = filteredByGrade.value.length
   return Math.ceil(total / pageSize)
 })
 
-// 当前页的数据
 const currentPageData = computed(() => {
   const start = (currentPage.value - 1) * pageSize
   const end = start + pageSize
-  return filteredByGrade.value?.slice(start, end) || []
+  return filteredByGrade.value.slice(start, end)
 })
 
-// 硕士生和已毕业硕士生的分页数据
 const currentMasterPageData = computed(() => {
-  if (selectedRole.value !== 'master_student' && selectedRole.value !== 'graduated_master') {
+  if (selectedRole.value !== 'master_student' && selectedRole.value !== 'graduated_master')
     return currentMembers.value
-  }
+
   const start = (currentPage.value - 1) * pageSize
   const end = start + pageSize
-  return currentMembers.value?.slice(start, end) || []
+  return currentMembers.value.slice(start, end)
 })
 
-// 切换页码
 function changePage(page: number) {
   if (page < 1 || page > totalPages.value)
     return
+
   currentPage.value = page
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
-// 当筛选条件改变时，重置页码
 watch([selectedRole, selectedGrade], () => {
   currentPage.value = 1
 })
@@ -152,25 +134,23 @@ watch([selectedRole, selectedGrade], () => {
 
 <template>
   <div class="bg-gray-100 min-h-screen">
-    <!-- 页面头部 -->
     <Hero
       size="medium"
       :background="config?.heroImage"
-      :title="config?.labName || '智能光谱分析实验室'"
-      :subtitle="config?.labNameEn || 'Laboratory for Intelligent Spectral Analysis'"
+      :title="config?.labName || '智能光谱分析与材料信息课题组'"
+      :subtitle="config?.labNameEn || 'Intelligent Spectral Analysis and Materials Informatics Group'"
       :description="config?.description"
     />
 
-    <!-- 主要内容 -->
     <div class="mx-auto px-4 py-12 max-w-7xl lg:px-8 sm:px-6">
-      <!-- Tabs 切换 -->
       <div class="mb-8">
         <div class="overflow-x-auto overflow-y-hidden">
           <div class="flex flex-nowrap gap-2 min-w-max justify-center">
             <button
               v-for="role in roleCategories"
               :key="role.key"
-              class="font-medium px-5 py-2.5 rounded-lg whitespace-nowrap transition-all duration-300" :class="[
+              class="font-medium px-5 py-2.5 rounded-lg whitespace-nowrap transition-all duration-300"
+              :class="[
                 selectedRole === role.key
                   ? 'bg-white text-primary border-2 border-primary shadow-md'
                   : 'bg-white text-gray-600 border-2 border-gray-200 hover:border-secondary hover:text-secondary',
@@ -183,7 +163,6 @@ watch([selectedRole, selectedGrade], () => {
         </div>
       </div>
 
-      <!-- 年级筛选（仅本科生和已毕业本科生显示） -->
       <div
         v-if="selectedRole === 'undergraduate' || selectedRole === 'graduated_undergraduate'"
         class="mb-4 overflow-x-auto overflow-y-hidden"
@@ -192,7 +171,8 @@ watch([selectedRole, selectedGrade], () => {
           <button
             v-for="grade in gradeOptions"
             :key="grade.key"
-            class="text-sm px-3 py-1.5 rounded-lg whitespace-nowrap transition-all duration-200" :class="[
+            class="text-sm px-3 py-1.5 rounded-lg whitespace-nowrap transition-all duration-200"
+            :class="[
               selectedGrade === grade.key
                 ? 'bg-secondary text-white'
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
@@ -204,18 +184,13 @@ watch([selectedRole, selectedGrade], () => {
         </div>
       </div>
 
-      <!-- 主要内容 -->
       <div v-if="currentMembers.length > 0">
-        <!-- PI 介绍 - 单栏布局 -->
         <template v-if="selectedRole === 'pi'">
-          <!-- 白色卡片容器 -->
           <div class="p-8 rounded-xl bg-white shadow-lg">
             <div class="mx-auto max-w-5xl">
               <div v-if="selectedMember" card>
                 <div class="flex flex-col gap-6 items-center sm:flex-row sm:items-start">
-                  <!-- 头像 -->
                   <div
-
                     text-5xl text-white font-bold rounded-lg flex flex-shrink-0 h-48 w-48 shadow-lg items-center justify-center overflow-hidden from-primary to-secondary bg-gradient-to-br
                   >
                     <img
@@ -224,7 +199,6 @@ watch([selectedRole, selectedGrade], () => {
                       :alt="selectedMember.name"
                       loading="lazy"
                       decoding="async"
-
                       h-full w-full object-cover
                       @error="(e) => (e.target as HTMLImageElement).style.display = 'none'"
                     >
@@ -233,7 +207,6 @@ watch([selectedRole, selectedGrade], () => {
                     </span>
                   </div>
 
-                  <!-- 基本信息 -->
                   <div class="text-center flex-1 sm:text-left">
                     <h2 class="text-2xl text-primary font-bold mb-2">
                       {{ selectedMember.name }}
@@ -242,7 +215,6 @@ watch([selectedRole, selectedGrade], () => {
                       {{ selectedMember.title }}
                     </p>
 
-                    <!-- 联系方式 -->
                     <div text-sm text-gray-600 space-y-2>
                       <div v-if="selectedMember.email" flex gap-2 items-center justify-center sm:justify-start>
                         <div i-carbon-email text-lg />
@@ -258,7 +230,6 @@ watch([selectedRole, selectedGrade], () => {
                   </div>
                 </div>
 
-                <!-- 个人简介 -->
                 <div class="mt-8">
                   <h3 class="text-xl text-primary font-semibold mb-4">
                     个人简介
@@ -268,7 +239,6 @@ watch([selectedRole, selectedGrade], () => {
                   </p>
                 </div>
 
-                <!-- 教育经历 - 修改后：年份左对齐，纯文本，冒号结尾 -->
                 <div v-if="selectedMember.education?.length" class="mt-8">
                   <h3 class="text-xl text-primary font-semibold mb-4">
                     教育经历
@@ -279,13 +249,11 @@ watch([selectedRole, selectedGrade], () => {
                       :key="index"
                       class="flex flex-col gap-2 sm:flex-row sm:gap-4"
                     >
-                      <!-- 时间 - 左对齐，固定宽度，冒号结尾，字体增大 -->
                       <div class="flex-shrink-0 sm:w-56">
                         <span class="text-base text-gray-700 font-medium whitespace-nowrap">
                           {{ edu.time }}：
                         </span>
                       </div>
-                      <!-- 学校和专业 -->
                       <div class="flex-1 min-w-0">
                         <p class="text-gray-800">
                           {{ edu.school }} - {{ edu.major }}
@@ -298,7 +266,6 @@ watch([selectedRole, selectedGrade], () => {
                   </div>
                 </div>
 
-                <!-- 工作经历 - 修改后：年份左对齐，纯文本，冒号结尾 -->
                 <div v-if="selectedMember.workExperience?.length" class="mt-8">
                   <h3 class="text-xl text-primary font-semibold mb-4">
                     工作经历
@@ -309,13 +276,11 @@ watch([selectedRole, selectedGrade], () => {
                       :key="index"
                       class="flex flex-col gap-2 sm:flex-row sm:gap-4"
                     >
-                      <!-- 时间 - 左对齐，固定宽度，冒号结尾，字体增大 -->
                       <div class="flex-shrink-0 sm:w-56">
                         <span class="text-base text-gray-700 font-medium whitespace-nowrap">
                           {{ work.time }}：
                         </span>
                       </div>
-                      <!-- 组织和职位 -->
                       <div class="flex-1 min-w-0">
                         <p class="text-gray-800">
                           {{ work.organization }}
@@ -328,7 +293,6 @@ watch([selectedRole, selectedGrade], () => {
                   </div>
                 </div>
 
-                <!-- 研究兴趣 -->
                 <div v-if="selectedMember.researchInterests?.length" class="mt-8">
                   <h3 class="text-xl text-primary font-semibold mb-4">
                     研究兴趣
@@ -344,23 +308,21 @@ watch([selectedRole, selectedGrade], () => {
                   </div>
                 </div>
 
-                <!-- 代表性论文 -->
                 <div v-if="selectedMember.publications?.length" class="mt-8">
                   <h3 class="text-xl text-primary font-semibold mb-4">
-                    代表性论文
+                    代表论文
                   </h3>
                   <ol class="text-sm text-gray-600 list-decimal list-inside space-y-2">
                     <li
-                      v-for="(pub, index) in selectedMember.publications"
+                      v-for="(publication, index) in selectedMember.publications"
                       :key="index"
                       class="leading-relaxed"
                     >
-                      {{ pub }}
+                      {{ publication }}
                     </li>
                   </ol>
                 </div>
 
-                <!-- 科研项目 -->
                 <div v-if="selectedMember.researchProjects?.length" class="mt-8">
                   <h3 class="text-xl text-primary font-semibold mb-4">
                     科研项目
@@ -374,12 +336,12 @@ watch([selectedRole, selectedGrade], () => {
                       <span class="text-xs text-white font-bold mr-2 rounded-full bg-primary inline-flex h-6 w-6 items-center justify-center">
                         {{ index + 1 }}
                       </span>
-                      <span class="text-gray-800 font-medium">{{ project.name }}</span>，
-                      <span class="text-gray-600">{{ project.type }}</span>，
-                      <span class="text-gray-500">{{ project.role }}</span>
-                      <span v-if="project.grantNumber">，批号：{{ project.grantNumber }}</span>
+                      <span class="text-gray-800 font-medium">{{ project.name }}</span>
+                      <span class="text-gray-600">，{{ project.type }}</span>
+                      <span class="text-gray-500">，{{ project.role }}</span>
+                      <span v-if="project.grantNumber">，批准号：{{ project.grantNumber }}</span>
                       <span v-if="project.funding">，经费：{{ project.funding }}</span>
-                      <span class="text-gray-500">（{{ project.period }}）</span>
+                      <span class="text-gray-500">，{{ project.period }}</span>
                     </div>
                   </div>
                 </div>
@@ -388,9 +350,7 @@ watch([selectedRole, selectedGrade], () => {
           </div>
         </template>
 
-        <!-- 本科生和已毕业本科生 - 05 样式（垂直列表） -->
         <template v-else-if="selectedRole === 'undergraduate' || selectedRole === 'graduated_undergraduate'">
-          <!-- 白色卡片容器 -->
           <div class="p-8 rounded-xl bg-white shadow-lg">
             <div class="space-y-8">
               <div
@@ -398,7 +358,6 @@ watch([selectedRole, selectedGrade], () => {
                 :key="member.id"
                 class="pb-8 border-b border-gray-200 flex flex-col gap-6 last:pb-0 last:border-0 sm:flex-row"
               >
-                <!-- 左侧头像（竖长方形） -->
                 <div class="flex-shrink-0 sm:w-40">
                   <div class="mx-auto rounded-lg bg-white h-44 w-32 shadow-md overflow-hidden sm:mx-0 sm:h-52 sm:w-40">
                     <img
@@ -418,16 +377,13 @@ watch([selectedRole, selectedGrade], () => {
                   </div>
                 </div>
 
-                <!-- 右侧信息 -->
                 <div class="flex-1">
-                  <!-- 姓名 + 下划线 -->
                   <div class="mb-4 text-center sm:text-left">
                     <h3 class="text-xl text-gray-800 font-bold pb-2 border-b-2 border-primary inline-block">
                       {{ member.name }}
                     </h3>
                   </div>
 
-                  <!-- 简介 + 邮箱 + 荣誉 -->
                   <div class="text-gray-700 leading-relaxed">
                     <p v-if="member.bio" class="mb-3">
                       {{ member.bio }}
@@ -449,7 +405,6 @@ watch([selectedRole, selectedGrade], () => {
             </div>
           </div>
 
-          <!-- 分页控件 -->
           <div v-if="totalPages > 1" class="mt-8 flex gap-2 justify-center">
             <button
               class="text-gray-600 px-3 py-1.5 rounded-lg bg-gray-100 transition-all duration-200 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
@@ -462,7 +417,8 @@ watch([selectedRole, selectedGrade], () => {
             <button
               v-for="page in totalPages"
               :key="page"
-              class="px-3 py-1.5 rounded-lg transition-all duration-200" :class="[
+              class="px-3 py-1.5 rounded-lg transition-all duration-200"
+              :class="[
                 currentPage === page
                   ? 'bg-primary text-white'
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
@@ -482,9 +438,7 @@ watch([selectedRole, selectedGrade], () => {
           </div>
         </template>
 
-        <!-- 硕士生和已毕业硕士生 - 05 样式（垂直列表） -->
         <template v-else-if="selectedRole === 'master_student' || selectedRole === 'graduated_master'">
-          <!-- 白色卡片容器 -->
           <div class="p-8 rounded-xl bg-white shadow-lg">
             <div class="space-y-8">
               <div
@@ -492,7 +446,6 @@ watch([selectedRole, selectedGrade], () => {
                 :key="member.id"
                 class="pb-8 border-b border-gray-200 flex flex-col gap-6 last:pb-0 last:border-0 sm:flex-row"
               >
-                <!-- 左侧头像（竖长方形） -->
                 <div class="flex-shrink-0 sm:w-40">
                   <div class="mx-auto rounded-lg bg-white h-44 w-32 shadow-md overflow-hidden sm:mx-0 sm:h-52 sm:w-40">
                     <img
@@ -512,16 +465,13 @@ watch([selectedRole, selectedGrade], () => {
                   </div>
                 </div>
 
-                <!-- 右侧信息 -->
                 <div class="flex-1">
-                  <!-- 姓名 + 下划线 -->
                   <div class="mb-4 text-center sm:text-left">
                     <h3 class="text-xl text-gray-800 font-bold pb-2 border-b-2 border-primary inline-block">
                       {{ member.name }}
                     </h3>
                   </div>
 
-                  <!-- 简介 + 邮箱 + 荣誉 -->
                   <div class="text-gray-700 leading-relaxed">
                     <p v-if="member.bio" class="mb-3">
                       {{ member.bio }}
@@ -543,7 +493,6 @@ watch([selectedRole, selectedGrade], () => {
             </div>
           </div>
 
-          <!-- 分页控件 -->
           <div v-if="totalPages > 1" class="mt-8 flex gap-2 justify-center">
             <button
               class="text-gray-600 px-3 py-1.5 rounded-lg bg-gray-100 transition-all duration-200 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
@@ -556,7 +505,8 @@ watch([selectedRole, selectedGrade], () => {
             <button
               v-for="page in totalPages"
               :key="page"
-              class="px-3 py-1.5 rounded-lg transition-all duration-200" :class="[
+              class="px-3 py-1.5 rounded-lg transition-all duration-200"
+              :class="[
                 currentPage === page
                   ? 'bg-primary text-white'
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
@@ -576,9 +526,7 @@ watch([selectedRole, selectedGrade], () => {
           </div>
         </template>
 
-        <!-- 科研助理 - 垂直列表布局 -->
         <template v-else-if="selectedRole === 'research_assistant'">
-          <!-- 白色卡片容器 -->
           <div class="p-8 rounded-xl bg-white shadow-lg">
             <div class="space-y-8">
               <div
@@ -586,7 +534,6 @@ watch([selectedRole, selectedGrade], () => {
                 :key="member.id"
                 class="pb-8 border-b border-gray-200 flex flex-col gap-6 last:pb-0 last:border-0 sm:flex-row"
               >
-                <!-- 左侧头像（竖长方形） -->
                 <div class="flex-shrink-0 sm:w-40">
                   <div class="mx-auto rounded-lg bg-white h-44 w-32 shadow-md overflow-hidden sm:mx-0 sm:h-52 sm:w-40">
                     <img
@@ -606,16 +553,13 @@ watch([selectedRole, selectedGrade], () => {
                   </div>
                 </div>
 
-                <!-- 右侧信息 -->
                 <div class="flex-1">
-                  <!-- 姓名 + 下划线 -->
                   <div class="mb-4 text-center sm:text-left">
                     <h3 class="text-xl text-gray-800 font-bold pb-2 border-b-2 border-primary inline-block">
                       {{ member.name }}
                     </h3>
                   </div>
 
-                  <!-- 简介 + 邮箱 + 荣誉 -->
                   <div class="text-gray-700 leading-relaxed">
                     <p v-if="member.bio" class="mb-3">
                       {{ member.bio }}
@@ -639,7 +583,6 @@ watch([selectedRole, selectedGrade], () => {
         </template>
       </div>
 
-      <!-- 空状态 -->
       <div v-if="currentMembers.length === 0" py-12 text-center>
         <div i-carbon-account text-6xl text-gray-300 mb-4 />
         <p text-gray-500>

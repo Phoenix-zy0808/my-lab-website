@@ -308,7 +308,7 @@ const roleMap: Record<TeamMember['role'], { label: string, color: string }> = {
       </div>
 
       <div v-else py-12 text-center>
-        <div i-carbon-account-off text-6xl text-gray-300 mb-4 />
+        <div i-carbon-user text-6xl text-gray-300 mb-4 />
         <p text-gray-500>
           未找到成员信息
         </p>

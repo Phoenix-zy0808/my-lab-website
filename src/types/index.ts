@@ -6,9 +6,11 @@ export interface SiteConfig {
   description: string
   university: string
   department: string
+  departments?: string[]
   address: string
   email: string
   phone: string
+  phones?: string[]
   logo?: string
   heroImage?: string
   socialLinks: SocialLink[]
@@ -44,6 +46,8 @@ export interface TeamMember {
   researchProjects?: ResearchProject[]
   researchInterests?: string[]
   publications?: string[]
+  honors?: string[]
+  grade?: string
   joinDate?: string
 }
 
@@ -94,10 +98,11 @@ export interface Publication {
 export interface ResearchDirection {
   id: string
   title: string
-  description: string
-  image?: string
+  highlight?: string
+  summary: string
+  focus?: string[]
+  applications?: string[]
   keywords: string[]
-  progress?: ResearchProgress[]
 }
 
 export interface ResearchProgress {
@@ -125,7 +130,7 @@ export interface NewsItem {
   category?: string
 }
 
-// 成就相关
+// 成果相关
 export interface Achievement {
   id: string
   type: 'paper' | 'competition' | 'copyright' | 'patent' | 'project' | 'honor'

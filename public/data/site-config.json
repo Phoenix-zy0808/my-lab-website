@@ -1,23 +1,20 @@
 {
-  "labName": "AI科研实验室",
-  "labNameEn": "AI Research Laboratory",
-  "description": "让科研更高效，让检测更智能",
+  "labName": "智能光谱分析与材料信息课题组",
+  "labNameEn": "Intelligent Spectral Analysis and Materials Informatics Group",
+  "description": "聚焦光谱信号解析、材料信息建模与智能检测应用，开展交叉研究与人才培养。",
   "university": "中国计量大学",
-  "department": "量新学院",
+  "department": "量新学院 / 材料与化学学院",
+  "departments": [
+    "量新学院",
+    "材料与化学学院"
+  ],
   "address": "浙江省杭州市钱塘区学源街 258 号",
-  "email": "contact@raman-lab.edu.cn",
-  "phone": "+86-XXX-XXXXXXXX",
+  "email": "fangcheng@cjlu.edu.cn",
+  "phone": "0571-87676224 / 0571-86835781",
+  "phones": [
+    "0571-87676224",
+    "0571-86835781"
+  ],
   "heroImage": "/images/hero-bg.svg",
-  "socialLinks": [
-    {
-      "platform": "GitHub",
-      "url": "https://github.com/",
-      "icon": "i-carbon-logo-github"
-    },
-    {
-      "platform": "Twitter",
-      "url": "https://twitter.com/",
-      "icon": "i-carbon-logo-twitter"
-    }
-  ]
+  "socialLinks": []
 }

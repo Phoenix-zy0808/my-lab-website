@@ -3,7 +3,6 @@ import type { SiteConfig } from '~/types'
 
 const config = ref<SiteConfig | null>(null)
 
-// 加载站点配置
 async function loadConfig() {
   try {
     const res = await fetch('/data/site-config.json')
@@ -14,68 +13,83 @@ async function loadConfig() {
   }
 }
 
-onMounted(() => {
-  loadConfig()
-})
+onMounted(loadConfig)
 
 const currentYear = new Date().getFullYear()
 
-// 友情链接
 const friendLinks = [
   { name: '中国计量大学', url: 'https://www.cjlu.edu.cn/index.htm' },
-  { name: '量新学院', url: 'https://lxxy.cjlu.edu.cn/index.htm' },
+  { name: '量新学院', url: 'https://liangxin.cjlu.edu.cn/' },
   { name: '材料与化学学院', url: 'https://clxy.cjlu.edu.cn/index.htm' },
 ]
+
+const departments = computed(() => {
+  if (config.value?.departments?.length)
+    return config.value.departments
+
+  if (config.value?.department)
+    return config.value.department.split('/').map(item => item.trim()).filter(Boolean)
+
+  return []
+})
+
+const phones = computed(() => {
+  if (config.value?.phones?.length)
+    return config.value.phones
+
+  if (config.value?.phone)
+    return config.value.phone.split('/').map(item => item.trim()).filter(Boolean)
+
+  return []
+})
+
+const phoneText = computed(() => phones.value.join(' / '))
+const departmentText = computed(() => departments.value.join(' / '))
 </script>
 
 <template>
   <footer text-white mt-16 bg-primary>
     <div class="mx-auto px-4 py-12 max-w-7xl lg:px-8 sm:px-6">
-      <!-- 修改：改为 4 列布局，第一列更宽 -->
       <div gap-8 grid grid-cols-1 lg:grid-cols-4 sm:grid-cols-2>
-        <!-- 实验室信息 - 占用 2 列 (更宽) -->
         <div class="lg:col-span-2">
           <div mb-4 flex items-center space-x-3>
             <div i-carbon-microscope text-2xl />
             <div>
               <h3 text-lg font-bold>
-                {{ config?.labName || '智能光谱分析实验室' }}
+                {{ config?.labName || '智能光谱分析与材料信息课题组' }}
               </h3>
               <p text-sm op="75">
-                {{ config?.labNameEn || 'Laboratory for Intelligent Spectral Analysis' }}
+                {{ config?.labNameEn || 'Intelligent Spectral Analysis and Materials Informatics Group' }}
               </p>
             </div>
           </div>
-          <!-- 修改：只加宽模块，字体保持 text-sm 不变 -->
           <p op="80" text-sm leading-relaxed mb-6 max-w-3xl>
-            {{ config?.description || '致力于拉曼与红外光谱技术的智能化创新及其在多领域的精准应用' }}
+            {{ config?.description || '聚焦光谱信号解析、材料信息建模与智能检测应用，开展交叉研究与人才培养。' }}
           </p>
         </div>
 
-        <!-- 联系方式 - 左移四个文字长度 (约 4rem = 64px) -->
         <div class="lg:col-span-1 lg:-ml-16">
           <h4 text-base font-semibold mb-4>
             联系方式
           </h4>
           <ul text-sm space-y-2 op="75">
-            <li flex gap-2 items-start>
+            <li v-if="config?.address" flex gap-2 items-start>
               <div i-carbon-location class="mt-0.5 flex-shrink-0" />
-              <span>{{ config?.address || '浙江省杭州市钱塘区学源街 258 号' }}</span>
+              <span>{{ config.address }}</span>
             </li>
-            <li flex gap-2 items-center>
+            <li v-if="config?.email" flex gap-2 items-center>
               <div i-carbon-email class="flex-shrink-0" />
-              <a :href="`mailto:${config?.email}`" class="transition-colors hover:text-white">
-                {{ config?.email || 'contact@raman-lab.edu.cn' }}
+              <a :href="`mailto:${config.email}`" class="transition-colors hover:text-white">
+                {{ config.email }}
               </a>
             </li>
-            <li flex gap-2 items-center>
+            <li v-if="phoneText" flex gap-2 items-center>
               <div i-carbon-phone class="flex-shrink-0" />
-              <span>{{ config?.phone || '+86-XXX-XXXXXXXX' }}</span>
+              <span>{{ phoneText }}</span>
             </li>
           </ul>
         </div>
 
-        <!-- 友情链接 - 右移一个文字长度 (修改：从 -ml-8 改为 ml-4) -->
         <div class="lg:ml-4 lg:col-span-1">
           <h4 text-base font-semibold mb-4>
             友情链接
@@ -96,14 +110,18 @@ const friendLinks = [
         </div>
       </div>
 
-      <!-- 版权信息 -->
       <div class="text-sm mt-8 px-4 pt-8 text-center border-t border-white/10 opacity-75 -mx-4 lg:px-8 sm:px-6 lg:-mx-8 sm:-mx-6">
         <p>
-          &copy; {{ currentYear }} {{ config?.labName || '智能光谱分析实验室' }}. All rights reserved.
+          &copy; {{ currentYear }} {{ config?.labName || '智能光谱分析与材料信息课题组' }}
         </p>
-        <p class="mt-2">
-          {{ config?.university || '中国计量大学' }} {{ config?.department || '量新学院' }}
-        </p>
+        <div class="mt-2 flex flex-wrap gap-x-6 gap-y-1 items-center justify-center">
+          <span class="font-medium">
+            {{ config?.university || '中国计量大学' }}
+          </span>
+          <span v-if="departmentText" class="opacity-85">
+            {{ departmentText }}
+          </span>
+        </div>
       </div>
     </div>
   </footer>
