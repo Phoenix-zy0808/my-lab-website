@@ -165,7 +165,7 @@ function formatDateLabel(achievement: Achievement) {
 function getTimePrefix(achievement: Achievement) {
   switch (achievement.type) {
     case 'patent':
-      return '申请时间'
+      return '受理/授权时间'
     case 'copyright':
       return '登记时间'
     case 'project':

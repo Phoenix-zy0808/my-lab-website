@@ -173,29 +173,29 @@
   {
     "id": "comp-8",
     "type": "competition",
-    "title": "睿抗竞赛",
+    "title": "2025年睿抗机器人开发者大赛全国总决赛二等奖",
     "authors": [
       "Huang Juan"
     ],
-    "description": "睿抗机器人开发者大赛",
-    "date": "2024-12",
+    "description": "2025年睿抗机器人开发者大赛（RAICOM）全国总决赛“宋韵新风”竞赛项目二等奖。",
+    "date": "2025-08-20",
     "pdf": "/pdfs/competition/黄娟睿抗.jpg"
   },
   {
     "id": "comp-9",
     "type": "competition",
-    "title": "虚拟仿真大赛",
+    "title": "第十一届浙江省大学生工程实践与创新能力大赛铜奖",
     "authors": [
       "Huang Juan"
     ],
-    "description": "虚拟仿真教学软件应用大赛",
-    "date": "2024-12",
+    "description": "第十一届浙江省大学生工程实践与创新能力大赛虚拟仿真赛道智能网联汽车设计赛项铜奖。",
+    "date": "2024-11",
     "pdf": "/pdfs/competition/黄娟虚拟仿真.png"
   },
   {
     "id": "comp-10",
     "type": "competition",
-    "title": "金玺奖",
+    "title": "金玺创意设计奖",
     "authors": [
       "Lin Ken"
     ],
@@ -314,6 +314,94 @@
     "pdf": "/pdfs/competition/林翔国赛证书.jpg"
   },
   {
+    "id": "comp-21",
+    "type": "competition",
+    "title": "全国三维数字化创新设计大赛浙江赛区特等奖",
+    "authors": [
+      "Huang Juan"
+    ],
+    "description": "黄娟参与全国三维数字化创新设计大赛并获浙江赛区特等奖。",
+    "date": "2025",
+    "pdf": ""
+  },
+  {
+    "id": "comp-22",
+    "type": "competition",
+    "title": "2025年挑战杯“揭榜挂帅”国家一等奖",
+    "authors": [
+      "Huang Juan"
+    ],
+    "description": "黄娟参与2025年挑战杯“揭榜挂帅”专项赛并获国家一等奖。",
+    "date": "2025",
+    "pdf": ""
+  },
+  {
+    "id": "comp-23",
+    "type": "competition",
+    "title": "2025年挑战杯“揭榜挂帅”国家二等奖",
+    "authors": [
+      "Huang Juan"
+    ],
+    "description": "黄娟参与2025年挑战杯“揭榜挂帅”专项赛并获国家二等奖。",
+    "date": "2025",
+    "pdf": ""
+  },
+  {
+    "id": "comp-24",
+    "type": "competition",
+    "title": "2025年浙江省第十九届“挑战杯”主体赛金奖",
+    "authors": [
+      "Huang Juan"
+    ],
+    "description": "黄娟参与浙江省第十九届“挑战杯”主体赛并获金奖。",
+    "date": "2025",
+    "pdf": ""
+  },
+  {
+    "id": "comp-25",
+    "type": "competition",
+    "title": "第九届浙江省国际“互联网+”大学生创新创业大赛金钥匙奖",
+    "authors": [
+      "Liu Ming"
+    ],
+    "description": "材智云科-新材料研发加速器项目获第九届浙江省国际“互联网+”大学生创新创业大赛金钥匙奖。",
+    "date": "2023-08",
+    "pdf": "/pdfs/competition/2023年第九届浙江省“互联网+”大学生创新创业大赛-金钥匙奖(8).pdf"
+  },
+  {
+    "id": "comp-26",
+    "type": "competition",
+    "title": "中国国际大学生创新大赛（2023）国家金奖",
+    "authors": [
+      "Liu Ming"
+    ],
+    "description": "新材料研发加速器项目获中国国际大学生创新大赛（2023）国家金奖。",
+    "date": "2023-12",
+    "pdf": "/pdfs/competition/A类竞赛_国家级_国家级一等奖_P22050854034_刘明_HJZZ.pdf"
+  },
+  {
+    "id": "comp-27",
+    "type": "competition",
+    "title": "浙江省第十四届“挑战杯”大学生创业计划竞赛金奖",
+    "authors": [
+      "Liu Ming"
+    ],
+    "description": "量材智能-材料研发“魔法师”项目获浙江省第十四届“挑战杯”大学生创业计划竞赛金奖。",
+    "date": "2024-05",
+    "pdf": "/pdfs/competition/A类竞赛_省级_省级一等奖_P22050854034_刘明_HJZZ.pdf"
+  },
+  {
+    "id": "comp-28",
+    "type": "competition",
+    "title": "浙江省第十四届大学生创业计划竞赛省级二等奖",
+    "authors": [
+      "Liu Ming"
+    ],
+    "description": "刘明参与浙江省第十四届大学生创业计划竞赛并获省级二等奖。",
+    "date": "2024-05",
+    "pdf": "/pdfs/competition/A类竞赛_省级_省级二等奖_P22050854034_刘明_HJZZ.pdf"
+  },
+  {
     "id": "copyright-1",
     "type": "copyright",
     "title": "基于矩阵计算的化学方程式配平系统 V1.0",
@@ -321,7 +409,7 @@
       "Jiang Chaozheng"
     ],
     "description": "基于矩阵计算的化学方程式智能配平软件系统",
-    "date": "2024-12",
+    "date": "2024-04-16",
     "pdf": "/pdfs/copyright/蒋朝政-基于矩阵计算的化学方程式配平系统-v1.0.pdf"
   },
   {
@@ -332,7 +420,7 @@
       "Lin Ken"
     ],
     "description": "基于第一性原理的材料计算模型优化软件",
-    "date": "2024-12",
+    "date": "2023-11-23",
     "pdf": "/pdfs/copyright/林肯--材智云-第一性原理计算模型优化软件 v1.1.pdf"
   },
   {
@@ -343,7 +431,7 @@
       "Lin Ken"
     ],
     "description": "材料有限元分析与仿真计算软件",
-    "date": "2024-12",
+    "date": "2023-12-08",
     "pdf": "/pdfs/copyright/林肯-材智云-材料有限元计算仿真软件v1.0.pdf"
   },
   {
@@ -354,7 +442,7 @@
       "Lin Ken"
     ],
     "description": "基于人工智能的合金材料设计与优化软件",
-    "date": "2024-12",
+    "date": "2023-12-05",
     "pdf": "/pdfs/copyright/林肯-材智云-人工智能合金材料设计软件v1.0.pdf"
   },
   {
@@ -365,7 +453,7 @@
       "Lin Ken"
     ],
     "description": "材料形核与析出动力学过程计算软件",
-    "date": "2024-12",
+    "date": "2023-12-14",
     "pdf": "/pdfs/copyright/林肯-材智云-形核析出动力学计算软件 V1.0.pdf"
   },
   {
@@ -376,7 +464,7 @@
       "Lin Ken"
     ],
     "description": "基于计量学算法的第一性原理计算软件",
-    "date": "2024-12",
+    "date": "2023-11-03",
     "pdf": "/pdfs/copyright/林肯软著-基于计量算法的第一性原理计算软件(1).pdf"
   },
   {
@@ -387,7 +475,7 @@
       "Wei Xinyu"
     ],
     "description": "复杂体系近红外光谱弱差异信号智能解析系统",
-    "date": "2024-12",
+    "date": "2025-10-23",
     "pdf": "/pdfs/copyright/尉昕宇-复杂体系近红外图谱弱差异信号解析系统-V1.0.pdf"
   },
   {
@@ -398,7 +486,7 @@
       "Wei Xinyu"
     ],
     "description": "电感耦合等离子体质谱检测数据智能处理平台",
-    "date": "2024-12",
+    "date": "2025-10-23",
     "pdf": "/pdfs/copyright/尉昕宇-ICP-MS 检测数据智能化处理技术研究平台-V1.0.pdf"
   },
   {
@@ -409,8 +497,46 @@
       "Zhang Yuedan"
     ],
     "description": "基于 PyQt 框架的合金材料智能设计软件",
-    "date": "2024-12",
+    "date": "2024-10-10",
     "pdf": "/pdfs/copyright/张悦丹-基于PYQT的人工智能驱动合金框架设计软件-V1.0.pdf"
+  },
+  {
+    "id": "copyright-10",
+    "type": "copyright",
+    "title": "材智云-第一性原理计算模型优化软件 V1.1",
+    "authors": [
+      "Liu Ming",
+      "Lin Ken",
+      "Huang Zeyu"
+    ],
+    "description": "面向材料计算的第一性原理计算模型优化软件，登记日期为2023年11月23日。",
+    "date": "2023-11-23",
+    "pdf": "/pdfs/copyright/第一 证书-材智云-第一性原理计算模型优化软件 v1.1.pdf"
+  },
+  {
+    "id": "copyright-11",
+    "type": "copyright",
+    "title": "材智云-第一性原理计算模量计算软件 V1.1",
+    "authors": [
+      "Liu Ming",
+      "Hu Chenglu"
+    ],
+    "description": "面向第一性原理计算的模量计算软件，登记日期为2024年09月03日。",
+    "date": "2024-09-03",
+    "pdf": "/pdfs/copyright/第二 材智云-第一性原理计算模量计算软件证书.pdf"
+  },
+  {
+    "id": "copyright-12",
+    "type": "copyright",
+    "title": "材智云-第一性原理计算建模软件 V1.0",
+    "authors": [
+      "Liu Ming",
+      "Xia Yuejian",
+      "Zhang Bole"
+    ],
+    "description": "面向材料研发的第一性原理计算建模软件，登记日期为2023年10月30日。",
+    "date": "2023-10-30",
+    "pdf": "/pdfs/copyright/第三 材智云-第一性原理计算建模软件(1).pdf"
   },
   {
     "id": "patent-1",
@@ -420,7 +546,7 @@
       "Huang Juan"
     ],
     "description": "基于特征交互与扩散优化的多视角三维手部重建发明专利",
-    "date": "2024-12",
+    "date": "2026-01-08",
     "patentNumber": "ZL202410XXXXXX.X",
     "pdf": "/pdfs/patent/黄娟-发明专利-结合特征交互与扩散优化的多视角三维手部模型重建方法.pdf"
   },
@@ -432,7 +558,7 @@
       "Huang Juan"
     ],
     "description": "拉曼光谱分析模型的自动评估与优化系统",
-    "date": "2024-12",
+    "date": "2025-04-03",
     "pdf": "/pdfs/patent/黄娟对分析拉曼光谱的模型的评估及自主优化系统-黄娟.pdf"
   },
   {
@@ -443,7 +569,7 @@
       "Huang Juan"
     ],
     "description": "基于拉曼光谱的自动化物质识别方法",
-    "date": "2024-12",
+    "date": "2025-04-02",
     "pdf": "/pdfs/patent/黄娟基于优化拉曼光谱分析系统的自动化物质识别方法.pdf"
   },
   {
@@ -456,7 +582,7 @@
       "Lin Xiang"
     ],
     "description": "基于生成对抗网络的光谱数据重构与降噪算法",
-    "date": "2024-12",
+    "date": "2025-06-09",
     "pdf": "/pdfs/patent/蒋朝政发明专利受理：一种基于基于 VAE - GAN 与 R3GAN 结合的光谱重构降噪算法.pdf"
   },
   {
@@ -469,7 +595,7 @@
       "Lin Xiang"
     ],
     "description": "基于深度学习 U-Net 架构的拉曼光谱降噪方法",
-    "date": "2024-12",
+    "date": "2025-02-24",
     "pdf": "/pdfs/patent/蒋朝政一种基于U-Net架构的循环生成对抗网络的拉曼光谱降噪算法-蒋朝政、程芳、林翔等.pdf"
   },
   {
@@ -480,7 +606,7 @@
       "Lin Ken"
     ],
     "description": "双电源供电系统的电磁机械联锁装置",
-    "date": "2024-12",
+    "date": "2024-09-20",
     "patentNumber": "ZL202410824460.X",
     "pdf": "/pdfs/patent/林肯发明专利202410824460X_一种用于双电源控制的电磁机械联锁装置-发明专利证书-亨斯迈（杭州）电力技术有限公司(1).pdf"
   },
@@ -492,7 +618,7 @@
       "Lin Ken"
     ],
     "description": "紧凑型开关柜接地开关传动装置",
-    "date": "2024-12",
+    "date": "2025-03-11",
     "patentNumber": "ZL202410880250.X",
     "pdf": "/pdfs/patent/林肯发明专利2024108802502_一种具有新型接地开关传动装置的紧凑型开关柜.pdf"
   },
@@ -504,7 +630,7 @@
       "Lin Xiang"
     ],
     "description": "基于多目视线追踪与大语言模型的多模态交互机器人系统",
-    "date": "2024-12",
+    "date": "2025-07-21",
     "pdf": "/pdfs/patent/林翔一种基于多摄像机视线追踪与大模型集成的多模态交互智能机器人系统.pdf"
   },
   {
@@ -515,7 +641,7 @@
       "Lin Xiang"
     ],
     "description": "基于深度学习多通道 CNN 与空间金字塔池化的拉曼光谱分析算法",
-    "date": "2024-12",
+    "date": "2025-02-21",
     "pdf": "/pdfs/patent/林翔一种基于多通道一维卷积神经网络与空间金字塔池化技术的拉曼光谱算法.pdf"
   },
   {
@@ -526,7 +652,7 @@
       "Tang Jiali"
     ],
     "description": "基于量子纠缠光子增强技术的超快相干拉曼光谱仪",
-    "date": "2024-12",
+    "date": "2024-09-11",
     "pdf": "/pdfs/patent/汤佳丽基于量子纠缠光子增强的超快相干拉曼光谱仪及其光路装置.pdf"
   },
   {
@@ -537,7 +663,7 @@
       "Wang Heli"
     ],
     "description": "激光辅助等离子体化学气相沉积制备 WC 硬质涂层的方法",
-    "date": "2024-12",
+    "date": "2024-09-11",
     "pdf": "/pdfs/patent/王鹤立发明专利-一种基于激光辅助等离子增强_CVD_的_WC_硬质涂层及其制备方法.pdf"
   },
   {
@@ -548,7 +674,7 @@
       "Wei Xinyu"
     ],
     "description": "双核铜碘杂化半导体材料的合成及其在荧光传感中的应用",
-    "date": "2024-12",
+    "date": "2024-05-13",
     "pdf": "/pdfs/patent/尉昕宇一种双核 Cu2I2P2S2 型杂化半导体发光材料及其荧光传感应用.pdf"
   },
   {
@@ -571,7 +697,7 @@
       "Weng Danni"
     ],
     "description": "基于波前 - 功率协同调控的 BBO 晶体量子纠缠源产生装置",
-    "date": "2025-01",
+    "date": "2025-03-28",
     "pdf": "/pdfs/patent/翁丹妮(一作)发明专利受理-一种基于波前-功率协同调控方法的梯度极化 BBO 晶体量子纠缠源装置.pdf"
   },
   {
@@ -582,7 +708,7 @@
       "Weng Danni"
     ],
     "description": "基于量子鲸群优化算法的 DBSCAN 聚类高光谱岩矿检测方法",
-    "date": "2025-01",
+    "date": "2025-04-02",
     "pdf": "/pdfs/patent/翁丹妮(一作)发明专利受理-一种基于量子鲸群优化的 DBSCAN 聚类高光谱岩矿检测算法.pdf"
   },
   {
@@ -593,7 +719,7 @@
       "Weng Danni"
     ],
     "description": "基于物理约束数据增强的光谱多任务深度学习算法",
-    "date": "2024-12",
+    "date": "2025-06-09",
     "pdf": "/pdfs/patent/邬丹妮一种基于物理约束数据增强和自适应优化的光谱多任务深度学习方法.pdf"
   },
   {
@@ -604,8 +730,20 @@
       "Zhang Yuedan"
     ],
     "description": "拉曼光谱检测数据的量值溯源与校准系统",
-    "date": "2024-12",
+    "date": "2025-04-21",
     "pdf": "/pdfs/patent/张悦丹发明专利-拉曼光谱数据的量值溯源系统.pdf"
+  },
+  {
+    "id": "patent-18",
+    "type": "patent",
+    "title": "一种自动感应钎焊设备",
+    "authors": [
+      "Liu Ming"
+    ],
+    "description": "刘明参与的实用新型专利，授权公告日为2024年08月23日。",
+    "date": "2024-08-23",
+    "patentNumber": "ZL202420132992.2",
+    "pdf": "/pdfs/patent/P22050854034_刘明_FBZL.pdf"
   },
   {
     "id": "project-1",

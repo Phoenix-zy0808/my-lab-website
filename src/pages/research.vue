@@ -73,10 +73,7 @@ onMounted(() => {
             <div class="bg-gray-200 flex-1 h-px" />
           </div>
 
-          <div
-            class="max-w-4xl"
-            :class="index % 2 === 1 ? 'ml-auto' : ''"
-          >
+          <div class="max-w-4xl">
             <h2 class="text-3xl text-gray-900 leading-tight font-bold">
               {{ direction.title }}
             </h2>
@@ -93,10 +90,7 @@ onMounted(() => {
             </p>
           </div>
 
-          <div
-            class="mt-8 gap-6 grid lg:grid-cols-2"
-            :class="index % 2 === 1 ? 'lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1' : ''"
-          >
+          <div class="mt-8 gap-6 grid lg:grid-cols-2">
             <div class="px-6 py-5 border border-gray-200 rounded-2xl bg-gray-50">
               <h3 class="text-lg text-gray-900 font-semibold mb-4">
                 研究重点

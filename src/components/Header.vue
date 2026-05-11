@@ -96,7 +96,7 @@ onUnmounted(() => {
     role="banner"
     transition-all duration-300 left-0 right-0 top-0 fixed z-50
     :class="[
-      isScrolled ? 'bg-primary/95 backdrop-blur-sm shadow-lg' : 'bg-transparent',
+      isScrolled ? 'bg-primary/78 backdrop-blur-md shadow-sm' : 'bg-transparent',
     ]"
   >
     <div
@@ -115,12 +115,15 @@ onUnmounted(() => {
           aria-label="返回首页"
         >
           <div
-            bg="rgb(255 255 255 / 0.2)"
-            text-xl text-white rounded-full flex h-10 w-10 transition duration-300 items-center justify-center
-            group-hover:bg="rgb(255 255 255 / 0.3)"
+            class="rounded-xl flex h-11 w-11 transition duration-300 items-center justify-center overflow-hidden group-hover:scale-105"
             aria-hidden="true"
           >
-            <div v-if="!isLoading" i-carbon-microscope />
+            <img
+              v-if="!isLoading"
+              src="/images/logo/logo-transparent.png"
+              alt=""
+              class="h-full w-full object-contain"
+            >
             <div v-else class="i-carbon-circle-dash animate-spin" text-xl />
           </div>
 
@@ -211,11 +214,14 @@ onUnmounted(() => {
         >
           <div mb-8 text-center>
             <div
-              bg="rgb(255 255 255 / 0.2)"
-              text-3xl text-white mx-auto mb-4 rounded-full flex h-16 w-16 items-center justify-center
+              class="mx-auto mb-4 rounded-2xl flex h-18 w-18 items-center justify-center overflow-hidden"
               aria-hidden="true"
             >
-              <div i-carbon-microscope />
+              <img
+                src="/images/logo/logo-transparent.png"
+                alt=""
+                class="h-full w-full object-contain"
+              >
             </div>
             <h2 text-xl text-white font-bold>
               {{ config?.labName || '智能光谱分析与材料信息课题组' }}

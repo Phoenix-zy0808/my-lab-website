@@ -417,9 +417,16 @@
       "major": "计算机",
       "role": "undergraduate",
       "title": "本科生",
-      "photo": "/images/team/placeholder.svg",
+      "photo": "/images/team/huangjuan.jpg",
       "bio": "2023级计算机专业在读。",
-      "honors": [],
+      "honors": [
+        "第十一届浙江省大学生工程实践与创新能力大赛铜奖",
+        "2025年睿抗机器人开发者大赛全国总决赛二等奖",
+        "全国三维数字化创新设计大赛浙江赛区特等奖",
+        "2025年挑战杯“揭榜挂帅”国家一等奖",
+        "2025年挑战杯“揭榜挂帅”国家二等奖",
+        "2025年浙江省第十九届“挑战杯”主体赛金奖"
+      ],
       "researchInterests": [
         "计算机"
       ],
@@ -532,6 +539,8 @@
       "photo": "/images/team/huhaojun.jpg",
       "bio": "2023级人工智能专业在读。",
       "honors": [
+        "发表了一篇中科院一区论文（共一）",
+        "中国大学生服务外包创新创业大赛东部区域赛三等奖",
         "授权软件著作权 2 项"
       ],
       "researchInterests": [
@@ -725,7 +734,7 @@
       "major": "材料",
       "role": "undergraduate",
       "title": "本科生",
-      "photo": "/images/team/placeholder.svg",
+      "photo": "/images/team/liusiqi.jpg",
       "bio": "2025级材料专业在读。",
       "honors": [],
       "researchInterests": [
@@ -818,14 +827,23 @@
       "role": "graduated_master",
       "grade": "2022 级",
       "major": "电子信息",
-      "currentCompany": "杭州永瓷集团",
+      "currentCompany": "杭州永磁集团有限公司",
       "currentPosition": "工程师",
-      "photo": "/images/team/placeholder.svg",
+      "photo": "/images/team/liuming.jpg",
       "bio": "刘明，2022级电子信息专业硕士毕业生，现就职于杭州永磁集团有限公司算法工程师。",
       "honors": [
         "中国国际大学生创新大赛国家金奖",
         "挑战杯小挑金奖",
-        "研究生国家奖学金"
+        "研究生国家奖学金",
+        "中国产学研创新成果奖二等奖",
+        "第九届浙江省“互联网+”大学生创新创业大赛金钥匙奖",
+        "A类学科竞赛国家级一等奖",
+        "A类学科竞赛省级一等奖",
+        "A类学科竞赛省级二等奖",
+        "浙江省高校大学生创业训练营三等奖",
+        "发明专利 1 项",
+        "授权软件著作权 3 项",
+        "获得一封杭州亚运会感谢信"
       ],
       "graduationYear": "2025"
     },
@@ -987,8 +1005,17 @@
       "role": "graduated_undergraduate",
       "title": "已毕业本科",
       "photo": "/images/team/placeholder.svg",
-      "bio": "黄泽宇，2021级计算机中外合作专业本科生，现于英国伦敦大学国王学院攻读硕士学位。",
-      "honors": []
+      "bio": "黄泽宇，2021级计算机专业本科毕业生，在课题组指导下开展算法研究，现已录取为英国伦敦大学国王学院硕士研究生。",
+      "honors": [
+        "发表 IEEE 算法论文 1 篇",
+        "授权发明专利 1 件",
+        "授权实用新型专利 4 件",
+        "中国国际大学生创新大赛国家金奖",
+        "挑战杯小挑金奖",
+        "国家奖学金",
+        "省优秀毕业生",
+        "录取为英国伦敦大学国王学院硕士研究生（QS 全球第 31 名，英国第 5 名）"
+      ]
     },
     {
       "id": "grad-u-21-3",
