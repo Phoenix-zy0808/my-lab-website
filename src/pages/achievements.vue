@@ -198,8 +198,8 @@ function openAttachment(attachmentUrl: string) {
 
     <div page-container py-12>
       <div class="mb-8">
-        <div class="mb-4 overflow-x-auto overflow-y-hidden">
-          <div class="flex flex-nowrap gap-2 min-w-max justify-center">
+        <div class="mb-4 px-4 overflow-x-auto overflow-y-hidden -mx-4 sm:mx-0 sm:px-0">
+          <div class="flex flex-nowrap gap-2 min-w-max justify-start sm:justify-center">
             <button
               v-for="filter in typeFilterOptions"
               :key="filter.key"
@@ -217,8 +217,8 @@ function openAttachment(attachmentUrl: string) {
           </div>
         </div>
 
-        <div class="overflow-x-auto overflow-y-hidden">
-          <div class="flex flex-nowrap gap-2 min-w-max justify-center">
+        <div class="px-4 overflow-x-auto overflow-y-hidden -mx-4 sm:mx-0 sm:px-0">
+          <div class="flex flex-nowrap gap-2 min-w-max justify-start sm:justify-center">
             <button
               v-for="year in yearOptions"
               :key="year.key"
@@ -244,7 +244,7 @@ function openAttachment(attachmentUrl: string) {
         >
           <template v-if="ach.type === 'paper' && ach.authors?.length">
             <div class="flex gap-3">
-              <span class="text-sm text-gray-500 flex-shrink-0 w-8">
+              <span class="text-sm text-gray-500 flex-shrink-0 w-6 sm:w-8">
                 ({{ currentPageData.indexOf(ach) + 1 }})
               </span>
 
@@ -274,7 +274,7 @@ function openAttachment(attachmentUrl: string) {
                   </template>
                 </p>
 
-                <h3 class="text-lg text-primary leading-8 font-semibold mt-2">
+                <h3 class="text-base text-primary leading-7 font-semibold mt-2 sm:text-lg sm:leading-8">
                   {{ ach.title }}
                 </h3>
 
@@ -349,7 +349,7 @@ function openAttachment(attachmentUrl: string) {
               </span>
             </div>
 
-            <h3 text-lg text-primary leading-8 font-semibold mb-2>
+            <h3 class="text-base text-primary leading-7 font-semibold mb-2 sm:text-lg sm:leading-8">
               {{ ach.title }}
             </h3>
 
@@ -388,7 +388,7 @@ function openAttachment(attachmentUrl: string) {
         </p>
       </div>
 
-      <div v-if="totalPages > 1" class="mt-8 flex gap-2 justify-center">
+      <div v-if="totalPages > 1" class="mt-8 flex flex-wrap gap-2 justify-center">
         <button
           class="text-gray-600 px-3 py-1.5 rounded-lg bg-gray-100 transition-all duration-200 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
           :disabled="currentPage === 1"

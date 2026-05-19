@@ -225,11 +225,11 @@ watch(
       </div>
 
       <!-- 图片画廊 -->
-      <div v-if="filteredImages.length > 0" gap-4 grid grid-cols-2 md:grid-cols-3>
+      <div v-if="filteredImages.length > 0" class="gap-4 grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2">
         <div
           v-for="image in filteredImages"
           :key="image.id"
-          class="group rounded-lg aspect-square shadow-lg relative overflow-hidden"
+          class="group rounded-lg aspect-[4/3] shadow-lg relative overflow-hidden sm:aspect-square"
         >
           <!-- 使用原生 loading="lazy" + Intersection Observer -->
           <img
@@ -260,13 +260,13 @@ watch(
 
           <!-- 遮罩层 -->
           <div
-            class="opacity-0 transition duration-300 inset-0 absolute from-black/80 to-transparent via-black/20 bg-gradient-to-t group-hover:opacity-100"
+            class="opacity-100 transition duration-300 inset-0 absolute from-black/80 to-transparent via-black/20 bg-gradient-to-t sm:opacity-0 sm:group-hover:opacity-100"
           >
             <div class="text-white p-4 bottom-0 left-0 right-0 absolute">
-              <h3 class="text-lg font-semibold">
+              <h3 class="text-base font-semibold sm:text-lg">
                 {{ image.title }}
               </h3>
-              <p class="text-sm text-gray-300">
+              <p class="text-xs text-gray-300 leading-relaxed sm:text-sm">
                 {{ image.description }}
               </p>
               <div class="text-xs text-gray-400 mt-2 flex gap-2 items-center">

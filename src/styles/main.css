@@ -6,6 +6,18 @@ body,
   padding: 0;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 html.dark {
   color-scheme: dark;
 }
@@ -19,6 +31,19 @@ body {
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   /* 使用等宽数字 (Tabular Figures) */
   font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+}
+
+a,
+button {
+  min-height: 44px;
 }
 
 /* ========== 移动端优化 ========== */
@@ -86,6 +111,74 @@ body.menu-open {
 
   .hero-subtitle {
     font-size: 1rem !important;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .hero-section {
+    height: auto !important;
+    min-height: 420px !important;
+    padding-top: 4.5rem;
+    padding-bottom: 3rem;
+  }
+
+  .hero-section-md {
+    height: auto !important;
+    min-height: 340px !important;
+    padding-top: 4.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .hero-section-sm {
+    height: auto !important;
+    min-height: 260px !important;
+    padding-top: 4.5rem;
+    padding-bottom: 2rem;
+  }
+
+  .hero-content {
+    padding-inline: 1rem !important;
+  }
+
+  .hero-title {
+    max-width: 100%;
+    font-size: clamp(1.75rem, 8vw, 2.35rem) !important;
+    line-height: 1.16 !important;
+    text-wrap: balance;
+  }
+
+  .hero-subtitle {
+    max-width: 100%;
+    font-size: clamp(0.95rem, 4vw, 1.1rem) !important;
+    line-height: 1.45 !important;
+  }
+
+  .hero-description {
+    max-width: 100%;
+    padding-inline: 0 !important;
+    font-size: 0.95rem !important;
+    line-height: 1.75 !important;
+  }
+
+  .section-title {
+    font-size: 1.7rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .section-subtitle {
+    margin-bottom: 2rem !important;
+  }
+
+  .card,
+  .card-hover,
+  .card-border {
+    padding: 1rem !important;
+  }
+
+  .page-container {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
   }
 }
 

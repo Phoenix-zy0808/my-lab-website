@@ -50,9 +50,9 @@ onMounted(() => {
       description="聚焦光谱信号解析、材料信息建模与智能检测应用，开展交叉研究与人才培养。"
     />
 
-    <div class="mx-auto px-4 py-12 max-w-6xl lg:px-8 sm:px-6">
-      <section class="mb-12 flex flex-wrap gap-4 items-end justify-between">
-        <h1 class="text-3xl text-primary tracking-tight font-bold">
+    <div class="mx-auto px-4 py-8 max-w-6xl lg:px-8 sm:px-6 sm:py-12">
+      <section class="mb-10 flex flex-wrap gap-4 items-end justify-between sm:mb-12">
+        <h1 class="text-2xl text-primary tracking-tight font-bold sm:text-3xl">
           研究方向
         </h1>
         <p class="text-sm text-gray-600 max-w-xl md:text-right">
@@ -60,11 +60,11 @@ onMounted(() => {
         </p>
       </section>
 
-      <section class="space-y-14">
+      <section class="space-y-10 sm:space-y-14">
         <article
           v-for="(direction, index) in directions"
           :key="direction.id"
-          class="pb-12 border-b border-gray-200 relative last:pb-0 last:border-b-0"
+          class="pb-10 border-b border-gray-200 relative last:pb-0 sm:pb-12 last:border-b-0"
         >
           <div class="mb-4 flex gap-3 items-center">
             <span class="text-[11px] text-secondary tracking-[0.24em] font-semibold">
@@ -74,7 +74,7 @@ onMounted(() => {
           </div>
 
           <div class="max-w-4xl">
-            <h2 class="text-3xl text-gray-900 leading-tight font-bold">
+            <h2 class="text-2xl text-gray-900 leading-tight font-bold sm:text-3xl">
               {{ direction.title }}
             </h2>
 
@@ -90,8 +90,8 @@ onMounted(() => {
             </p>
           </div>
 
-          <div class="mt-8 gap-6 grid lg:grid-cols-2">
-            <div class="px-6 py-5 border border-gray-200 rounded-2xl bg-gray-50">
+          <div class="mt-6 gap-4 grid sm:mt-8 sm:gap-6 lg:grid-cols-2">
+            <div class="px-4 py-5 border border-gray-200 rounded-2xl bg-gray-50 sm:px-6">
               <h3 class="text-lg text-gray-900 font-semibold mb-4">
                 研究重点
               </h3>
@@ -107,7 +107,7 @@ onMounted(() => {
               </ul>
             </div>
 
-            <div class="px-6 py-5 border border-gray-300 rounded-2xl bg-white shadow-sm">
+            <div class="px-4 py-5 border border-gray-300 rounded-2xl bg-white shadow-sm sm:px-6">
               <h3 class="text-lg text-gray-900 font-semibold mb-4">
                 应用场景
               </h3>

@@ -95,8 +95,9 @@ onUnmounted(() => {
   <header
     role="banner"
     transition-all duration-300 left-0 right-0 top-0 fixed z-50
+    class="bg-primary/88 shadow-sm backdrop-blur-md md:bg-transparent md:shadow-none md:backdrop-blur-0"
     :class="[
-      isScrolled ? 'bg-primary/78 backdrop-blur-md shadow-sm' : 'bg-transparent',
+      isScrolled || isMobileMenuOpen ? 'md:bg-primary/78 md:backdrop-blur-md md:shadow-sm' : '',
     ]"
   >
     <div
@@ -110,7 +111,7 @@ onUnmounted(() => {
       <div flex h-18 items-center justify-between>
         <RouterLink
           to="/"
-          flex gap-3 items-center
+          flex flex-1 gap-3 min-w-0 items-center md:flex-none
           class="group nav-link"
           aria-label="返回首页"
         >
@@ -127,13 +128,14 @@ onUnmounted(() => {
             <div v-else class="i-carbon-circle-dash animate-spin" text-xl />
           </div>
 
-          <div>
-            <h1 text-lg text-white font-bold whitespace-nowrap>
+          <div class="min-w-0">
+            <h1 text-lg text-white font-bold whitespace-nowrap truncate class="max-w-[calc(100vw-7rem)] lg:max-w-none md:max-w-[18rem] sm:max-w-[28rem]">
               {{ config?.labName || (isLoading ? '加载中...' : '智能光谱分析与材料信息课题组') }}
             </h1>
             <p
               v-if="config?.labNameEn || isLoading"
-              text-xs hidden whitespace-nowrap sm:block
+              text-xs hidden whitespace-nowrap truncate sm:block
+              class="max-w-[28rem] lg:max-w-none md:max-w-[18rem]"
               :style="{ color: 'rgba(255,255,255,0.6)' }"
             >
               {{ config?.labNameEn || 'Intelligent Spectral Analysis and Materials Informatics Group' }}
@@ -160,10 +162,10 @@ onUnmounted(() => {
         </nav>
 
         <button
-          class="md:hidden"
+          class="border border-white/20 shadow-sm md:hidden"
           type="button"
-          bg="rgb(255 255 255 / 0.1)"
-          hover:bg="rgb(255 255 255 / 0.2)"
+          bg="rgb(255 255 255 / 0.18)"
+          hover:bg="rgb(255 255 255 / 0.28)"
           text-white rounded-lg flex h-10 w-10 transition duration-200 items-center justify-center
           aria-label="切换导航菜单"
           :aria-expanded="isMobileMenuOpen"
@@ -190,15 +192,14 @@ onUnmounted(() => {
       <div
         v-if="isMobileMenuOpen"
         id="mobile-menu"
-        bg="rgb(10 58 82 / 0.98)"
-        inset-0 fixed z-60 backdrop-blur-sm lg:hidden
+        class="bg-[#062838]/98 inset-0 fixed z-60 overflow-y-auto backdrop-blur-md lg:hidden"
         role="menu"
-        @touchmove.prevent
       >
         <button
-          bg="rgb(255 255 255 / 0.1)"
-          hover:bg="rgb(255 255 255 / 0.2)"
+          bg="rgb(255 255 255 / 0.18)"
+          hover:bg="rgb(255 255 255 / 0.28)"
           text-white rounded-lg flex h-10 w-10 transition duration-200 items-center right-4 top-4 justify-center absolute
+          class="border border-white/20 shadow-sm"
           aria-label="关闭菜单"
           @click="closeMenu"
         >
@@ -210,9 +211,9 @@ onUnmounted(() => {
             selector: 'a[role=menuitem]',
             onEscape: handleEscape,
           }"
-          px-4 py-8 flex flex-col gap-4 h-full items-center justify-center
+          class="px-4 py-16 flex flex-col gap-2 min-h-full items-center justify-start sm:justify-center"
         >
-          <div mb-8 text-center>
+          <div class="mb-4 text-center max-w-full sm:mb-8">
             <div
               class="mx-auto mb-4 rounded-2xl flex h-18 w-18 items-center justify-center overflow-hidden"
               aria-hidden="true"
@@ -223,10 +224,10 @@ onUnmounted(() => {
                 class="h-full w-full object-contain"
               >
             </div>
-            <h2 text-xl text-white font-bold>
+            <h2 text-xl text-white leading-snug font-bold>
               {{ config?.labName || '智能光谱分析与材料信息课题组' }}
             </h2>
-            <p text-sm :style="{ color: 'rgba(255,255,255,0.6)' }">
+            <p text-sm leading-relaxed :style="{ color: 'rgba(255,255,255,0.6)' }">
               {{ config?.labNameEn || 'Intelligent Spectral Analysis and Materials Informatics Group' }}
             </p>
           </div>
@@ -236,12 +237,12 @@ onUnmounted(() => {
               :to="link.path"
               role="menuitem"
               :style="{ color: 'rgba(255,255,255,0.8)' }"
-              class="hover:text-white!"
-              text-xl font-medium px-6 py-3 rounded-lg transition duration-200
+              class="text-center border border-white/10 bg-white/8 max-w-xs w-full shadow-sm justify-center hover:text-white!"
+              text-lg font-medium px-6 py-2.5 rounded-xl transition duration-200 sm:text-xl sm:py-3
               :class="[
                 isActive(link.path)
-                  ? 'bg-white/25 text-white font-bold border-b-2 border-white rounded-t-lg'
-                  : 'hover:bg-white/10',
+                  ? 'bg-white/22 text-white font-bold border-white/35'
+                  : 'hover:bg-white/14',
               ]"
               :aria-current="isActive(link.path) ? 'page' : undefined"
               @click="closeMenu"

@@ -144,8 +144,8 @@ watch([selectedRole, selectedGrade], () => {
 
     <div class="mx-auto px-4 py-12 max-w-7xl lg:px-8 sm:px-6">
       <div class="mb-8">
-        <div class="overflow-x-auto overflow-y-hidden">
-          <div class="flex flex-nowrap gap-2 min-w-max justify-center">
+        <div class="px-4 overflow-x-auto overflow-y-hidden -mx-4 sm:mx-0 sm:px-0">
+          <div class="flex flex-nowrap gap-2 min-w-max justify-start sm:justify-center">
             <button
               v-for="role in roleCategories"
               :key="role.key"
@@ -165,9 +165,9 @@ watch([selectedRole, selectedGrade], () => {
 
       <div
         v-if="selectedRole === 'undergraduate' || selectedRole === 'graduated_undergraduate'"
-        class="mb-4 overflow-x-auto overflow-y-hidden"
+        class="mb-4 px-4 overflow-x-auto overflow-y-hidden -mx-4 sm:mx-0 sm:px-0"
       >
-        <div class="flex flex-nowrap gap-2 min-w-max justify-center">
+        <div class="flex flex-nowrap gap-2 min-w-max justify-start sm:justify-center">
           <button
             v-for="grade in gradeOptions"
             :key="grade.key"
@@ -186,7 +186,7 @@ watch([selectedRole, selectedGrade], () => {
 
       <div v-if="currentMembers.length > 0">
         <template v-if="selectedRole === 'pi'">
-          <div class="p-8 rounded-xl bg-white shadow-lg">
+          <div class="p-4 rounded-xl bg-white shadow-lg sm:p-8">
             <div class="mx-auto max-w-5xl">
               <div v-if="selectedMember" card>
                 <div class="flex flex-col gap-6 items-center sm:flex-row sm:items-start">
@@ -351,7 +351,7 @@ watch([selectedRole, selectedGrade], () => {
         </template>
 
         <template v-else-if="selectedRole === 'undergraduate' || selectedRole === 'graduated_undergraduate'">
-          <div class="p-8 rounded-xl bg-white shadow-lg">
+          <div class="p-4 rounded-xl bg-white shadow-lg sm:p-8">
             <div class="space-y-8">
               <div
                 v-for="member in currentPageData"
@@ -405,7 +405,7 @@ watch([selectedRole, selectedGrade], () => {
             </div>
           </div>
 
-          <div v-if="totalPages > 1" class="mt-8 flex gap-2 justify-center">
+          <div v-if="totalPages > 1" class="mt-8 flex flex-wrap gap-2 justify-center">
             <button
               class="text-gray-600 px-3 py-1.5 rounded-lg bg-gray-100 transition-all duration-200 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
               :disabled="currentPage === 1"
@@ -439,7 +439,7 @@ watch([selectedRole, selectedGrade], () => {
         </template>
 
         <template v-else-if="selectedRole === 'master_student' || selectedRole === 'graduated_master'">
-          <div class="p-8 rounded-xl bg-white shadow-lg">
+          <div class="p-4 rounded-xl bg-white shadow-lg sm:p-8">
             <div class="space-y-8">
               <div
                 v-for="member in currentMasterPageData"
@@ -493,7 +493,7 @@ watch([selectedRole, selectedGrade], () => {
             </div>
           </div>
 
-          <div v-if="totalPages > 1" class="mt-8 flex gap-2 justify-center">
+          <div v-if="totalPages > 1" class="mt-8 flex flex-wrap gap-2 justify-center">
             <button
               class="text-gray-600 px-3 py-1.5 rounded-lg bg-gray-100 transition-all duration-200 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
               :disabled="currentPage === 1"
@@ -527,7 +527,7 @@ watch([selectedRole, selectedGrade], () => {
         </template>
 
         <template v-else-if="selectedRole === 'research_assistant'">
-          <div class="p-8 rounded-xl bg-white shadow-lg">
+          <div class="p-4 rounded-xl bg-white shadow-lg sm:p-8">
             <div class="space-y-8">
               <div
                 v-for="member in currentMembers"

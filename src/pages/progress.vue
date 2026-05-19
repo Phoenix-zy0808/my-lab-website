@@ -73,14 +73,14 @@ onMounted(() => {
       description="聚焦光谱信号解析、材料信息建模与智能检测应用，开展交叉研究与人才培养。"
     />
 
-    <div class="mx-auto px-4 py-12 max-w-6xl lg:px-8 sm:px-6">
+    <div class="mx-auto px-4 py-8 max-w-6xl lg:px-8 sm:px-6 sm:py-12">
       <section class="mb-10">
-        <h1 class="text-3xl text-primary tracking-tight font-bold">
+        <h1 class="text-2xl text-primary tracking-tight font-bold sm:text-3xl">
           研究进展
         </h1>
       </section>
 
-      <section class="mb-16">
+      <section class="mb-12 sm:mb-16">
         <div class="mb-8">
           <h2 class="text-2xl text-gray-900 font-bold">
             研究进展概览
@@ -91,7 +91,7 @@ onMounted(() => {
           <article
             v-for="(item, index) in progressHighlights"
             :key="item.title"
-            class="px-6 py-6 border border-gray-200 rounded-2xl bg-white shadow-sm"
+            class="px-4 py-5 border border-gray-200 rounded-2xl bg-white shadow-sm sm:px-6 sm:py-6"
           >
             <div class="mb-4 flex gap-3 items-center">
               <span class="text-[11px] text-secondary tracking-[0.2em] font-semibold">
@@ -100,11 +100,11 @@ onMounted(() => {
               <div class="bg-gray-200 flex-1 h-px" />
             </div>
 
-            <h3 class="text-2xl text-gray-900 leading-8 font-semibold">
+            <h3 class="text-xl text-gray-900 leading-7 font-semibold sm:text-2xl sm:leading-8">
               {{ item.title }}
             </h3>
 
-            <p class="text-gray-700 leading-8 mt-4">
+            <p class="text-sm text-gray-700 leading-7 mt-4 sm:text-base sm:leading-8">
               {{ item.summary }}
             </p>
 
