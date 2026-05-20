@@ -159,12 +159,12 @@ onMounted(loadConfig)
             位置地图
           </h2>
           <div rounded-lg bg-gray-100 h-80 w-full overflow-hidden>
-            <img
+            <OptimizedImage
               :src="mapImage"
               alt="位置地图"
               h-full w-full object-cover
               @error="($event.target as HTMLImageElement).style.display = 'none'"
-            >
+            />
           </div>
           <div class="mt-4 text-center">
             <a

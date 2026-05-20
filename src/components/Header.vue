@@ -119,12 +119,12 @@ onUnmounted(() => {
             class="rounded-xl flex h-11 w-11 transition duration-300 items-center justify-center overflow-hidden group-hover:scale-105"
             aria-hidden="true"
           >
-            <img
+            <OptimizedImage
               v-if="!isLoading"
               src="/images/logo/logo-transparent.png"
               alt=""
               class="h-full w-full object-contain"
-            >
+            />
             <div v-else class="i-carbon-circle-dash animate-spin" text-xl />
           </div>
 
@@ -218,11 +218,11 @@ onUnmounted(() => {
               class="mx-auto mb-4 rounded-2xl flex h-18 w-18 items-center justify-center overflow-hidden"
               aria-hidden="true"
             >
-              <img
+              <OptimizedImage
                 src="/images/logo/logo-transparent.png"
                 alt=""
                 class="h-full w-full object-contain"
-              >
+              />
             </div>
             <h2 text-xl text-white leading-snug font-bold>
               {{ config?.labName || '智能光谱分析与材料信息课题组' }}

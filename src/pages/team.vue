@@ -193,7 +193,7 @@ watch([selectedRole, selectedGrade], () => {
                   <div
                     text-5xl text-white font-bold rounded-lg flex flex-shrink-0 h-48 w-48 shadow-lg items-center justify-center overflow-hidden from-primary to-secondary bg-gradient-to-br
                   >
-                    <img
+                    <OptimizedImage
                       v-if="selectedMember.photo"
                       :src="selectedMember.photo"
                       :alt="selectedMember.name"
@@ -201,7 +201,7 @@ watch([selectedRole, selectedGrade], () => {
                       decoding="async"
                       h-full w-full object-cover
                       @error="(e) => (e.target as HTMLImageElement).style.display = 'none'"
-                    >
+                    />
                     <span v-else>
                       {{ selectedMember.name.charAt(0) }}
                     </span>
@@ -360,14 +360,14 @@ watch([selectedRole, selectedGrade], () => {
               >
                 <div class="flex-shrink-0 sm:w-40">
                   <div class="mx-auto rounded-lg bg-white h-44 w-32 shadow-md overflow-hidden sm:mx-0 sm:h-52 sm:w-40">
-                    <img
+                    <OptimizedImage
                       v-if="member.photo"
                       :src="member.photo"
                       :alt="`${member.name} - ${member.title}`"
                       class="h-full w-full object-cover"
                       loading="lazy"
                       decoding="async"
-                    >
+                    />
                     <div
                       v-else
                       class="text-3xl text-white font-bold flex h-full w-full items-center justify-center from-primary to-secondary bg-gradient-to-br sm:text-4xl"
@@ -448,14 +448,14 @@ watch([selectedRole, selectedGrade], () => {
               >
                 <div class="flex-shrink-0 sm:w-40">
                   <div class="mx-auto rounded-lg bg-white h-44 w-32 shadow-md overflow-hidden sm:mx-0 sm:h-52 sm:w-40">
-                    <img
+                    <OptimizedImage
                       v-if="member.photo"
                       :src="member.photo"
                       :alt="`${member.name} - ${member.title}`"
                       loading="lazy"
                       decoding="async"
                       class="h-full w-full object-cover"
-                    >
+                    />
                     <div
                       v-else
                       class="text-3xl text-white font-bold flex h-full w-full items-center justify-center from-primary to-secondary bg-gradient-to-br sm:text-4xl"
@@ -536,14 +536,14 @@ watch([selectedRole, selectedGrade], () => {
               >
                 <div class="flex-shrink-0 sm:w-40">
                   <div class="mx-auto rounded-lg bg-white h-44 w-32 shadow-md overflow-hidden sm:mx-0 sm:h-52 sm:w-40">
-                    <img
+                    <OptimizedImage
                       v-if="member.photo"
                       :src="member.photo"
                       :alt="`${member.name} - ${member.title}`"
                       class="h-full w-full object-cover"
                       loading="lazy"
                       decoding="async"
-                    >
+                    />
                     <div
                       v-else
                       class="text-3xl text-white font-bold flex h-full w-full items-center justify-center from-primary to-secondary bg-gradient-to-br sm:text-4xl"

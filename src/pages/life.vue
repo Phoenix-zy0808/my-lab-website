@@ -116,6 +116,13 @@ interface LazyImageState {
 
 const imageStates = reactive<Record<string, LazyImageState>>({})
 
+function toWebpPath(src: string) {
+  if (/\.(svg|webp)([?#].*)?$/i.test(src))
+    return ''
+
+  return src.replace(/\.(jpe?g|png)([?#].*)?$/i, '.webp$2')
+}
+
 // 初始化图片状态
 galleryImages.forEach((img) => {
   imageStates[img.id] = {
@@ -232,24 +239,31 @@ watch(
           class="group rounded-lg aspect-[4/3] shadow-lg relative overflow-hidden sm:aspect-square"
         >
           <!-- 使用原生 loading="lazy" + Intersection Observer -->
-          <img
-            :ref="(el) => registerImage(el as HTMLImageElement, image.id)"
-            :data-image-id="image.id"
-            :src="imageStates[image.id].isVisible ? image.src : ''"
-            :alt="image.title"
+          <picture class="contents">
+            <source
+              v-if="imageStates[image.id].isVisible && toWebpPath(image.src)"
+              :srcset="toWebpPath(image.src)"
+              type="image/webp"
+            >
+            <img
+              :ref="(el) => registerImage(el as HTMLImageElement, image.id)"
+              :data-image-id="image.id"
+              :src="imageStates[image.id].isVisible ? image.src : ''"
+              :alt="image.title"
 
-            loading="lazy"
-            decoding="async"
+              loading="lazy"
+              decoding="async"
 
-            h-full w-full transition duration-300 object-cover group-hover:scale-110
-            :class="{ 'opacity-0': !imageStates[image.id].isLoaded }"
-            @load="imageStates[image.id].isLoaded = true"
-            @error="(e) => {
-              const target = e.target as HTMLImageElement
-              target.src = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23ddd%22 width=%22200%22 height=%22200%22/%3E%3Ctext fill=%22%23999%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22%3E暂无图片%3C/text%3E%3C/svg%3E'
-              imageStates[image.id].isLoaded = true
-            }"
-          >
+              h-full w-full transition duration-300 object-cover group-hover:scale-110
+              :class="{ 'opacity-0': !imageStates[image.id].isLoaded }"
+              @load="imageStates[image.id].isLoaded = true"
+              @error="(e) => {
+                const target = e.target as HTMLImageElement
+                target.src = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23ddd%22 width=%22200%22 height=%22200%22/%3E%3Ctext fill=%22%23999%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22%3E暂无图片%3C/text%3E%3C/svg%3E'
+                imageStates[image.id].isLoaded = true
+              }"
+            >
+          </picture>
           <!-- 加载占位 -->
           <div
             v-if="!imageStates[image.id].isLoaded"

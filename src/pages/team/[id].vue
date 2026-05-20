@@ -113,7 +113,7 @@ const roleMap: Record<TeamMember['role'], { label: string, color: string }> = {
 
               text-6xl text-white font-bold rounded-lg flex flex-shrink-0 h-64 w-64 shadow-lg items-center justify-center overflow-hidden from-primary to-secondary bg-gradient-to-br
             >
-              <img
+              <OptimizedImage
                 v-if="member.photo"
                 :src="member.photo"
                 :alt="member.name"
@@ -121,7 +121,7 @@ const roleMap: Record<TeamMember['role'], { label: string, color: string }> = {
                 decoding="async"
 
                 h-full w-full object-cover
-              >
+              />
               <span v-else>
                 {{ member.name.charAt(0) }}
               </span>

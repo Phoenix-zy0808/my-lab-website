@@ -16,6 +16,7 @@ declare module 'vue' {
     ErrorBoundary: typeof import('./src/components/ErrorBoundary.vue')['default']
     Header: typeof import('./src/components/Header.vue')['default']
     Hero: typeof import('./src/components/Hero.vue')['default']
+    OptimizedImage: typeof import('./src/components/OptimizedImage.vue')['default']
     PdfModal: typeof import('./src/components/PdfModal.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

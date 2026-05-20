@@ -38,7 +38,7 @@ const { imgRef, src: lazySrc, isLoaded } = props.image
         imagePosition === 'left' ? 'sm:w-48 sm:mb-0 sm:mr-4' : 'h-48',
       ]"
     >
-      <img
+      <OptimizedImage
         :src="lazySrc"
         :alt="title"
 
@@ -47,7 +47,7 @@ const { imgRef, src: lazySrc, isLoaded } = props.image
 
         h-full w-full transition duration-300 object-cover hover:scale-110
         :class="{ 'opacity-0': !isLoaded }"
-      >
+      />
       <!-- 加载占位 - 带骨架屏动画 -->
       <div
         v-if="!isLoaded"

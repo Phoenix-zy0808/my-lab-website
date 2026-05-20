@@ -26,14 +26,14 @@ const roleMap: Record<TeamMember['role'], { label: string, color: string }> = {
 
           text-3xl text-white font-bold rounded-full flex h-24 w-24 shadow-lg items-center justify-center overflow-hidden from-primary to-secondary bg-gradient-to-br
         >
-          <img
+          <OptimizedImage
             v-if="member.photo"
             :src="member.photo"
             :alt="member.name"
 
             h-full w-full object-cover
             @error="(e) => (e.target as HTMLImageElement).style.display = 'none'"
-          >
+          />
           <span v-else>
             {{ member.name.charAt(0) }}
           </span>

@@ -138,10 +138,17 @@ body.menu-open {
 
   .hero-content {
     padding-inline: 1rem !important;
+    color: #0a3a52 !important;
+    text-shadow: none !important;
+  }
+
+  .hero-overlay {
+    background: rgb(255 255 255 / 0.78) !important;
   }
 
   .hero-title {
     max-width: 100%;
+    color: #062838 !important;
     font-size: clamp(1.75rem, 8vw, 2.35rem) !important;
     line-height: 1.16 !important;
     text-wrap: balance;
@@ -149,15 +156,19 @@ body.menu-open {
 
   .hero-subtitle {
     max-width: 100%;
+    color: #0a3a52 !important;
     font-size: clamp(0.95rem, 4vw, 1.1rem) !important;
     line-height: 1.45 !important;
+    opacity: 0.9 !important;
   }
 
   .hero-description {
     max-width: 100%;
     padding-inline: 0 !important;
+    color: #1f3f4f !important;
     font-size: 0.95rem !important;
     line-height: 1.75 !important;
+    opacity: 0.95 !important;
   }
 
   .section-title {
